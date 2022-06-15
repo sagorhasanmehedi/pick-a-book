@@ -1,0 +1,29 @@
+.authors {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap:20px 101px ;
+}
+.authors img {
+  border: 2px solid #c7c7c7;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.authors img:hover {
+  border: 2px solid    #337ab7;
+
+}
+.authors p {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 12px;
+  margin-bottom: 30px;
+  color: #337ab7;
+  cursor: pointer;
+}

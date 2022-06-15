@@ -1,0 +1,35 @@
+.Catagory-slice button {
+  width: 225px;
+  height: 65px;
+  font-size: 114.286%;
+  text-align: center;
+  color: #333333;
+  border: 1px solid #71cbf0;
+  border-radius: 6px;
+  cursor: pointer;
+  background: -webkit-linear-gradient(right, #e3f3fa 50%, #0397d3 50%);
+  background: linear-gradient(to left, #e3f3fa 50%, #0397d3 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.7s ease;
+}
+.Catagory-slice {
+  margin-top: 20px;
+}
+
+
+.Catagory-slice button:hover,
+button:focus {
+  border-color: var(--hover);
+  color: #fff;
+}
+.slide:hover,
+.slide:focus {
+  box-shadow: inset 12.5em 0 0 0 var(--hover);
+}
+
+.slide {
+ 
+  --hover: #0397d3;
+}

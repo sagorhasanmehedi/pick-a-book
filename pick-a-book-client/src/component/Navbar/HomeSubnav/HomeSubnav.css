@@ -1,0 +1,35 @@
+.home-subnav {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #cecfd1;
+  border-top: 5px solid #89c4f4;
+  background: white;
+ 
+
+}
+
+.home-subnav ul li {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+  color: #333333;
+  list-style: none;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+.home-subnav ul li:hover {
+  color: #89c4f4;
+}
+.home-subnav ul {
+  width: 1400px;
+  display: flex;
+  gap: 52px;
+  padding-left: 0;
+}
+
+@media (max-width: 600px) {
+  .home-subnav {
+    display: none;
+  }
+}

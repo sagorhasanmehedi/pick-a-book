@@ -1,0 +1,102 @@
+.side-details {
+  background-color: #fafafa;
+  padding: 1.5rem !important;
+ 
+}
+.side-details p {
+  font-weight: 500;
+  color: #666666;
+  padding-left: 1rem;
+}
+
+.saller-details {
+  border-top: 8px solid #ffffffff;
+  background-color: #fafafa;
+  height: 322px;
+}
+.saller-info {
+  padding: 13px 16px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.side-details-info {
+  display: flex;
+  align-items: center;
+}
+.saller-name-title {
+  margin-bottom: 4px;
+  color: #757575;
+  font-size: 15px;
+  margin: 0;
+}
+.saller-name {
+  color: #212121 !important;
+  margin: 0;
+
+  font-weight: 500;
+}
+.chat {
+  color: #199cb7;
+}
+
+.chat p {
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 5px;
+  font-weight: 550;
+}
+.saller-table {
+  display: table;
+  width: 100%;
+
+  table-layout: fixed;
+  border-top: 1px solid #eff0f5;
+}
+.first {
+  padding-left: 19px !important;
+}
+.saller-table-sell {
+  padding: 8px 10px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-left: 1px solid #eff0f5;
+  font-size: 14px;
+  text-align: left;
+  display: table-cell;
+  width: 33.3333333333%;
+  vertical-align: top;
+  position: relative;
+ 
+}
+.saller-table-sell p {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 14px;
+  height: 28px;
+  overflow: hidden;
+  color: #757575;
+}
+.saller-parsentage {
+  font-size: 26px !important;
+  line-height: 30px !important;
+  color: #212121 !important;
+  text-align: left !important;
+  font-weight: 500;
+}
+.saller-visit {
+  padding: 17px;
+  text-align: center;
+
+  border-top: 1px solid #eff0f5;
+
+  color: #212121;
+}
+.saller-visit-link {
+  font-weight: 550;
+  color: #199cb7 !important;
+  cursor: pointer;
+  margin: 0;
+}

@@ -1,0 +1,10 @@
+.commingsoonimage{
+    width: 50%;
+}
+
+@media (max-width: 600px) {
+    .commingsoonimage{
+        width: 100%;
+    }
+
+}

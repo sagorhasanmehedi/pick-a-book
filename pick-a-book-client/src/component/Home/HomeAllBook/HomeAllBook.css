@@ -1,0 +1,89 @@
+.all-book-container{
+    width: 80%;
+    background-color: #ffffffff;
+    padding: 45px 0;
+}
+
+.all-book-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  text-align: center;
+}
+.allbook-inner-card {
+    width: 235px;
+    padding: 20px 15px 5px;
+  
+
+}
+
+.catagory-name {
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 150%;
+  color: #333333;
+  margin-top: 10px;
+  margin-left: 88px;
+  margin-bottom: 6px;
+}
+.catagory-amount {
+  margin-left: 88px;
+  color: #666666;
+
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+.allbook-inner-card img {
+   
+  width: 130px;
+ 
+}
+.all-book-card {
+  transition: all 0.5s ease-out;
+}
+.all-book-card:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+.allbook-btn {
+  visibility: hidden;
+  text-align: center;
+  width: 100%;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 13px 5px;
+  background: #37aaf7;
+  
+  color: #ffffffff;
+  border-radius: 2px;
+
+  cursor: pointer;
+}
+.all-book-card:hover .allbook-btn {
+  visibility: visible;
+  
+}
+.allbook-btn:hover {
+    background: #1d7ebf;
+    transition: .5s ease-out;
+  }
+
+@media (max-width: 600px) {
+    .all-book-container{
+        width: 80%;
+        padding: 30px 0;
+    }
+    .catagory-name, .catagory-amount {
+        text-align: center;
+        margin-left: 0%;
+    }
+  
+  
+  
+
+  }
+

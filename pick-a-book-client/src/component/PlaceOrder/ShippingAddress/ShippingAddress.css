@@ -1,0 +1,71 @@
+.shiping-addres{
+    width: 750px;
+
+}
+
+
+.shiping-addres-heading {
+ 
+  height: 75px;
+  background-color: #fafafa;
+border-radius: 3px;
+  padding: 20px;
+  box-shadow: 0px 3px 4px -4px #9c9c9c;
+}
+.shiping-addres-heading h3 {
+  font-size: 142%;
+  color: #333333;
+  margin: 0;
+  font-weight: 450;
+}
+.addres p {
+  color: #666666;
+  line-height: 7px;
+  font-size: 102%;
+}
+.addres {
+  padding: 30px 0;
+  border-top: 1px solid #e2e2e2;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e2e2;
+}
+.addres-name {
+  font-size: 130%;
+  color: #333333;
+  margin: 0;
+  font-weight: 550;
+}
+.highlight {
+  color: black !important;
+}
+
+.addres-button {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.addres-button button {
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
+  color: #03a9ec;
+  font-size: 108%;
+  padding-right: 0;
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 600px) {
+    .shiping-addres {
+        width: 365px;
+        text-align: center;
+        
+      }
+  
+  }
+  

@@ -1,0 +1,33 @@
+.author-slider {
+  background-color: #ffffff;
+  margin: auto;
+  padding: 60px 35px 30px 35px;
+  margin-top: 25px;
+  border-radius: 5px;
+}
+.author-card {
+  text-align: center;
+  background-color: #ffffff;
+  text-align: center;
+  padding: 0 5px;
+  cursor: pointer;
+}
+.author-slider img {
+ 
+  border-radius: 50%;
+  border: 2px solid #cdcdcd;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+  cursor: pointer;
+}
+
+.author-slider img:hover {
+  border: 2px solid #37aaf7;
+}
+@media (max-width: 600px) {
+  .author-slider {
+    margin: auto;
+    padding: 35px 34px;
+    margin-top: 50px;
+  }
+}

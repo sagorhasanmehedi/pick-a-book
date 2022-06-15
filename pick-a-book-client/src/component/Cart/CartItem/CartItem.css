@@ -1,0 +1,125 @@
+.cart-item {
+  width: 750px;
+  background-color: #fffaf4;
+  border-bottom: 1px solid #e2e2e2;
+  border-radius: 3px;
+  padding: 18px;
+}
+.cart-item img {
+  width: 70%;
+}
+.cart-item p {
+  font-size: 130%;
+  color: #333333;
+}
+
+.cart-book-name p {
+  text-align: left;
+}
+.cart-book-author-name{
+  font-size: 120% !important;
+  color: #666666 !important;
+  margin-top: 0 !important;
+}
+.cart-book-name button {
+  transition: all 0.3s;
+}
+.cart-book-name button {
+  transition: all 0.3s;
+}
+.cart-book-name button:hover {
+  color: #d83833;
+}
+.cart-item button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  outline: none;
+  color: #666666;
+}
+
+.item-button {
+  width: 114px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.item-button button {
+  cursor: pointer;
+  outline: none;
+  font-size: 23px;
+  background-color: #f5f5f5;
+  border: 1px solid #cccccc;
+  width: 38px;
+  height: 30px;
+  padding: 0;
+}
+
+.item-button input {
+  border: none;
+  outline: none;
+  border-top: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+  width: 40px;
+  text-align: center;
+  padding: 1px;
+  height: 30px;
+  margin: 0;
+  font-size: 1rem;
+}
+.cart-price {
+  font-weight: 500 !important;
+}
+.confirm-button{
+  background-color: #FFFFFF;
+  padding: 25px 30px ;
+  box-shadow: 0px 4px 6px -3px #9c9c9c;
+  border-radius: 0 0 3px 3px;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.confirm-button p{
+  color: #6c757d !important;
+  font-size: 107%;
+}
+.confirm-button button{
+  height: 50px;
+  width: 200px;
+  font-size: 135%;
+  color: #FFFFFF !important;
+  border-radius: 3px;
+  background-color: #ff9900;
+  box-shadow: 0px 3px 6px -4px #a2a2a2;
+  border: none;
+  transition: background 0.8s;
+  cursor: pointer;
+ 
+}
+.confirm-button button:hover{
+  
+  background-color: #704608;
+ 
+ 
+}
+
+@media screen and (max-width: 600px) {
+  .cart-item {
+    width: 365px;
+  }
+  .cart-book-name,
+  .cart-book-name p {
+    text-align: center !important;
+  }
+  .cart-item img {
+   text-align: center;
+  }
+  .confirm-button {
+    width: 365px;
+   
+   
+   
+  }
+}

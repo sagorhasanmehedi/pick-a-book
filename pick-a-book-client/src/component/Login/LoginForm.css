@@ -1,0 +1,167 @@
+.login-form {
+  background: #ffffff;
+  width: 35%;
+  padding: 35px 20px;
+ 
+  border-radius: 6px;
+  box-shadow: 0 0 10px 0 rgb(0 0 0 / 5%);
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.heading-container {
+  text-align: center;
+}
+
+.signin-heading,
+.signup-heading {
+  display: inline-block;
+  cursor: pointer;
+  color: #acafb0;
+  padding: 0 20px;
+  text-transform: capitalize;
+  border-bottom: 2px solid #ebedee;
+  padding-bottom: 6px;
+  font-size: 140%;
+}
+
+.active {
+  color: #2874f0;
+  border-color: #2874f0;
+}
+
+.login-sub-heading {
+  text-align: center;
+  font-size: 107%;
+  margin: 25px 0 15px 0;
+  color: #000000;
+}
+.facebook-button {
+  width: 155px;
+  height: 50px;
+  color: #ffffff;
+  background-color: #3b5999;
+  font-size: 120%;
+  cursor: pointer;
+  border: none;
+  font-weight: 400;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+}
+.google-button {
+  background-color: #dd4832;
+  margin-left: 20px;
+  width: 155px;
+  height: 50px;
+  color: #ffffff;
+  font-size: 120%;
+  cursor: pointer;
+  border: none;
+  font-weight: 400;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+}
+.login-icon-facebook,
+.login-icon-google {
+  margin-right: 10px;
+}
+.login-button {
+  text-align: center;
+}
+.social-login-or {
+  font-size: 112%;
+  margin: 25px 0 6px 0;
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+}
+.login-text {
+  font-size: 107%;
+  margin: 25px 0 15px 0;
+  color: #000000;
+  text-align: center;
+  margin: 0;
+}
+.textfield {
+  text-align: center;
+}
+.remember-password {
+  margin: auto;
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.remember-password p {
+  display: inline-block;
+}
+.remember {
+  font-size: 107%;
+
+  color: #333333;
+}
+.forgot-password {
+  color: #2874f0;
+  cursor: pointer;
+  font-size: 107%;
+}
+.signin-button {
+  height: 50px;
+  width: 200px;
+  font-size: 135%;
+  color: #ffffff !important;
+  border-radius: 3px;
+  background-color: #33c24d;
+  box-shadow: 0px 3px 6px -4px #a2a2a2;
+  background-position: center;
+  -webkit-transition: background 0.8s;
+  transition: background 0.8s;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 20px;
+  width: 75%;
+  border: none;
+  cursor: pointer;
+}
+.signin-button-container {
+  text-align: center;
+}
+
+.signup-text {
+  font-size: 120%;
+  font-style: italic;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  color: #333333;
+  text-align: center;
+  margin-top: 20px;
+}
+.signup-text span {
+  font-style: normal;
+  color: #2874f0;
+  font-weight: bold;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 520px) {
+  .login-form {
+    background: #ffffff;
+    width: 85%;
+  }
+  .facebook-button {
+    width: 170px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  .google-button {
+    width: 170px;
+    height: 50px;
+    margin-left: 0;
+  }
+  .remember-password {
+    flex-wrap: wrap;
+  }
+  .remember-password p {
+    margin: 0;
+  }
+}
