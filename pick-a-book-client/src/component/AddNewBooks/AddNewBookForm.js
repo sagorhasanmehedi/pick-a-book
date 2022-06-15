@@ -30,32 +30,16 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
       label: "Western",
     },
     {
-      value: "পশ্চিমবঙ্গের বই",
-      label: "পশ্চিমবঙ্গের বই",
+      value: "উপন্যাসের বই",
+      label: "উপন্যাসের বই",
     },
     {
-      value: "ফ্রিল্যান্সিং/প্রোগ্রামিং",
-      label: "ফ্রিল্যান্সিং/প্রোগ্রামিং",
+      value: "ইসলামি উপন্যাস",
+      label: "ইসলামি উপন্যাস",
     },
     {
-      value: "বিজ্ঞানবাক্স",
-      label: "বিজ্ঞানবাক্স",
-    },
-    {
-      value: "উপন্যাস",
-      label: "উপন্যাস",
-    },
-    {
-      value: "বেস্টসেলার বই",
-      label: "বেস্টসেলার বই",
-    },
-    {
-      value: "ইসলামি বই",
-      label: "ইসলামি বই",
-    },
-    {
-      value: "বইমেলা ২০২২",
-      label: "বইমেলা ২০২২",
+      value: "সায়েন্স ফিকশন",
+      label: "সায়েন্স ফিকশন",
     },
   ];
 
@@ -151,24 +135,6 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
           <TextFieldMake
             fullWidth
             variant="outlined"
-            label="Entry date"
-            value={Data?.date}
-            name="Entry_date"
-            type="date"
-            focused
-            SelectProps={{ native: "true" }}
-            onChange={(event) =>
-              setData({
-                ...Data,
-                [event.target.name]: event.target.value,
-              })
-            }
-          ></TextFieldMake>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextFieldMake
-            fullWidth
-            variant="outlined"
             label="Offer Name"
             name="Offer_Name"
             onChange={(event) =>
@@ -179,7 +145,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             }
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        {/* <Grid item xs={12} md={6}>
           <TextFieldMake
             fullWidth
             variant="outlined"
@@ -193,7 +159,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
               })
             }
           />
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} md={6}>
           <TextFieldMake
             fullWidth
@@ -244,7 +210,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             fullWidth
             variant="outlined"
             type="email"
-            label="Email"
+            label="Admin Email"
             name="Email"
             onChange={(event) =>
               setData({

@@ -127,12 +127,12 @@ const catagorys2 = [
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box sx={{ width: "83%" }}>
           <Banner banner={banner1} />
-          <BookSlider Books={javascript} title={"javascript"}/>
+          <BookSlider Books={javascript} title={"উপন্যাসের বই"}/>
          
           <CatagoryButton catagorys={catagorys1}/>
-          <BookSlider Books={Ruby} title={"Ruby"}/>
+          <BookSlider Books={Ruby} title={"ইসলামি উপন্যাস"}/>
           <Banner banner={banner3} />
-          <BookSlider Books={Shell} title={"Shell"}/>
+          <BookSlider Books={Shell} title={"সায়েন্স ফিকশন"}/>
           <CatagoryIconBnner />
 
           <BookSlider Books={java} title={"Java"}/>

@@ -14,46 +14,48 @@ const AddNewBook = () => {
     if (!Data.Image) {
       return;
     }
+    if (!Data.Pdf) {
+      return;
+    }
 
+console.log(Data)
+    
+    formData.append("Book_Name", Data.Book_Name);
+    formData.append("Sub_Title", Data.Sub_Titel);
+    formData.append("Author_Name", Data.Author_Name);
+    formData.append("Price", Data.Price);
+    formData.append("Offer_Price", Data.Offer_Price);
+    formData.append("Catagory", Data.Catagory);
+    formData.append("Entry_date", new Date().toDateString());
+    formData.append("Offer_Name", Data.Offer_Name);
+    formData.append("Offer_Percentage", Data.Offer_Percentage);
+    formData.append("Publication_Name", Data.Publication_Name);
+    formData.append("Description", Data.Description);
+    formData.append("Stock", Data.Stock);
+    formData.append("Email", Data.Email);
     formData.append("Image", Data.Image);
+    formData.append("Pdf", Data.Pdf);
 
-    console.log(formData)
-
-    // formData.append("Book_Name", Data.Book_Name);
-    // formData.append("Sub_Title", Data.Sub_Titel);
-    // formData.append("Author_Name", Data.Author_Name);
-    // formData.append("Price", Data.Price);
-    // formData.append("Offer_Price", Data.Offer_Price);
-    // formData.append("Catagory", Data.Catagory);
-    // formData.append("Entry_date", Data.Entry_date);
-    // formData.append("Offer_Name", Data.Offer_Name);
-    // formData.append("Offer_Percentage", Data.Offer_Percentage);
-    // formData.append("Publication_Name", Data.Publication_Name);
-    // formData.append("Description", Data.Description);
-    // formData.append("Stock", Data.Stock);
-    // formData.append("Email", Data.Email);
-    // formData.append("Image", Data.Image);
-    // formData.append("Pdf", Data.Pdf);
-
-    // fetch("http://localhost:7000/add_new_book", {
-    //   method: "POST",
-    //   body: formData,
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data)
-    //     if (data.insertedId) {
-    //       Swal.fire({
-    //         icon: "success",
-    //         title: "details have been saved successfully.!",
-    //         showConfirmButton: false,
-    //         timer: 1500,
-    //       });
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
+    fetch("http://localhost:7000/add_new_book", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+       
+        if (data.insertedId) {
+         
+          Swal.fire({
+            icon: "success",
+            title: "details have been saved successfully.!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (

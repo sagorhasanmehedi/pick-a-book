@@ -41,11 +41,14 @@ const haldel_book_delete = (id) => {
 };
 
 const Book = ({ book }) => {
+
+
+  console.log(book.image)
   return (
     <Box>
       <img
         className="book_image"
-        src={`data:image/png;base64,${book.image}`}
+        src={book.image}
         alt=""
       />
       <Box sx={{ paddingRight: "50px" }}>
