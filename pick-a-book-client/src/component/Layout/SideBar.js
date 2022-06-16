@@ -64,7 +64,7 @@ const SideBar = ({ open, onClose }) => {
         >
           Pick A Book
         </Typography>
-        <Divider sx={{ marginBottom: "50px", borderColor: "#7f7878" }} />
+        <Divider sx={{ marginBottom: "50px", borderColor: "#63696d" }} />
         <Box
           sx={{
             flexGrow: 1,

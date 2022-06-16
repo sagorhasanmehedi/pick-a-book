@@ -9,77 +9,78 @@ import banner3 from "../assets/images/banner3.gif";
 import CatagoryIconBnner from "../component/Home/CatagoryIconBnner/CatagoryIconBnner";
 import AuthorSlider from "../component/Home/AuthorSlider/AuthorSlider";
 import Footer from "../component/Footer/Footer";
-
+import axios from "axios";
 
 const Home = () => {
-  const [javascript, setJavascript] = useState([])
-  const [Ruby, setRuby] = useState([])
-  const [Shell, setShell] = useState([])
-  const [java, setJava] = useState([])
-  const [C, setC] = useState([])
-  const [parl, setParl] = useState([])
-  
+  const [Uponashas, setUponashas] = useState([]);
+  const [Ruby, setRuby] = useState([]);
+  const [Shell, setShell] = useState([]);
+  const [java, setJava] = useState([]);
+  const [C, setC] = useState([]);
+  const [parl, setParl] = useState([]);
 
-// first book button catagori
-const catagorys1 = [
-  { name: "শেষের কবিতা", catagory: "javascript" },
-  { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "javascript" },
-  { name: "ফেলুদা সমগ্র", catagory: "javascript" },
-  { name: "মিসির আলি", catagory: "javascript" },
-  { name: "সত্যজিৎ রায়", catagory: "javascript" },
-  { name: "সত্যজিৎ রায়", catagory: "javascript" },
-];
+  // first book button catagori
+  const catagorys1 = [
+    { name: "শেষের কবিতা", catagory: "javascript" },
+    { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "javascript" },
+    { name: "ফেলুদা সমগ্র", catagory: "javascript" },
+    { name: "মিসির আলি", catagory: "javascript" },
+    { name: "সত্যজিৎ রায়", catagory: "javascript" },
+    { name: "সত্যজিৎ রায়", catagory: "javascript" },
+  ];
 
-// secend book button catagori
-const catagorys2 = [
-  { name: "শেষের কবিতা", catagory: "javascript" },
-  { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "javascript" },
-  { name: "ফেলুদা সমগ্র", catagory: "javascript" },
-  { name: "মিসির আলি", catagory: "javascript" },
-  { name: "সত্যজিৎ রায়", catagory: "javascript" },
-  { name: "সত্যজিৎ রায়", catagory: "javascript" },
-  { name: "শেষের কবিতা", catagory: "javascript" },
-  { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "javascript" },
-  { name: "ফেলুদা সমগ্র", catagory: "javascript" },
-  { name: "মিসির আলি", catagory: "javascript" },
-  { name: "সত্যজিৎ রায়", catagory: "javascript" },
-  { name: "সত্যজিৎ রায়", catagory: "javascript" },
-];
+  // secend book button catagori
+  const catagorys2 = [
+    { name: "শেষের কবিতা", catagory: "javascript" },
+    { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "javascript" },
+    { name: "ফেলুদা সমগ্র", catagory: "javascript" },
+    { name: "মিসির আলি", catagory: "javascript" },
+    { name: "সত্যজিৎ রায়", catagory: "javascript" },
+    { name: "সত্যজিৎ রায়", catagory: "javascript" },
+    { name: "শেষের কবিতা", catagory: "javascript" },
+    { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "javascript" },
+    { name: "ফেলুদা সমগ্র", catagory: "javascript" },
+    { name: "মিসির আলি", catagory: "javascript" },
+    { name: "সত্যজিৎ রায়", catagory: "javascript" },
+    { name: "সত্যজিৎ রায়", catagory: "javascript" },
+  ];
 
-
-
-// javascript section
+  // উপন্যাসের বই
   useEffect(() => {
-    fetch("https://openlibrary.org/search.json?q=javascript")
-      .then((ans) => ans.json())
-      .then((result) => {
-       
-        const data = result.docs.slice(0,20)
-        setJavascript(data)
-      
-       
-      });
+    axios
+      .get("http://localhost:7000/catagory",{
+        params:{
+          CATAGORY:"উপন্যাসের বই"
+        }
+      })
+      .then( (response) => {
+        setUponashas(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {});
+
+    
   }, []);
 
-// paithon section
+  // paithon section
   useEffect(() => {
     fetch("https://openlibrary.org/search.json?q=Ruby")
       .then((ans) => ans.json())
       .then((result) => {
-        const data = result.docs.slice(0,20)
-        setRuby(data)
-       
+        const data = result.docs.slice(0, 20);
+        setRuby(data);
       });
   }, []);
 
-// shell section
+  // shell section
   useEffect(() => {
     fetch("https://openlibrary.org/search.json?q=shell")
       .then((ans) => ans.json())
       .then((result) => {
-        const data = result.docs.slice(0,20)
-        setShell(data)
-       
+        const data = result.docs.slice(0, 20);
+        setShell(data);
       });
   }, []);
 
@@ -88,9 +89,8 @@ const catagorys2 = [
     fetch("https://openlibrary.org/search.json?q=java")
       .then((ans) => ans.json())
       .then((result) => {
-        const data = result.docs.slice(0,20)
-        setJava(data)
-       
+        const data = result.docs.slice(0, 20);
+        setJava(data);
       });
   }, []);
 
@@ -99,9 +99,8 @@ const catagorys2 = [
     fetch("https://openlibrary.org/search.json?q=cprogramming")
       .then((ans) => ans.json())
       .then((result) => {
-        const data = result.docs.slice(0,20)
-        setC(data)
-       
+        const data = result.docs.slice(0, 20);
+        setC(data);
       });
   }, []);
 
@@ -110,38 +109,32 @@ const catagorys2 = [
     fetch("https://openlibrary.org/search.json?q=parl")
       .then((ans) => ans.json())
       .then((result) => {
-        const data = result.docs.slice(0,20)
-        setParl(data)
-       
+        const data = result.docs.slice(0, 20);
+        setParl(data);
       });
   }, []);
 
-
-
-
-
   return (
-    <div  style={{ backgroundColor: "#f1f2f4" }}>
-     
+    <div style={{ backgroundColor: "#f1f2f4" }}>
       <Navbar />
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box sx={{ width: "83%" }}>
           <Banner banner={banner1} />
-          <BookSlider Books={javascript} title={"উপন্যাসের বই"}/>
-         
-          <CatagoryButton catagorys={catagorys1}/>
-          <BookSlider Books={Ruby} title={"ইসলামি উপন্যাস"}/>
+          <BookSlider Books={Uponashas} title={"উপন্যাসের বই"} />
+
+          <CatagoryButton catagorys={catagorys1} />
+          <BookSlider Books={Ruby} title={"ইসলামি উপন্যাস"} />
           <Banner banner={banner3} />
-          <BookSlider Books={Shell} title={"সায়েন্স ফিকশন"}/>
+          <BookSlider Books={Shell} title={"সায়েন্স ফিকশন"} />
           <CatagoryIconBnner />
 
-          <BookSlider Books={java} title={"Java"}/>
-          <BookSlider Books={C} title={"C++"}/>
-        
-          <CatagoryButton catagorys={catagorys2}/>
+          <BookSlider Books={java} title={"Java"} />
+          <BookSlider Books={C} title={"C++"} />
+
+          <CatagoryButton catagorys={catagorys2} />
           <CatagoryButton />
-          <BookSlider Books={parl} title={"Parl"}/>
-          <AuthorSlider author={javascript} title={"Popular Authors"}/>
+          <BookSlider Books={parl} title={"Parl"} />
+          <AuthorSlider  title={"Popular Authors"} />
         </Box>
       </Box>
       <Footer />

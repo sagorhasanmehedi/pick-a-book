@@ -7,6 +7,8 @@ import Slider from "react-slick";
 
 
 const BookSlider = ({ Books, title }) => {
+
+
   let navigate = useNavigate();
   const sliderSettings = {
     slidesToShow: 6,
@@ -49,6 +51,9 @@ const handelBookDetails=()=>{
 }
 
 
+
+
+
   return (
     <div className="content">
       <div className="slider-header">
@@ -60,23 +65,23 @@ const handelBookDetails=()=>{
         {Books?.map((book, index) => (
           <div className="slide-card" key={index}>
             <div className="slide-inner-card">
-              {book.cover_i === undefined ? (
+              {book.image === undefined ? (
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU"
                   alt=""
                 />
               ) : (
                 <img
-                  src={`https://covers.openlibrary.org/b/id/${book?.cover_i}-M.jpg`}
+                  src={book?.image}
                   alt=""
                 />
               )}
 
-              <p className="card-title">{book?.title}</p>
-              <p className="book-author">{book?.author_name?.slice(0, 1)}</p>
+              <p className="card-title">{book?.book_name}</p>
+              <p className="book-author">{book?.author_name}</p>
               <p className="book-price">
-                <strike className="main-price">TK. 150</strike>
-                <span>TK. 100</span>
+                <strike className="main-price">TK. {book?.price}</strike>
+                <span>TK. {Math.round(book.price - (book.offer_percentage / 100) * book.price)}</span>
               </p>
             </div>
             <button onClick={handelBookDetails} className="btn">View Details</button>

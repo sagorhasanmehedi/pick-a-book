@@ -1,55 +1,62 @@
 .book_image {
-  width: 200px;
+  width: 130px;
   height: 200px;
   margin-bottom: 11px;
   object-fit: cover;
-
 }
 .book_name {
   color: #108ee9;
   cursor: pointer;
+  margin: 0;
+  display: inline-block;
+  font-size: 20px;
+}
+.book_authorname {
   margin: 0;
 }
 .offer_price {
   color: #f57224;
   font-size: 25px;
   line-height: 0px;
-  margin:  16px 0 16px 0;
+  margin: 16px 0 16px 0;
+  display: inline-block;
 }
 .calculet_price {
-  color: #9e9e9e;
+  color: #858383;
   font-size: 15px;
-margin:10px 0 -4px 0;  
+  margin-bottom: 1px;
+  display: inline-block;
+  margin:0 0 0 10px;
 }
-.stock {
-  color: #9e9e9e;
+.stock-amount {
+  color: #8f8c8c;
   font-size: 15px;
-  line-height: 0px;
+  display: inline-block;
+  margin:0 0 0 7px;
+  
 }
-.edit_button{
-    margin-top: 14px;
-    padding: 5px 20px;
-    background-color: #de8654;
-    color: white;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    
+.edit_button {
+  padding: 8px 27px;
+  background-color: #73a6c9;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
-.edit_button:hover{
-    background-color: #f95e04;
-    
+.edit_button:hover {
+  background-color: #f95e04;
 }
-.delete_button{
-    margin-top: 8px;
-    padding: 5px 13px;
-    background-color: rgb(210, 82, 82);
-    color: white;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
+.delete_button {
+  margin-top: 8px;
+  padding: 8px 20px;
+  background-color: #536475;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-left: 15px;
 }
-.delete_button:hover{
-    background-color: rgb(249, 6, 6);
+.delete_button:hover {
+  background-color: rgb(249, 6, 6);
 }

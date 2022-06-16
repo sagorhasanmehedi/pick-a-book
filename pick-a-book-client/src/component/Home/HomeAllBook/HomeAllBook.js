@@ -4,6 +4,7 @@ import Footer from "../../Footer/Footer";
 import Navbar from "../../Navbar/Navbar/Navbar";
 import { useNavigate, useParams } from "react-router-dom";
 import "./HomeAllBook.css";
+import axios from "axios";
 
 const HomeAllBook = () => {
   let navigate = useNavigate();
@@ -11,16 +12,36 @@ const HomeAllBook = () => {
 
   let params = useParams();
 
-  // parl section
-  useEffect(() => {
-    fetch(`https://openlibrary.org/search.json?q=${params.catagory}`)
-      .then((ans) => ans.json())
-      .then((result) => {
-        const data = result.docs.slice(0, 20);
+  // // parl section
+  // useEffect(() => {
+  //   fetch(`https://openlibrary.org/search.json?q=${params.catagory}`)
+  //     .then((ans) => ans.json())
+  //     .then((result) => {
+  //       const data = result.docs.slice(0, 20);
 
-        setBooks(data);
-      });
-  }, []);
+  //       setBooks(data);
+  //     });
+  // }, []);
+console.log(Books);
+
+   // all same catagory books
+   useEffect(() => {
+    axios
+      .get("http://localhost:7000/catagory",{
+        params:{
+          CATAGORY:params.catagory
+        }
+      })
+      .then( (response) => {
+        setBooks(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {});
+
+    
+  }, []); 
 
  
 

@@ -12,19 +12,29 @@ const AddNewBook = () => {
     let formData = new FormData();
 
     if (!Data.Image) {
+      Swal.fire({
+        title: "Please add at least 1 image...!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       return;
     }
     if (!Data.Pdf) {
+      Swal.fire({
+        
+        title: "Please add at least 1 pdf...!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       return;
     }
 
-console.log(Data)
+
     
     formData.append("Book_Name", Data.Book_Name);
     formData.append("Sub_Title", Data.Sub_Titel);
     formData.append("Author_Name", Data.Author_Name);
     formData.append("Price", Data.Price);
-    formData.append("Offer_Price", Data.Offer_Price);
     formData.append("Catagory", Data.Catagory);
     formData.append("Entry_date", new Date().toDateString());
     formData.append("Offer_Name", Data.Offer_Name);

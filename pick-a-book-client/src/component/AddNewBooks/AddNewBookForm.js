@@ -42,6 +42,16 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
       label: "সায়েন্স ফিকশন",
     },
   ];
+  const CoverType = [
+    {
+      value: "হার্ডকভার",
+      label: "হার্ডকভার",
+    },
+    {
+      value: "পেপারব্যাক",
+      label: "পেপারব্যাক",
+    },
+  ];
 
   return (
     <Box component="form" onSubmit={(e) => handelFormSubmit(e)}>
@@ -55,6 +65,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             variant="outlined"
             name="Book_Name"
             label="Book Name"
+            required
             onChange={(event) =>
               setData({
                 ...Data,
@@ -83,6 +94,24 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             variant="outlined"
             name="Author_Name"
             label="Author Name"
+            required
+            onChange={(event) =>
+              setData({
+                ...Data,
+                [event.target.name]: event.target.value,
+              })
+            }
+          />
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+          <TextFieldMake
+            fullWidth
+            variant="outlined"
+            label="Price"
+            type="number"
+            name="Price"
+            required
             onChange={(event) =>
               setData({
                 ...Data,
@@ -99,6 +128,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             name="Catagory"
             select
             focused
+            required
             SelectProps={{ native: "true" }}
             onChange={(event) =>
               setData({
@@ -114,21 +144,29 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             ))}
           </TextFieldMake>
         </Grid>
-
         <Grid item xs={12} md={6}>
           <TextFieldMake
             fullWidth
             variant="outlined"
-            label="Price"
-            type="number"
-            name="Price"
+            label="Cover Type"
+            name="Cover"
+            select
+            focused
+            required
+            SelectProps={{ native: "true" }}
             onChange={(event) =>
               setData({
                 ...Data,
                 [event.target.name]: event.target.value,
               })
             }
-          />
+          >
+            {CoverType.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </TextFieldMake>
         </Grid>
 
         <Grid item xs={12} md={6}>
@@ -145,21 +183,6 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             }
           />
         </Grid>
-        {/* <Grid item xs={12} md={6}>
-          <TextFieldMake
-            fullWidth
-            variant="outlined"
-            label="Offer Price"
-            type="number"
-            name="Offer_Price"
-            onChange={(event) =>
-              setData({
-                ...Data,
-                [event.target.name]: event.target.value,
-              })
-            }
-          />
-        </Grid> */}
         <Grid item xs={12} md={6}>
           <TextFieldMake
             fullWidth
@@ -182,6 +205,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             label="Stock"
             type="number"
             name="Stock"
+            required
             onChange={(event) =>
               setData({
                 ...Data,
@@ -197,6 +221,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             type="text"
             label="Publication Name"
             name="Publication_Name"
+            required
             onChange={(event) =>
               setData({
                 ...Data,
@@ -212,6 +237,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             type="email"
             label="Admin Email"
             name="Email"
+            required
             onChange={(event) =>
               setData({
                 ...Data,

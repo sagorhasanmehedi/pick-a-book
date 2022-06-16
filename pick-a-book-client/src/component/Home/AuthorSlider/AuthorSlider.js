@@ -48,23 +48,23 @@ const handelAllbook=()=>{
         <p className="catagory">Popular Authors</p>
         <button onClick={handelAllbook} className="slider-view-button">View All</button>
       </div>
-      <Slider {...sliderSettings}>
+      {/* <Slider {...sliderSettings}>
         {author.map((card, index) => (
           <div  key={index}>
             <div className="author-card">
               <img alt="" src={authorImage} />
-              {/* <img
+              <img
                 alt=""
                 src={`https://covers.openlibrary.org/a/olid/${card?.author_key}-M.jpg`}
                
-              /> */}
+              />
               <p className="card-title">{card.author_name?.slice(0,1)}</p>
              
             </div>
            
           </div>
         ))}
-      </Slider>
+      </Slider> */}
     </div>
     );
 };

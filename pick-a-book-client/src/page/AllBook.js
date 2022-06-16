@@ -9,10 +9,7 @@ import { Box } from "@mui/system";
 
 const AllBook = () => {
   const [books, setBooks] = useState([]);
-
-  // console.log(books);
-
-
+  // const [Condition, setCondition] = useState(0)
 
   useEffect(() => {
     axios
@@ -26,30 +23,41 @@ const AllBook = () => {
       .then(function () {});
   }, []);
 
+  // manage delete book
+  const handelDeleteState = (id) => {
+    const updatedState = books.filter((book) => book._id !== id);
+    setBooks(updatedState);
+  };
+
   return (
     <LayoutContiner>
       <SubNav project={"ALL BOOK"} />
 
       {books.length === 0 ? (
-       <Box   sx={{ display: "flex", justifyContent: "center" }}>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
           <ReactLoading
-          type={"spokes"}
-          color={"#6aaad4"}
-          height={75}
-          width={75}
-        />
-       </Box>
+            type={"spokes"}
+            color={"#6aaad4"}
+            height={75}
+            width={75}
+          />
+        </Box>
       ) : (
-        <Grid container spacing={4}>
+        <Grid
+          container
+          rowSpacing={6}
+          columnSpacing={0}
+          sx={{
+            display: "flex",
+            justifyContent: {
+              md: "left",
+              xs: "center",
+            },
+          }}
+        >
           {books.map((book, index) => (
-            <Grid
-              sx={{ display: "flex", justifyContent: "center" }}
-              key={index}
-              item
-              md={3}
-              sm={12}
-            >
-              <Book book={book} />
+            <Grid key={index} item md={3} sm={12}>
+              <Book book={book} handelDeleteState={handelDeleteState} />
             </Grid>
           ))}
         </Grid>
