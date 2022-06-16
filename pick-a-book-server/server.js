@@ -11,11 +11,11 @@ const path = require("path");
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
-app.use("/images", express.static(path.join(__dirname, "public/images")));
+app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/images");
+    cb(null, "public/uploads");
   },
   filename: (req, file, cb) => {
     const fileExt = path.extname(file.originalname);
@@ -54,14 +54,13 @@ async function run() {
         { name: "Pdf", maxCount: 1 },
       ]),
       async (req, res) => {
-        const image = `http://localhost:7000/images/${req.files.Image[0].filename}`;
-        const pdf = `http://localhost:7000/images/${req.files.Pdf[0].filename}`;
+        const image = `http://localhost:7000/uploads/${req.files.Image[0].filename}`;
+        const pdf = `http://localhost:7000/uploads/${req.files.Pdf[0].filename}`;
         const doc = {
           book_name: req.body.Book_Name,
           author_name: req.body.Author_Name,
           price: req.body.Price,
-          offer_price: req.body.Offer_Price,
-          catagory: req.body.Catagory,
+        catagory: req.body.Catagory,
           entry_date: req.body.Entry_date,
           offer_name: req.body.Offer_Name,
           offer_percentage: req.body.Offer_Percentage,
@@ -77,13 +76,25 @@ async function run() {
       }
     );
 
-// get all books
-app.get("/get_all_book", async (req, res) => {
-  const result = await bookCollection.find({}).toArray();
-  res.send(result);
-});
+    // get all books
+    app.get("/get_all_book", async (req, res) => {
+      const result = await bookCollection.find({}).toArray();
+      res.send(result);
+    });
 
+    // delete book
+    app.delete("/delete_book/:id", async (req, res) => {
+      const query = { _id: ObjectId(req.params.id) };
+      const result = await bookCollection.deleteOne(query);
+      res.send(result);
+    });
 
+    // get smae catagory all book
+    app.get("/catagory", async (req, res) => {
+      const query = { catagory: req.query.CATAGORY };
+      const result = await bookCollection.find(query).toArray();
+      res.send(result);
+    });
   } finally {
     // await client.close();
   }
@@ -96,10 +107,3 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log("Pick-a-book server rning:" + port);
 });
-
-// app.delete("/delete_book/:id", async (req, res) => {
-
-// const query = { _id: ObjectId(req.params.id) };
-// const result = await bookCollection.deleteOne(query);
-// res.send(result);
-// });
