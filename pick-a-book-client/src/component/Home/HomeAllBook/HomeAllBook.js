@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../Navbar/Navbar/Navbar";
@@ -12,43 +12,28 @@ const HomeAllBook = () => {
 
   let params = useParams();
 
-  // // parl section
-  // useEffect(() => {
-  //   fetch(`https://openlibrary.org/search.json?q=${params.catagory}`)
-  //     .then((ans) => ans.json())
-  //     .then((result) => {
-  //       const data = result.docs.slice(0, 20);
 
-  //       setBooks(data);
-  //     });
-  // }, []);
-console.log(Books);
-
-   // all same catagory books
-   useEffect(() => {
+  // all same catagory books
+  useEffect(() => {
     axios
-      .get("http://localhost:7000/catagory",{
-        params:{
-          CATAGORY:params.catagory
-        }
+      .get("http://localhost:7000/catagory", {
+        params: {
+          CATAGORY: params.catagory,
+        },
       })
-      .then( (response) => {
+      .then((response) => {
         setBooks(response.data);
       })
-      .catch(function (error) {
+      .catch( (error)=> {
         console.log(error);
       })
-      .then(function () {});
+      .then( ()=> {});
+  }, []);
 
-    
-  }, []); 
-
- 
-
- // handle view details
-const viewDetails=()=>{
-  navigate(`/ViewDetails`);
-}
+  // handle view details
+  const viewDetails = (id) => {
+    navigate(`/ViewDetails/${id}`);
+  };
 
   return (
     <div style={{ backgroundColor: "#f1f2f4" }}>
@@ -58,34 +43,38 @@ const viewDetails=()=>{
       >
         <div className="all-book-container">
           <p className="catagory-name">{params.catagory}</p>
-          <p className="catagory-amount">(Showing 1 to 60 of 1990 eBooks)</p>
+          <p className="catagory-amount">(Showing {Books?.length} Books)</p>
           <div className="all-book-cards">
             {Books?.map((book) => (
               <div>
                 <div className="all-book-card">
                   <div className="allbook-inner-card">
-                    {book.cover_i === undefined ? (
+                    {book.image === undefined ? (
                       <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU"
                         alt=""
                       />
                     ) : (
-                      <img
-                        src={`https://covers.openlibrary.org/b/id/${book?.cover_i}-M.jpg`}
-                        alt=""
-                      />
+                      <img src={book.image} alt="" />
                     )}
 
-                    <p className="card-title">{book?.title}</p>
-                    <p className="book-author">
-                      {book?.author_name?.slice(0, 1)}
-                    </p>
+                    <p className="card-title">{book?.book_name}</p>
+                    <p className="book-author">{book?.author_name}</p>
+
                     <p className="book-price">
-                      <strike className="main-price">TK. 150</strike>
-                      <span>TK. 100</span>
+                      <strike className="main-price">TK. {book?.price}</strike>
+                      <span>
+                        TK.
+                        {Math.round(
+                          book.price -
+                            (book.offer_percentage / 100) * book.price
+                        )}
+                      </span>
                     </p>
                   </div>
-                  <button className="allbook-btn" onClick={viewDetails}>View Details</button>
+                  <button className="allbook-btn" onClick={()=>viewDetails(book._id)}>
+                    View Details
+                  </button>
                 </div>
               </div>
             ))}

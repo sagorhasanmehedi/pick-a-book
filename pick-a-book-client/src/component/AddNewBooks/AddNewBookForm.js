@@ -1,5 +1,7 @@
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import {
+  Box,Grid,
+} from "@mui/material";
 import {
   CancleButton,
   SendButton,
@@ -44,6 +46,10 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
   ];
   const CoverType = [
     {
+      value: "None",
+      label: "None",
+    },
+    {
       value: "হার্ডকভার",
       label: "হার্ডকভার",
     },
@@ -52,6 +58,8 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
       label: "পেপারব্যাক",
     },
   ];
+
+
 
   return (
     <Box component="form" onSubmit={(e) => handelFormSubmit(e)}>
@@ -65,7 +73,6 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             variant="outlined"
             name="Book_Name"
             label="Book Name"
-            required
             onChange={(event) =>
               setData({
                 ...Data,
@@ -94,7 +101,6 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             variant="outlined"
             name="Author_Name"
             label="Author Name"
-            required
             onChange={(event) =>
               setData({
                 ...Data,
@@ -111,7 +117,6 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             label="Price"
             type="number"
             name="Price"
-            required
             onChange={(event) =>
               setData({
                 ...Data,
@@ -128,15 +133,16 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             name="Catagory"
             select
             focused
-            required
+            
             SelectProps={{ native: "true" }}
-            onChange={(event) =>
+            onClick={(event) =>
               setData({
                 ...Data,
                 [event.target.name]: event.target.value,
               })
             }
           >
+             <option>Select A Catagory</option>
             {Catagory.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -149,18 +155,19 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             fullWidth
             variant="outlined"
             label="Cover Type"
-            name="Cover"
+            name="Cover_Type"
             select
             focused
-            required
+            
             SelectProps={{ native: "true" }}
-            onChange={(event) =>
+            onClick={(event) =>
               setData({
                 ...Data,
                 [event.target.name]: event.target.value,
               })
             }
           >
+            <option>Select A Cover Type</option>
             {CoverType.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -168,6 +175,8 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             ))}
           </TextFieldMake>
         </Grid>
+
+     
 
         <Grid item xs={12} md={6}>
           <TextFieldMake
@@ -205,7 +214,6 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             label="Stock"
             type="number"
             name="Stock"
-            required
             onChange={(event) =>
               setData({
                 ...Data,
@@ -221,7 +229,6 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             type="text"
             label="Publication Name"
             name="Publication_Name"
-            required
             onChange={(event) =>
               setData({
                 ...Data,
@@ -237,7 +244,6 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             type="email"
             label="Admin Email"
             name="Email"
-            required
             onChange={(event) =>
               setData({
                 ...Data,

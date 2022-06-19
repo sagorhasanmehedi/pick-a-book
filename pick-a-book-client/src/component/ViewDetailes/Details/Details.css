@@ -1,9 +1,11 @@
 .detais {
   background-color: #ffffff;
   padding: 50px 35px 30px 50px;
+  height: 604px;
 }
 .book-image img{
-  height: 60%;
+  width: 240px;
+  height: 320px;
   padding: 20px;
   border: 1px solid #cdcdcd;
 }
@@ -128,7 +130,7 @@
 }
 .Booklist-buttomn {
   margin-right: 20px;
-  cursor: pointer;
+  cursor:not-allowed;
   padding: 13px 26px;
   font-size: 100%;
   color: #666666;
@@ -139,12 +141,13 @@
 }
 .Booklist-buttomn:focus {
   color: #666666 !important;
+
 }
 .buttomn-container {
   display: flex;
 }
 .Share-button {
-  cursor: pointer;
+  cursor:not-allowed;
   padding: 13px 17px;
   font-size: 100%;
   color: #666666;
@@ -191,9 +194,19 @@
 
   .detais{
     padding: 20px;
-    
+    height: 100% !important;
+    text-align: center !important;
   }
   .book-info{
    margin-top: 20px;
+  
   }
+  .details-retaing, .stock, .stock-alart, .book-info h1{
+    text-align: center;
+    justify-content: center !important;
+  }
+  .stock-alart{
+    margin: 0 0 20px 0;
+  }
+
 }

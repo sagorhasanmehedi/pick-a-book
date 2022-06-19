@@ -2,21 +2,17 @@ import React from "react";
 import "./BookSlider.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 
-
-const BookSlider = ({ Books, title }) => {
-
-
+const BookSlider = ({ Books, catagory }) => {
   let navigate = useNavigate();
+
   const sliderSettings = {
     slidesToShow: 6,
     slidesToScroll: 6,
-
     autoplay: true,
     arrows: false,
-
     responsive: [
       {
         breakpoint: 1024,
@@ -38,27 +34,23 @@ const BookSlider = ({ Books, title }) => {
     ],
   };
 
-// view all book
-const handelAllbook=()=>{
-  
-  navigate(`/HomeAllBook/${title}`);
-}
+  // view all book
+  const handelAllbook = () => {
+    navigate(`/HomeAllBook/${catagory}`);
+  };
 
-// view book details
-const handelBookDetails=()=>{
-  
-  navigate(`/ViewDetails`);
-}
-
-
-
-
+  // view book details
+  const handelBookDetails = (id) => {
+  navigate(`/ViewDetails/${id}`);
+  };
 
   return (
     <div className="content">
       <div className="slider-header">
-        <p className="catagory">{title}</p>
-        <button onClick={handelAllbook} className="slider-view-button">View All</button>
+        <p className="catagory">{catagory}</p>
+        <button onClick={handelAllbook} className="slider-view-button">
+          View All
+        </button>
       </div>
 
       <Slider {...sliderSettings}>
@@ -71,20 +63,24 @@ const handelBookDetails=()=>{
                   alt=""
                 />
               ) : (
-                <img
-                  src={book?.image}
-                  alt=""
-                />
+                <img src={book?.image} alt="" />
               )}
 
               <p className="card-title">{book?.book_name}</p>
               <p className="book-author">{book?.author_name}</p>
               <p className="book-price">
                 <strike className="main-price">TK. {book?.price}</strike>
-                <span>TK. {Math.round(book.price - (book.offer_percentage / 100) * book.price)}</span>
+                <span>
+                  TK.{" "}
+                  {Math.round(
+                    book.price - (book.offer_percentage / 100) * book.price
+                  )}
+                </span>
               </p>
             </div>
-            <button onClick={handelBookDetails} className="btn">View Details</button>
+            <button onClick={()=>handelBookDetails(book._id)} className="btn">
+              View Details
+            </button>
           </div>
         ))}
       </Slider>

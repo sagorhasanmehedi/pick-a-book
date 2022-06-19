@@ -120,7 +120,7 @@ const Home = () => {
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box sx={{ width: "83%" }}>
           <Banner banner={banner1} />
-          <BookSlider Books={Uponashas} title={"উপন্যাসের বই"} />
+          <BookSlider Books={Uponashas} catagory={"উপন্যাসের বই"} />
 
           <CatagoryButton catagorys={catagorys1} />
           <BookSlider Books={Ruby} title={"ইসলামি উপন্যাস"} />

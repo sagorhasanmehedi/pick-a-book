@@ -1,23 +1,56 @@
 import React, { useState } from "react";
 import "./RetingRevive.css";
-import StarPurple500SharpIcon from "@mui/icons-material/StarPurple500Sharp";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
-
 import { useNavigate } from "react-router-dom";
 import { Input, Rating } from "@mui/material";
+const axios = require('axios').default;
 
-const RetingRevive = () => {
+
+const RetingRevive = ({Book}) => {
   const [RatingValue, setRatingValue] = useState(0);
   const [isReview, setIsReview] = useState(false);
+  const [Review, setReview] = useState()
+ let navigate = useNavigate();
 
-  let navigate = useNavigate();
 
+ 
   // view all book
   const handelAllbook = () => {
     navigate(`/Login`);
   };
+
+
+  // handel Review submit
+  const handelReviewSubmit=()=>{
+    console.log(RatingValue);
+    console.log(Review);
+   
+
+    axios.put(`http://localhost:7000/retingReview/${Book._id}`, {
+      RatingValue: RatingValue,
+      Review: Review
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
+  //   axios({
+  //     method: 'put',
+  //     url: '/api/article/123',
+  //     data: {
+  //         title: 'Making PUT Requests with Axios',
+  //         status: 'published'
+  //     }
+  // })
+  }
+
+
 
   return (
     <div className="riveaw-container">
@@ -55,6 +88,7 @@ const RetingRevive = () => {
             inputProps={{ style: { fontSize: 20, paddingBottom: 15 } }}
             placeholder="Please write your honest opinion and give a rating"
             sx={{ width: "100%", marginBottom: "30px" }}
+            onChange={(e)=>setReview(e.target.value)}
           />
 
           <div className="review-submit">
@@ -68,7 +102,7 @@ const RetingRevive = () => {
                 }}
               />
             </div>
-            <button  onClick={() => setIsReview(false)} className="review-submit-button">Submit</button>
+            <button  onClick={ handelReviewSubmit} className="review-submit-button">Submit</button>
           </div>
         </div>
       ) : (

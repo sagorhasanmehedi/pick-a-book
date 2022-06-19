@@ -36,6 +36,7 @@ const AddNewBook = () => {
     formData.append("Author_Name", Data.Author_Name);
     formData.append("Price", Data.Price);
     formData.append("Catagory", Data.Catagory);
+    formData.append("Cover_Type", Data.Cover_Type);
     formData.append("Entry_date", new Date().toDateString());
     formData.append("Offer_Name", Data.Offer_Name);
     formData.append("Offer_Percentage", Data.Offer_Percentage);

@@ -22,6 +22,7 @@ import PlaceOrder from "./page/PlaceOrder";
 import MyAcount from "./component/MyAcount/MyAcount";
 import CommingSoon from "./component/CommingSoon/CommingSoon";
 import ScrollToTop from "react-scroll-to-top";
+import PdfViewer from "./component/PdfViewer/PdfViewer";
 
 function App() {
   return (
@@ -40,10 +41,11 @@ function App() {
           <Route path="/Cart" element={<Cart />} />
           <Route path="/HomeAllBook/:catagory" element={<HomeAllBook />} />
           <Route path="/AllAuthore" element={<AllAuthor />} />
-          <Route path="/ViewDetails" element={<ViewDetailes />} />
+          <Route path="/ViewDetails/:id" element={<ViewDetailes />} />
           <Route path="/PlaceOrder" element={<PlaceOrder />} />
           <Route path="/MyAcount" element={<MyAcount />} />
           <Route path="/CommingSoon" element={<CommingSoon />} />
+          {/* <Route path="/Pdf" element={<PdfViewer />} /> */}
 
           <Route path="/Dashbord" element={<Layout />}>
             <Route index element={<AllBook />} />

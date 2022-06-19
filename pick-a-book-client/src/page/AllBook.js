@@ -9,8 +9,6 @@ import { Box } from "@mui/system";
 
 const AllBook = () => {
   const [books, setBooks] = useState([]);
-  // const [Condition, setCondition] = useState(0)
-
   useEffect(() => {
     axios
       .get("http://localhost:7000/get_all_book")

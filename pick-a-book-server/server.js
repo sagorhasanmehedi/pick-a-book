@@ -56,11 +56,14 @@ async function run() {
       async (req, res) => {
         const image = `http://localhost:7000/uploads/${req.files.Image[0].filename}`;
         const pdf = `http://localhost:7000/uploads/${req.files.Pdf[0].filename}`;
+
         const doc = {
           book_name: req.body.Book_Name,
+          sub_title: req.body.Sub_Title,
           author_name: req.body.Author_Name,
           price: req.body.Price,
-        catagory: req.body.Catagory,
+          catagory: req.body.Catagory,
+          cover_type: req.body.Cover_Type,
           entry_date: req.body.Entry_date,
           offer_name: req.body.Offer_Name,
           offer_percentage: req.body.Offer_Percentage,
@@ -94,6 +97,31 @@ async function run() {
       const query = { catagory: req.query.CATAGORY };
       const result = await bookCollection.find(query).toArray();
       res.send(result);
+    });
+
+    // find single book
+    app.get("/single/:id", async (req, res) => {
+      const quary = { _id: ObjectId(req.params.id) };
+      const result = await bookCollection.findOne(quary);
+      res.send(result);
+    });
+
+    // add review and reting
+    app.put("/retingReview/:id", async (req, res) => {
+      console.log(req.body);
+
+      const filter = { _id: ObjectId(req.params.id) };
+      console.log(filter);
+      const options = { upsert: true };
+
+      const updateDoc = {
+        $set: {
+          rating: req.body.RatingValue,
+          reaview: req.body.Review,
+        },
+      };
+      const result = await bookCollection.updateOne(updateDoc, options);
+      console.log(result);
     });
   } finally {
     // await client.close();
