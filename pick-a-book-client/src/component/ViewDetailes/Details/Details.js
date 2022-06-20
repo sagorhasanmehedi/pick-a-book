@@ -1,22 +1,17 @@
-import { Grid } from "@mui/material";
+import { Grid, Rating } from "@mui/material";
 import React from "react";
 import "./Details.css";
-
-import StarPurple500SharpIcon from "@mui/icons-material/StarPurple500Sharp";
 import StarHalfSharpIcon from "@mui/icons-material/StarHalfSharp";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-const Details = ({ Book }) => {
-  // console.log(Book);
-
-
+const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
   // handel Pdf
-const handelPdf=(id)=>{
-  console.log(id)
-}
+  const handelPdf = (id) => {
+    console.log(id);
+  };
   return (
     <div className="detais">
       <Grid container columnSpacing={7}>
@@ -61,39 +56,19 @@ const handelPdf=(id)=>{
               Category:<span>{Book.catagory}</span>
             </p>
 
-            {/* {
-              Book.RetingReview ? <div className="details-retaing">
-              <StarPurple500SharpIcon
-                sx={{ color: "#ff9900", width: "22px" }}
-              />
-              <StarPurple500SharpIcon
-                sx={{ color: "#ff9900", width: "22px" }}
-              />
-              <StarPurple500SharpIcon
-                sx={{ color: "#ff9900", width: "22px" }}
-              />
-              <StarPurple500SharpIcon
-                sx={{ color: "#ff9900", width: "22px" }}
-              />
-              <StarHalfSharpIcon sx={{ color: "#ff9900", width: "22px" }} />
-              <span>6 Reting / 10 Review</span>
-            </div>: <div> </div>
-            } */}
+           
             <div className="details-retaing">
-              <StarPurple500SharpIcon
-                sx={{ color: "#ff9900", width: "22px" }}
+             
+            <Rating
+                name="half-rating-read"
+                value={calculateRating}
+                precision={0.5}
+                readOnly
+                sx={{color:"#ff9900"}}
               />
-              <StarPurple500SharpIcon
-                sx={{ color: "#ff9900", width: "22px" }}
-              />
-              <StarPurple500SharpIcon
-                sx={{ color: "#ff9900", width: "22px" }}
-              />
-              <StarPurple500SharpIcon
-                sx={{ color: "#ff9900", width: "22px" }}
-              />
-              <StarHalfSharpIcon sx={{ color: "#ff9900", width: "22px" }} />
-              <span>6 Reting / 10 Review</span>
+              <p>
+                {ratingCount?.length} Reting / {reviewCount?.length} Review
+              </p>
             </div>
 
             <div className="price">
@@ -112,9 +87,7 @@ const handelPdf=(id)=>{
             {Book.offer_name ? (
               <p className="offer">
                 Offers:
-                <span>
-                  {Book.offer_name}
-                </span>
+                <span>{Book.offer_name}</span>
               </p>
             ) : (
               <p></p>
@@ -129,8 +102,14 @@ const handelPdf=(id)=>{
             <p className="stock-alart">* স্টক আউট হওয়ার আগেই অর্ডার করুন</p>
 
             <div className="buttomn-container">
-            <button onClick={()=>handelPdf(Book._id)} className="pore-dekhun-buttomn"> একটু পড়ে দেখুন </button>
-              <button  className="Add-to-Cart-button">
+              <button
+                onClick={() => handelPdf(Book._id)}
+                className="pore-dekhun-buttomn"
+              >
+                {" "}
+                একটু পড়ে দেখুন{" "}
+              </button>
+              <button className="Add-to-Cart-button">
                 <ShoppingCartIcon sx={{ marginRight: "5px" }} /> Add to Cart
               </button>
             </div>

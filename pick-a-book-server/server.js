@@ -11,7 +11,9 @@ const path = require("path");
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
+
 app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
+// app.use("/pdf", express.static(path.join(__dirname, "public/uploads/pdf")));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -44,6 +46,7 @@ async function run() {
   try {
     const database = client.db("pick-a-book");
     const bookCollection = database.collection("books");
+    const retingReviewCollection = database.collection("retingReview");
     await client.connect();
 
     // post new book
@@ -55,7 +58,7 @@ async function run() {
       ]),
       async (req, res) => {
         const image = `http://localhost:7000/uploads/${req.files.Image[0].filename}`;
-        const pdf = `http://localhost:7000/uploads/${req.files.Pdf[0].filename}`;
+        const pdf = `http://localhost:7000/pdf/${req.files.Pdf[0].filename}`;
 
         const doc = {
           book_name: req.body.Book_Name,
@@ -106,23 +109,28 @@ async function run() {
       res.send(result);
     });
 
-    // add review and reting
-    app.put("/retingReview/:id", async (req, res) => {
-      console.log(req.body);
-
-      const filter = { _id: ObjectId(req.params.id) };
-      console.log(filter);
-      const options = { upsert: true };
-
-      const updateDoc = {
-        $set: {
-          rating: req.body.RatingValue,
-          reaview: req.body.Review,
-        },
+    // add review and rating
+    app.post("/ratingReview/:id", async (req, res) => {
+      const doc = {
+        book_id: req.params.id,
+        reviewer_name: "Mehedi Hasan",
+        reviewer_image: "demo img",
+        rating: req.body.RatingValue,
+        reaview: req.body.Review,
+        date: new Date().toJSON().slice(0,10)
       };
-      const result = await bookCollection.updateOne(updateDoc, options);
-      console.log(result);
+      const result = await retingReviewCollection.insertOne(doc);
+      res.send(result);
     });
+
+    // find review and reting
+    app.get("/ratingReview/:id",async(req,res)=>{ 
+      const quary = {book_id : req.params.id };
+      const result = await retingReviewCollection.find(quary).toArray();
+      res.send(result);
+    })
+
+
   } finally {
     // await client.close();
   }

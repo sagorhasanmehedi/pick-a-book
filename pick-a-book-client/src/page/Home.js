@@ -13,6 +13,9 @@ import axios from "axios";
 
 const Home = () => {
   const [Uponashas, setUponashas] = useState([]);
+  const [IslamicUponash, setIslamicUponash] = useState([]);
+  const [ScienceFiction, setScienceFiction] = useState([]);
+
   const [Ruby, setRuby] = useState([]);
   const [Shell, setShell] = useState([]);
   const [java, setJava] = useState([]);
@@ -63,6 +66,46 @@ const Home = () => {
 
     
   }, []);
+
+  // ইসলামি উপন্যাস
+  useEffect(() => {
+    axios
+      .get("http://localhost:7000/catagory",{
+        params:{
+          CATAGORY:"ইসলামি উপন্যাস"
+        }
+      })
+      .then( (response) => {
+        setIslamicUponash(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {});
+
+    
+  }, []);
+
+  // সায়েন্স ফিকশন
+  useEffect(() => {
+    axios
+      .get("http://localhost:7000/catagory",{
+        params:{
+          CATAGORY:"সায়েন্স ফিকশন"
+        }
+      })
+      .then( (response) => {
+        setScienceFiction(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {});
+
+    
+  }, []);
+
+  console.log(IslamicUponash);
 
   // paithon section
   useEffect(() => {
@@ -123,9 +166,9 @@ const Home = () => {
           <BookSlider Books={Uponashas} catagory={"উপন্যাসের বই"} />
 
           <CatagoryButton catagorys={catagorys1} />
-          <BookSlider Books={Ruby} title={"ইসলামি উপন্যাস"} />
+          <BookSlider Books={IslamicUponash} catagory={"ইসলামি উপন্যাস"} />
           <Banner banner={banner3} />
-          <BookSlider Books={Shell} title={"সায়েন্স ফিকশন"} />
+          <BookSlider Books={ScienceFiction} catagory={"সায়েন্স ফিকশন"} />
           <CatagoryIconBnner />
 
           <BookSlider Books={java} title={"Java"} />

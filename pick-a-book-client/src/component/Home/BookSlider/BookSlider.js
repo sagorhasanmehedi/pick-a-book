@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 
 const BookSlider = ({ Books, catagory }) => {
+
+  console.log( Books, catagory)
   let navigate = useNavigate();
 
   const sliderSettings = {

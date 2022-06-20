@@ -5,51 +5,67 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
 import { useNavigate } from "react-router-dom";
 import { Input, Rating } from "@mui/material";
-const axios = require('axios').default;
+import Swal from "sweetalert2";
+const axios = require("axios").default;
 
-
-const RetingRevive = ({Book}) => {
+const RetingRevive = ({ Book, AllRatingReview, setisSubmit, isSubmit , ratingCount , reviewCount,calculateRating }) => {
   const [RatingValue, setRatingValue] = useState(0);
+  const [Review, setReview] = useState();
   const [isReview, setIsReview] = useState(false);
-  const [Review, setReview] = useState()
- let navigate = useNavigate();
+  let navigate = useNavigate();
 
-
- 
   // view all book
   const handelAllbook = () => {
     navigate(`/Login`);
   };
 
 
-  // handel Review submit
-  const handelReviewSubmit=()=>{
-    console.log(RatingValue);
-    console.log(Review);
-   
 
-    axios.put(`http://localhost:7000/retingReview/${Book._id}`, {
-      RatingValue: RatingValue,
-      Review: Review
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
+
+  // handel Raview submit
+  const handelReviewSubmit = () => {
+    if (RatingValue === 0 && Review === undefined) {
+      Swal.fire({
+        icon: "error",
+        title: " Please give some valid review or rating.!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setIsReview(false);
+      return;
+    }
+
+    axios
+      .post(`http://localhost:7000/ratingReview/${Book._id}`, {
+        RatingValue: RatingValue,
+        Review: Review,
+      })
+      .then((response) => {
+        if (response.data.acknowledged === true) {
+          setIsReview(false);
+          setisSubmit(!isSubmit);
+          Swal.fire({
+            icon: "success",
+            title: "Thank you so much for your rating or review.!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // handel feedback
+  const handelFeedback = () => {
+    Swal.fire({
+      icon: "success",
+      title: "Thank you for your valuable feedback",
+      showConfirmButton: false,
+      timer: 1500,
     });
-
-
-  //   axios({
-  //     method: 'put',
-  //     url: '/api/article/123',
-  //     data: {
-  //         title: 'Making PUT Requests with Axios',
-  //         status: 'published'
-  //     }
-  // })
-  }
-
+  };
 
 
   return (
@@ -59,15 +75,20 @@ const RetingRevive = ({Book}) => {
           <h2>Reviews and Ratings</h2>
           <div className="total-review">
             <div>
-              <h2>4.0</h2>
+              <h2>
+                { isNaN(calculateRating) ? 0 : calculateRating.toFixed(1)}
+              </h2>
             </div>
             <div>
-              <p>33 Ratings and 17 Reviews</p>
+              <p>
+                {ratingCount?.length} Ratings and {reviewCount?.length} Reviews
+              </p>
               <Rating
                 name="half-rating-read"
-                defaultValue={4}
+                value={calculateRating}
                 precision={0.5}
                 readOnly
+                sx={{color:"#ff9900"}}
               />
             </div>
           </div>
@@ -88,7 +109,7 @@ const RetingRevive = ({Book}) => {
             inputProps={{ style: { fontSize: 20, paddingBottom: 15 } }}
             placeholder="Please write your honest opinion and give a rating"
             sx={{ width: "100%", marginBottom: "30px" }}
-            onChange={(e)=>setReview(e.target.value)}
+            onChange={(e) => setReview(e.target.value)}
           />
 
           <div className="review-submit">
@@ -97,129 +118,63 @@ const RetingRevive = ({Book}) => {
                 precision={0.5}
                 name="half-rating"
                 value={RatingValue}
+                sx={{color:"#ff9900"}}
                 onChange={(event, newValue) => {
-                  setRatingValue(newValue);
+                  setRatingValue(newValue)
+                 
                 }}
               />
             </div>
-            <button  onClick={ handelReviewSubmit} className="review-submit-button">Submit</button>
+            <button
+              onClick={handelReviewSubmit}
+              className="review-submit-button"
+            >
+              Submit
+            </button>
           </div>
         </div>
       ) : (
         <div></div>
       )}
 
-      <div className="review">
-        <div className="user-img">
-          <img
-            src="https://lh3.googleusercontent.com/a-/AOh14Gh1B0TDIqZAUml-QKusgpWPuKYoyA7VXhyiGXFJUQ=s96-c"
-            alt=""
-          />
-          <div className="review-by">
-            <p>
-              <span>By</span> Marufa Yasmin<span> 22 Mar 2020</span>
-            </p>
-
-            <Rating
-              name="half-rating-read"
-              defaultValue={2.5}
-              precision={0.5}
-              readOnly
+      {AllRatingReview?.map((ratingreview) => (
+        <div className="review">
+          <div className="user-img">
+            <img
+              src="https://lh3.googleusercontent.com/a-/AOh14Gh1B0TDIqZAUml-QKusgpWPuKYoyA7VXhyiGXFJUQ=s96-c"
+              alt=""
             />
-            <div className="verified-container">
-              <div className="verified-icon">
-                <VerifiedUserIcon sx={{ color: "#33c24d", width: "20px" }} />
-                <p>Verified Purchase</p>
+            <div className="review-by">
+              <p>
+                <span>By</span> {ratingreview.reviewer_name}{" "}
+                <span> {ratingreview.date}</span>
+              </p>
+
+              <Rating
+                name="text-feedback"
+                value={ratingreview?.rating}
+                precision={0.5}
+                readOnly
+                sx={{color:"#ff9900"}}
+              />
+              <div className="verified-container">
+                <div className="verified-icon">
+                  <VerifiedUserIcon sx={{ color: "#33c24d", width: "20px" }} />
+                  <p>Verified Purchase</p>
+                </div>
               </div>
             </div>
           </div>
+          <p className="comment">{ratingreview?.reaview}</p>
+          <p className="comment-title">Was this review helpful to you?</p>
+          <button onClick={handelFeedback}>
+            <ThumbUpOutlinedIcon />
+          </button>
+          <button onClick={handelFeedback} className="not-helpful-button">
+            <ThumbDownAltOutlinedIcon />
+          </button>
         </div>
-        <p className="comment">
-          boitate starting point theke eto kothin word diye shuru korche ja new
-          der jonno porte ekto kostokor.
-        </p>
-        <p className="comment-title">Was this review helpful to you?</p>
-        <button>
-          <ThumbUpOutlinedIcon />
-        </button>
-        <button className="not-helpful-button">
-          <ThumbDownAltOutlinedIcon />
-        </button>
-      </div>
-      <div className="review">
-        <div className="user-img">
-          <img
-            src="https://lh3.googleusercontent.com/a-/AOh14Gh1B0TDIqZAUml-QKusgpWPuKYoyA7VXhyiGXFJUQ=s96-c"
-            alt=""
-          />
-          <div className="review-by">
-            <p>
-              <span>By</span> Marufa Yasmin<span> 22 Mar 2020</span>
-            </p>
-
-            <Rating
-              name="half-rating-read"
-              defaultValue={2.5}
-              precision={0.5}
-              readOnly
-            />
-            <div className="verified-container">
-              <div className="verified-icon">
-                <VerifiedUserIcon sx={{ color: "#33c24d", width: "20px" }} />
-                <p>Verified Purchase</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p className="comment">
-          boitate starting point theke eto kothin word diye shuru korche ja new
-          der jonno porte ekto kostokor.
-        </p>
-        <p className="comment-title">Was this review helpful to you?</p>
-        <button>
-          <ThumbUpOutlinedIcon />
-        </button>
-        <button className="not-helpful-button">
-          <ThumbDownAltOutlinedIcon />
-        </button>
-      </div>
-      <div className="review">
-        <div className="user-img">
-          <img
-            src="https://lh3.googleusercontent.com/a-/AOh14Gh1B0TDIqZAUml-QKusgpWPuKYoyA7VXhyiGXFJUQ=s96-c"
-            alt=""
-          />
-          <div className="review-by">
-            <p>
-              <span>By</span> Marufa Yasmin<span> 22 Mar 2020</span>
-            </p>
-
-            <Rating
-              name="half-rating-read"
-              defaultValue={2.5}
-              precision={0.5}
-              readOnly
-            />
-            <div className="verified-container">
-              <div className="verified-icon">
-                <VerifiedUserIcon sx={{ color: "#33c24d", width: "20px" }} />
-                <p>Verified Purchase</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p className="comment">
-          boitate starting point theke eto kothin word diye shuru korche ja new
-          der jonno porte ekto kostokor.
-        </p>
-        <p className="comment-title">Was this review helpful to you?</p>
-        <button>
-          <ThumbUpOutlinedIcon />
-        </button>
-        <button className="not-helpful-button">
-          <ThumbDownAltOutlinedIcon />
-        </button>
-      </div>
+      ))}
     </div>
   );
 };
