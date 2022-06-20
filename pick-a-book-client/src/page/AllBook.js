@@ -27,6 +27,7 @@ const AllBook = () => {
     setBooks(updatedState);
   };
 
+  console.log(books);
   return (
     <LayoutContiner>
       <SubNav project={"ALL BOOK"} />

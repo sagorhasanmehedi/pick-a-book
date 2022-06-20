@@ -73,7 +73,7 @@ const BookSlider = ({ Books, catagory }) => {
               <p className="book-price">
                 <strike className="main-price">TK. {book?.price}</strike>
                 <span>
-                  TK.{" "}
+                  TK.
                   {Math.round(
                     book.price - (book.offer_percentage / 100) * book.price
                   )}

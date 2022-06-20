@@ -12,13 +12,25 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 
-app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
-// app.use("/pdf", express.static(path.join(__dirname, "public/uploads/pdf")));
+
+app.use("/Image", express.static(path.join(__dirname, "public/uploads/Image")));
+app.use("/Pdf", express.static(path.join(__dirname, "public/uploads/Pdf")));
+
+
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/uploads");
+  // destination: (req, file, cb) => {
+  //   cb(null, "public/uploads");
+  // },
+  destination: (req, files, cb) => {
+   
+    if (files.fieldname === "Image") {
+      cb(null, "public/uploads/Image"); // it will upload inside test under images
+    } else {
+      cb(null, "public/uploads/Pdf"); // it will upload inside try under images
+    }
   },
+
   filename: (req, file, cb) => {
     const fileExt = path.extname(file.originalname);
     const fileName =
@@ -33,6 +45,19 @@ const storage = multer.diskStorage({
     cb(null, fileName + fileExt);
   },
 });
+
+// const fileStorage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     if (req.body.event == 'test') {
+//       cb(null, "images/test"); // it will upload inside test under images
+//     } else {
+//       cb(null, "images/try"); // it will upload inside try under images
+//     }
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, new Date().toISOString() + "-" + file.originalname);
+//   }
+// });
 
 const upload = multer({
   storage: storage,
@@ -57,8 +82,8 @@ async function run() {
         { name: "Pdf", maxCount: 1 },
       ]),
       async (req, res) => {
-        const image = `http://localhost:7000/uploads/${req.files.Image[0].filename}`;
-        const pdf = `http://localhost:7000/pdf/${req.files.Pdf[0].filename}`;
+        const image = `http://localhost:7000/uploads/Image/${req.files.Image[0].filename}`;
+        const pdf = `http://localhost:7000/uploads/Pdf/${req.files.Pdf[0].filename}`;
 
         const doc = {
           book_name: req.body.Book_Name,
@@ -117,20 +142,18 @@ async function run() {
         reviewer_image: "demo img",
         rating: req.body.RatingValue,
         reaview: req.body.Review,
-        date: new Date().toJSON().slice(0,10)
+        date: new Date().toJSON().slice(0, 10),
       };
       const result = await retingReviewCollection.insertOne(doc);
       res.send(result);
     });
 
     // find review and reting
-    app.get("/ratingReview/:id",async(req,res)=>{ 
-      const quary = {book_id : req.params.id };
+    app.get("/ratingReview/:id", async (req, res) => {
+      const quary = { book_id: req.params.id };
       const result = await retingReviewCollection.find(quary).toArray();
       res.send(result);
-    })
-
-
+    });
   } finally {
     // await client.close();
   }
