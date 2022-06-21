@@ -12,22 +12,17 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 
-
 app.use("/Image", express.static(path.join(__dirname, "public/uploads/Image")));
 app.use("/Pdf", express.static(path.join(__dirname, "public/uploads/Pdf")));
 
-
-
 const storage = multer.diskStorage({
-  // destination: (req, file, cb) => {
-  //   cb(null, "public/uploads");
-  // },
-  destination: (req, files, cb) => {
-   
-    if (files.fieldname === "Image") {
-      cb(null, "public/uploads/Image"); // it will upload inside test under images
-    } else {
-      cb(null, "public/uploads/Pdf"); // it will upload inside try under images
+  destination: (req, file, cb) => {
+    const dir = `./public/uploads/` + file.fieldname;
+
+    if (file.fieldname === "Image") {
+      cb(null, dir);
+    } else if (file.fieldname === "Pdf") {
+      cb(null, dir);
     }
   },
 
@@ -45,19 +40,6 @@ const storage = multer.diskStorage({
     cb(null, fileName + fileExt);
   },
 });
-
-// const fileStorage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     if (req.body.event == 'test') {
-//       cb(null, "images/test"); // it will upload inside test under images
-//     } else {
-//       cb(null, "images/try"); // it will upload inside try under images
-//     }
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, new Date().toISOString() + "-" + file.originalname);
-//   }
-// });
 
 const upload = multer({
   storage: storage,
@@ -82,8 +64,8 @@ async function run() {
         { name: "Pdf", maxCount: 1 },
       ]),
       async (req, res) => {
-        const image = `http://localhost:7000/uploads/Image/${req.files.Image[0].filename}`;
-        const pdf = `http://localhost:7000/uploads/Pdf/${req.files.Pdf[0].filename}`;
+        const image = `http://localhost:7000/Image/${req.files.Image[0].filename}`;
+        const pdf = `http://localhost:7000/Pdf/${req.files.Pdf[0].filename}`;
 
         const doc = {
           book_name: req.body.Book_Name,

@@ -1,15 +1,23 @@
-import React from 'react';
-import AllOrderForm from '../component/AllOrder.js/AllOrderForm';
-import SubNav from '../component/SubNav/SubNav';
-import { LayoutContiner } from '../style/MetariulUiStyle';
+import React from "react";
+import SubNav from "../component/SubNav/SubNav";
+import { LayoutContiner } from "../style/MetariulUiStyle";
+
+
 
 const AllOeder = () => {
-    return (
-        <LayoutContiner>
-        <SubNav project="ALL ORDER" />
-        <AllOrderForm />
-      </LayoutContiner>
-    );
+
+
+
+
+  return (
+    <LayoutContiner>
+      <SubNav project="ALL ORDER" />
+
+      <center>
+       
+      </center>
+    </LayoutContiner>
+  );
 };
 
 export default AllOeder;
