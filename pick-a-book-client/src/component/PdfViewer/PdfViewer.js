@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import "./PdfViewer.css";
 import Modal from "@mui/material/Modal";
 import { Document, Page, pdfjs } from "react-pdf";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -13,9 +12,10 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: {
     lg: 700,
-    xs: 350,
+    xs: 340,
   },
-  overflow: "scroll",
+  overflowX: "hidden",
+  overflowY: "scroll",
   height: "95%",
   display: "block",
   bgcolor: "background.paper",
@@ -24,6 +24,7 @@ const style = {
 };
 
 const PdfViewer = ({ pdf }) => {
+  const [isMobile, setIsMobile] = useState(0);
   const [numPages, setNumPages] = useState(null);
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -33,6 +34,30 @@ const PdfViewer = ({ pdf }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  
+
+ 
+
+  //choose the screen size for react pdf page responcivenes
+  const handleResize = () => {
+    if (window.innerWidth > 768) {
+      setIsMobile(700);
+    } else if (window.innerWidth < 600) {
+      setIsMobile(340);
+    } else if (window.innerWidth < 768) {
+      setIsMobile(500);
+    }
+  };
+
+  // create an event listener
+  useEffect(() => {
+    handleResize()
+    window.addEventListener("resize", handleResize);
+  });
+
+  // finally you can render components conditionally if isMobile is True or False
+  console.log(isMobile);
 
   return (
     <div>
@@ -47,9 +72,17 @@ const PdfViewer = ({ pdf }) => {
       >
         <Box sx={style}>
           <center>
-            <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
+            <Document
+              className={"PDFDocument"}
+              file={pdf}
+              onLoadSuccess={onDocumentLoadSuccess}
+            >
               {[1, 2, 3, 4, 5, 6].map((page) => (
-                <Page width={600} pageNumber={page} />
+                <Page
+                  width={isMobile}
+                  className={"PDFPage PDFPageOne"}
+                  pageNumber={page}
+                />
               ))}
             </Document>
           </center>

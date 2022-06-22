@@ -31,9 +31,9 @@ const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
             }}
           >
             <div className="book-image">
-              {Book.image === "undifind" ? (
+              {Book.image === undefined ? (
                 <img
-                  src="https://ds.rokomari.store/rokomari110/ProductNew20190903/260X372/rokimg_20140709_9618.GIF"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU"
                   alt=""
                 />
               ) : (
