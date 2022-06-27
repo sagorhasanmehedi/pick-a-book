@@ -44,7 +44,7 @@ const Navbar = () => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const cond = 0;
+  const cond = 1;
 
   return (
     <>

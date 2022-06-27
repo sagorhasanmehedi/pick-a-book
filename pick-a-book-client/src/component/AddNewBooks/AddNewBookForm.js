@@ -12,26 +12,6 @@ import ImagePdfButton from "./ImagePdfButton";
 const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
   const Catagory = [
     {
-      value: "adventure",
-      label: "adventure",
-    },
-    {
-      value: "history",
-      label: "history",
-    },
-    {
-      value: "Fantasy",
-      label: "Fantasy",
-    },
-    {
-      value: "Science fiction",
-      label: "Science fiction",
-    },
-    {
-      value: "Western",
-      label: "Western",
-    },
-    {
       value: "উপন্যাসের বই",
       label: "উপন্যাসের বই",
     },
@@ -42,6 +22,18 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
     {
       value: "সায়েন্স ফিকশন",
       label: "সায়েন্স ফিকশন",
+    },
+    {
+      value: "ছোট্ট বিজ্ঞানীদের বিজ্ঞানবাক্স",
+      label: "ছোট্ট বিজ্ঞানীদের বিজ্ঞানবাক্স",
+    },
+    {
+      value: "Motivational and Meditation",
+      label: "Motivational and Meditation",
+    },
+    {
+      value: "প্রি-অর্ডারে থাকা বই",
+      label: "প্রি-অর্ডারে থাকা বই",
     },
   ];
   const CoverType = [
@@ -69,6 +61,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
+          required
             fullWidth
             variant="outlined"
             name="Book_Name"
@@ -97,6 +90,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
+         required
             fullWidth
             variant="outlined"
             name="Author_Name"
@@ -112,6 +106,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
 
         <Grid item xs={12} md={6}>
           <TextFieldMake
+           required
             fullWidth
             variant="outlined"
             label="Price"
@@ -127,6 +122,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
+           required
             fullWidth
             variant="outlined"
             label="Catagory"
@@ -152,6 +148,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
+           required
             fullWidth
             variant="outlined"
             label="Cover Type"
@@ -209,6 +206,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
+           required
             fullWidth
             variant="outlined"
             label="Stock"
@@ -224,6 +222,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
+           required
             fullWidth
             variant="outlined"
             type="text"
@@ -239,6 +238,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
+           required
             fullWidth
             variant="outlined"
             type="email"

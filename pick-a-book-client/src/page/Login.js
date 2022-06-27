@@ -9,7 +9,6 @@ const Login = () => {
         <div style={{ backgroundColor: "#f1f2f4"}}>
           <Navbar />
           <Box sx={{ display: "flex", justifyContent: "center" }}>
-           
             <LoginForm/>
           </Box>
           <Footer />

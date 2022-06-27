@@ -5,9 +5,11 @@ import LockIcon from "@mui/icons-material/Lock";
 import MarkunreadIcon from "@mui/icons-material/Markunread";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+// import UseFirebase from "../../Hook/UseFirebase";
 
 const LoginForm = () => {
   let navigate = useNavigate();
+  
 
   const handelSingup = () => {
     console.log("first");
@@ -22,7 +24,7 @@ const LoginForm = () => {
           SIGN UP
         </p>
       </div>
-      <p className="login-sub-heading">
+      {/* <p className="login-sub-heading">
         Login with your facebook or google account
       </p>
 
@@ -31,12 +33,12 @@ const LoginForm = () => {
           <i className="fab fa-facebook-f login-icon-facebook"></i>
           Facebook
         </button>
-        <button className="google-button">
-          <i class="fa fa-google login-icon-google" aria-hidden="true"></i>
+        <button  className="google-button">
+          <i className="fa fa-google login-icon-google" aria-hidden="true"></i>
           Google
         </button>
       </div>
-      <p className="social-login-or">OR</p>
+      <p className="social-login-or">OR</p> */}
 
       <p className="login-text">Login with your email or phone number</p>
       <div className="textfield">

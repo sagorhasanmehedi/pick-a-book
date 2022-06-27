@@ -75,7 +75,7 @@
 @media (max-width: 600px) {
     .all-book-container{
         width: 80%;
-        padding: 30px 0;
+        padding: 30px 15px;
     }
     .catagory-name, .catagory-amount {
         text-align: center;

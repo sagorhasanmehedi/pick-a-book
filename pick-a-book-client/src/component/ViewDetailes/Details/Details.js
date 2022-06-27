@@ -1,20 +1,22 @@
 import { Grid, Rating } from "@mui/material";
 import React from "react";
 import "./Details.css";
-import StarHalfSharpIcon from "@mui/icons-material/StarHalfSharp";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import PdfViewer from "../../PdfViewer/PdfViewer";
+import { useNavigate } from "react-router-dom";
 
 const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
-  
+  let navigate = useNavigate();
 
-  // // modal
-  // const [open, setOpen] = React.useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
+  // view all book from this catagory
+  const handelAllbook = (catagory) => {
+    navigate(`/HomeAllBook/${catagory}`);
+  };
+
+ 
 
   return (
     <>
@@ -57,7 +59,7 @@ const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
               <p className="details-author-name">
                 by<span>{Book.author_name}</span>
               </p>
-              <p className="details-catagory-name">
+              <p onClick={()=>handelAllbook(Book.catagory)} className="details-catagory-name">
                 Category:<span>{Book.catagory}</span>
               </p>
 

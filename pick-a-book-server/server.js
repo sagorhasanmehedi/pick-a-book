@@ -54,6 +54,7 @@ async function run() {
     const database = client.db("pick-a-book");
     const bookCollection = database.collection("books");
     const retingReviewCollection = database.collection("retingReview");
+    const usersCollection = database.collection("users");
     await client.connect();
 
     // post new book
@@ -134,6 +135,12 @@ async function run() {
     app.get("/ratingReview/:id", async (req, res) => {
       const quary = { book_id: req.params.id };
       const result = await retingReviewCollection.find(quary).toArray();
+      res.send(result);
+    });
+
+    // post user data
+    app.post("/users", async (req, res) => {
+      const result = await usersCollection.insertOne(req.body);
       res.send(result);
     });
   } finally {

@@ -1,4 +1,4 @@
-import { Box} from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../Navbar/Navbar/Navbar";
@@ -12,6 +12,8 @@ const HomeAllBook = () => {
 
   let params = useParams();
 
+  console.log(Books);
+  console.log(params.catagory);
 
   // all same catagory books
   useEffect(() => {
@@ -24,11 +26,11 @@ const HomeAllBook = () => {
       .then((response) => {
         setBooks(response.data);
       })
-      .catch( (error)=> {
+      .catch((error) => {
         console.log(error);
       })
-      .then( ()=> {});
-  }, []);
+      .then(() => {});
+  }, [params.catagory]);
 
   // handle view details
   const viewDetails = (id) => {
@@ -42,8 +44,41 @@ const HomeAllBook = () => {
         sx={{ display: "flex", justifyContent: "center", marginTop: "30px" }}
       >
         <div className="all-book-container">
-          <p className="catagory-name">{params.catagory}</p>
-          <p className="catagory-amount">(Showing {Books?.length} Books)</p>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Box>
+              <p className="catagory-name">{params.catagory}</p>
+              <p className="catagory-amount">(Showing {Books?.length} Books)</p>
+            </Box>
+            {Books === undefined && (
+              <Typography
+                sx={{
+                  fontSize: {
+                    lg: "25px",
+                  },
+                  marginLeft: "23%",
+                }}
+              >
+                No books found
+              </Typography>
+            )}
+            {Books?.length === 0 && (
+              <Typography
+                sx={{
+                  fontSize: {
+                    lg: "25px",
+                  },
+                  marginLeft: "23%",
+                }}
+              >
+                No books found in this category
+              </Typography>
+            )}
+          </Box>
           <div className="all-book-cards">
             {Books?.map((book) => (
               <div>
@@ -72,7 +107,10 @@ const HomeAllBook = () => {
                       </span>
                     </p>
                   </div>
-                  <button className="allbook-btn" onClick={()=>viewDetails(book._id)}>
+                  <button
+                    className="allbook-btn"
+                    onClick={() => viewDetails(book._id)}
+                  >
                     View Details
                   </button>
                 </div>

@@ -15,148 +15,144 @@ const Home = () => {
   const [Uponashas, setUponashas] = useState([]);
   const [IslamicUponash, setIslamicUponash] = useState([]);
   const [ScienceFiction, setScienceFiction] = useState([]);
+  const [ChotoderBigganBox, setChotoderBigganBox] = useState([]);
+  const [MotivationalMeditation, setMotivationalMeditation] = useState([]);
+  const [PreOrderBook, setPreOrderBook] = useState([]);
 
-  const [Ruby, setRuby] = useState([]);
-  const [Shell, setShell] = useState([]);
-  const [java, setJava] = useState([]);
-  const [C, setC] = useState([]);
-  const [parl, setParl] = useState([]);
 
   // first book button catagori
   const catagorys1 = [
-    { name: "শেষের কবিতা", catagory: "javascript" },
-    { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "javascript" },
-    { name: "ফেলুদা সমগ্র", catagory: "javascript" },
-    { name: "মিসির আলি", catagory: "javascript" },
-    { name: "সত্যজিৎ রায়", catagory: "javascript" },
-    { name: "সত্যজিৎ রায়", catagory: "javascript" },
+    { name: "শেষের কবিতা", catagory: "শেষের কবিতা" },
+    { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "রবীন্দ্রনাথ ঠাকুর" },
+    { name: "ফেলুদা সমগ্র", catagory: "ফেলুদা সমগ্র" },
+    { name: "মিসির আলি", catagory: "মিসির আলি" },
+    { name: "সত্যজিৎ রায়", catagory: "সত্যজিৎ রায়" },
+    { name: "সত্যজিৎ রায়", catagory: "সত্যজিৎ রায়" },
   ];
 
   // secend book button catagori
   const catagorys2 = [
-    { name: "শেষের কবিতা", catagory: "javascript" },
-    { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "javascript" },
-    { name: "ফেলুদা সমগ্র", catagory: "javascript" },
-    { name: "মিসির আলি", catagory: "javascript" },
-    { name: "সত্যজিৎ রায়", catagory: "javascript" },
-    { name: "সত্যজিৎ রায়", catagory: "javascript" },
-    { name: "শেষের কবিতা", catagory: "javascript" },
-    { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "javascript" },
-    { name: "ফেলুদা সমগ্র", catagory: "javascript" },
-    { name: "মিসির আলি", catagory: "javascript" },
-    { name: "সত্যজিৎ রায়", catagory: "javascript" },
-    { name: "সত্যজিৎ রায়", catagory: "javascript" },
+    { name: "শেষের কবিতা", catagory: "শেষের কবিতা" },
+    { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "রবীন্দ্রনাথ ঠাকুর" },
+    { name: "ফেলুদা সমগ্র", catagory: "ফেলুদা সমগ্র" },
+    { name: "মিসির আলি", catagory: "মিসির আলি" },
+    { name: "সত্যজিৎ রায়", catagory: "সত্যজিৎ রায়" },
+    { name: "সত্যজিৎ রায়", catagory: "সত্যজিৎ রায়" },
+    { name: "শেষের কবিতা", catagory: "শেষের কবিতা" },
+    { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "রবীন্দ্রনাথ ঠাকুর" },
+    { name: "ফেলুদা সমগ্র", catagory: "ফেলুদা সমগ্র" },
+    { name: "মিসির আলি", catagory: "মিসির আলি" },
+    { name: "সত্যজিৎ রায়", catagory: "সত্যজিৎ রায়" },
+    { name: "সত্যজিৎ রায়", catagory: "সত্যজিৎ রায়" },
   ];
 
   // উপন্যাসের বই
   useEffect(() => {
     axios
-      .get("http://localhost:7000/catagory",{
-        params:{
-          CATAGORY:"উপন্যাসের বই"
-        }
+      .get("http://localhost:7000/catagory", {
+        params: {
+          CATAGORY: "উপন্যাসের বই",
+        },
       })
-      .then( (response) => {
+      .then((response) => {
         setUponashas(response.data);
       })
       .catch(function (error) {
         console.log(error);
       })
       .then(function () {});
-
-    
   }, []);
 
   // ইসলামি উপন্যাস
   useEffect(() => {
     axios
-      .get("http://localhost:7000/catagory",{
-        params:{
-          CATAGORY:"ইসলামি উপন্যাস"
-        }
+      .get("http://localhost:7000/catagory", {
+        params: {
+          CATAGORY: "ইসলামি উপন্যাস",
+        },
       })
-      .then( (response) => {
+      .then((response) => {
         setIslamicUponash(response.data);
       })
       .catch(function (error) {
         console.log(error);
       })
       .then(function () {});
-
-    
   }, []);
 
   // সায়েন্স ফিকশন
   useEffect(() => {
     axios
-      .get("http://localhost:7000/catagory",{
-        params:{
-          CATAGORY:"সায়েন্স ফিকশন"
-        }
+      .get("http://localhost:7000/catagory", {
+        params: {
+          CATAGORY: "সায়েন্স ফিকশন",
+        },
       })
-      .then( (response) => {
+      .then((response) => {
         setScienceFiction(response.data);
       })
       .catch(function (error) {
         console.log(error);
       })
       .then(function () {});
-
-    
   }, []);
 
-  console.log(IslamicUponash);
 
-  // paithon section
+  // ছোট্ট বিজ্ঞানীদের বিজ্ঞানবাক্স
   useEffect(() => {
-    fetch("https://openlibrary.org/search.json?q=Ruby")
-      .then((ans) => ans.json())
-      .then((result) => {
-        const data = result.docs.slice(0, 20);
-        setRuby(data);
-      });
+    axios
+      .get("http://localhost:7000/catagory", {
+        params: {
+          CATAGORY: "ছোট্ট বিজ্ঞানীদের বিজ্ঞানবাক্স",
+        },
+      })
+      .then((response) => {
+        setChotoderBigganBox(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {});
   }, []);
 
-  // shell section
+ // Motivational and Meditation
   useEffect(() => {
-    fetch("https://openlibrary.org/search.json?q=shell")
-      .then((ans) => ans.json())
-      .then((result) => {
-        const data = result.docs.slice(0, 20);
-        setShell(data);
-      });
+    axios
+      .get("http://localhost:7000/catagory", {
+        params: {
+          CATAGORY: "Motivational and Meditation",
+        },
+      })
+      .then((response) => {
+        setMotivationalMeditation(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {});
   }, []);
 
-  // java section
-  useEffect(() => {
-    fetch("https://openlibrary.org/search.json?q=java")
-      .then((ans) => ans.json())
-      .then((result) => {
-        const data = result.docs.slice(0, 20);
-        setJava(data);
-      });
-  }, []);
+ // প্রি-অর্ডারে থাকা বই
+ useEffect(() => {
+  axios
+    .get("http://localhost:7000/catagory", {
+      params: {
+        CATAGORY: "প্রি-অর্ডারে থাকা বই",
+      },
+    })
+    .then((response) => {
+      setPreOrderBook(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .then(function () {});
+}, []);
 
-  // C++ section
-  useEffect(() => {
-    fetch("https://openlibrary.org/search.json?q=cprogramming")
-      .then((ans) => ans.json())
-      .then((result) => {
-        const data = result.docs.slice(0, 20);
-        setC(data);
-      });
-  }, []);
 
-  // parl section
-  useEffect(() => {
-    fetch("https://openlibrary.org/search.json?q=parl")
-      .then((ans) => ans.json())
-      .then((result) => {
-        const data = result.docs.slice(0, 20);
-        setParl(data);
-      });
-  }, []);
 
+  
+  // Navbar.classList.add("sticky") : Navbar.classList.remove("sticky")
   return (
     <div style={{ backgroundColor: "#f1f2f4" }}>
       <Navbar />
@@ -167,17 +163,17 @@ const Home = () => {
 
           <CatagoryButton catagorys={catagorys1} />
           <BookSlider Books={IslamicUponash} catagory={"ইসলামি উপন্যাস"} />
-          <Banner banner={banner3} />
+          <Banner banner={banner3} catagory={"অতিরিক্ত ছাড়"}/>
           <BookSlider Books={ScienceFiction} catagory={"সায়েন্স ফিকশন"} />
           <CatagoryIconBnner />
 
-          <BookSlider Books={java} title={"Java"} />
-          <BookSlider Books={C} title={"C++"} />
+          <BookSlider Books={ChotoderBigganBox} catagory={"ছোট্ট বিজ্ঞানীদের বিজ্ঞানবাক্স"} />
+          <BookSlider Books={MotivationalMeditation} catagory={"Motivational and Meditation"} />
 
           <CatagoryButton catagorys={catagorys2} />
           <CatagoryButton />
-          <BookSlider Books={parl} title={"Parl"} />
-          <AuthorSlider  title={"Popular Authors"} />
+          <BookSlider Books={PreOrderBook} catagory={"প্রি-অর্ডারে থাকা বই"} />
+          <AuthorSlider title={"Popular Authors"} />
         </Box>
       </Box>
       <Footer />

@@ -15,14 +15,13 @@
   color: #333333;
   list-style: none;
   cursor: pointer;
-
-  transition: 0.2s;
+transition: 0.2s;
 }
 .home-subnav ul li:hover {
   color: #89c4f4;
 }
 .home-subnav ul {
-  width: 1400px;
+  /* width: 1400px; */
   display: flex;
   gap: 52px;
   padding-left: 0;
