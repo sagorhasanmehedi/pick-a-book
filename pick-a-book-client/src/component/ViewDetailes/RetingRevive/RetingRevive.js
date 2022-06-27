@@ -36,7 +36,7 @@ const RetingRevive = ({ Book, AllRatingReview, setisSubmit, isSubmit , ratingCou
     }
 
     axios
-      .post(`http://localhost:7000/ratingReview/${Book._id}`, {
+      .post(`https://pick-a-book-v1.herokuapp.com/ratingReview/${Book._id}`, {
         RatingValue: RatingValue,
         Review: Review,
       })

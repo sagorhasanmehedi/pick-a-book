@@ -7,6 +7,7 @@ import Slider from "react-slick";
 
 const BookSlider = ({ Books, catagory }) => {
 
+  console.log(Books);
  
   let navigate = useNavigate();
 

@@ -11,7 +11,7 @@ const AllBook = () => {
   const [books, setBooks] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:7000/get_all_book")
+      .get("https://pick-a-book-v1.herokuapp.com/get_all_book")
       .then(function (response) {
         setBooks(response.data);
       })

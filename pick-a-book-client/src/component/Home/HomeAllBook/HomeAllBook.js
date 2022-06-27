@@ -18,7 +18,7 @@ const HomeAllBook = () => {
   // all same catagory books
   useEffect(() => {
     axios
-      .get("http://localhost:7000/catagory", {
+      .get("https://pick-a-book-v1.herokuapp.com/catagory", {
         params: {
           CATAGORY: params.catagory,
         },

@@ -65,8 +65,8 @@ async function run() {
         { name: "Pdf", maxCount: 1 },
       ]),
       async (req, res) => {
-        const image = `http://localhost:7000/Image/${req.files.Image[0].filename}`;
-        const pdf = `http://localhost:7000/Pdf/${req.files.Pdf[0].filename}`;
+        const image = `https://pick-a-book-v1.herokuapp.com/Image/${req.files.Image[0].filename}`;
+        const pdf = `https://pick-a-book-v1.herokuapp.com/Pdf/${req.files.Pdf[0].filename}`;
 
         const doc = {
           book_name: req.body.Book_Name,
@@ -86,6 +86,7 @@ async function run() {
           pdf: pdf,
         };
         const result = await bookCollection.insertOne(doc);
+        console.log(doc);
         res.send(result);
       }
     );

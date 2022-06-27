@@ -29,7 +29,7 @@ const SignupForm = () => {
       UserInfo?.Password
     ) {
       axios
-        .post("http://localhost:7000/users", {
+        .post("https://pick-a-book-v1.herokuapp.com/users", {
           Full_Name: UserInfo?.Full_Name,
           Email_or_Phone: UserInfo?.Email_or_Phone,
           Mobile_No: UserInfo?.Mobile_No,
