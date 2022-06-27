@@ -46,8 +46,10 @@ const upload = multer({
 });
 
 const uri =
-  "mongodb+srv://pick-a-book:hZVOPdNWgw4APfgf@cluster0.sovrn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  "mongodb+srv://pick-a-book:JJ7nLQGl7z3g1enT@cluster0.sovrn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
+
+
 
 async function run() {
   try {
