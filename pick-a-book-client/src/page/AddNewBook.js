@@ -47,7 +47,7 @@ const AddNewBook = () => {
     formData.append("Image", Data.Image);
     formData.append("Pdf", Data.Pdf);
 
-    fetch("https://pick-a-book-v1.herokuapp.com/add_new_book", {
+    fetch("http://localhost:7000/add_new_book", {
       method: "POST",
       body: formData,
     })

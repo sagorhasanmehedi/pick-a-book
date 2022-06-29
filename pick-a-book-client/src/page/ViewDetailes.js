@@ -16,7 +16,7 @@ const ViewDetailes = () => {
 
   useEffect(() => {
     axios
-      .get(`https://pick-a-book-v1.herokuapp.com/single/${params.id}`)
+      .get(`http://localhost:7000/single/${params.id}`)
       .then((respons) => {
         setBook(respons.data);
       })
@@ -28,7 +28,7 @@ const ViewDetailes = () => {
   // get all reting and Review
   useEffect(() => {
     axios
-      .get(`https://pick-a-book-v1.herokuapp.com/ratingReview/${Book._id}`)
+      .get(`http://localhost:7000/ratingReview/${Book._id}`)
       .then((respnse) => {
         setAllRatingReview(respnse.data);
       })

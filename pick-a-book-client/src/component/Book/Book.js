@@ -21,7 +21,7 @@ const Book = ({ book, handelDeleteState }) => {
       if (result.value) {
        
         axios
-          .delete(`https://pick-a-book-v1.herokuapp.com/delete_book/${id}`)
+          .delete(`http://localhost:7000/delete_book/${id}`)
           .then(function (response) {
             if (response.data.deletedCount) {
               handelDeleteState(id);

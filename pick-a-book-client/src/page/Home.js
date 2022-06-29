@@ -49,7 +49,7 @@ const Home = () => {
   // উপন্যাসের বই
   useEffect(() => {
     axios
-      .get("https://pick-a-book-v1.herokuapp.com/catagory", {
+      .get("http://localhost:7000/catagory", {
         params: {
           CATAGORY: "উপন্যাসের বই",
         },
@@ -66,7 +66,7 @@ const Home = () => {
   // ইসলামি উপন্যাস
   useEffect(() => {
     axios
-      .get("https://pick-a-book-v1.herokuapp.com/catagory", {
+      .get("http://localhost:7000/catagory", {
         params: {
           CATAGORY: "ইসলামি উপন্যাস",
         },
@@ -83,7 +83,7 @@ const Home = () => {
   // সায়েন্স ফিকশন
   useEffect(() => {
     axios
-      .get("https://pick-a-book-v1.herokuapp.com/catagory", {
+      .get("http://localhost:7000/catagory", {
         params: {
           CATAGORY: "সায়েন্স ফিকশন",
         },
@@ -101,7 +101,7 @@ const Home = () => {
   // ছোট্ট বিজ্ঞানীদের বিজ্ঞানবাক্স
   useEffect(() => {
     axios
-      .get("https://pick-a-book-v1.herokuapp.com/catagory", {
+      .get("http://localhost:7000/catagory", {
         params: {
           CATAGORY: "ছোট্ট বিজ্ঞানীদের বিজ্ঞানবাক্স",
         },
@@ -118,7 +118,7 @@ const Home = () => {
  // Motivational and Meditation
   useEffect(() => {
     axios
-      .get("https://pick-a-book-v1.herokuapp.com/catagory", {
+      .get("http://localhost:7000/catagory", {
         params: {
           CATAGORY: "Motivational and Meditation",
         },
@@ -135,7 +135,7 @@ const Home = () => {
  // প্রি-অর্ডারে থাকা বই
  useEffect(() => {
   axios
-    .get("https://pick-a-book-v1.herokuapp.com/catagory", {
+    .get("http://localhost:7000/catagory", {
       params: {
         CATAGORY: "প্রি-অর্ডারে থাকা বই",
       },
