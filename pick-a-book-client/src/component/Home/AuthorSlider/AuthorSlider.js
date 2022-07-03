@@ -4,7 +4,10 @@ import authorImage from "../../../assets/images/2.jpg"
 import Slider from 'react-slick';
 import { useNavigate } from 'react-router-dom';
 
-const AuthorSlider = ({author}) => {
+const AuthorSlider = ({Authors}) => {
+
+
+ 
   let navigate = useNavigate();
 
       const sliderSettings = {
@@ -48,23 +51,19 @@ const handelAllbook=()=>{
         <p className="catagory">Popular Authors</p>
         <button onClick={handelAllbook} className="slider-view-button">View All</button>
       </div>
-      {/* <Slider {...sliderSettings}>
-        {author.map((card, index) => (
+      <Slider {...sliderSettings}>
+        {Authors?.map((author, index) => (
           <div  key={index}>
             <div className="author-card">
-              <img alt="" src={authorImage} />
-              <img
-                alt=""
-                src={`https://covers.openlibrary.org/a/olid/${card?.author_key}-M.jpg`}
-               
-              />
-              <p className="card-title">{card.author_name?.slice(0,1)}</p>
+              <img alt="" src={author.img} />
+             
+              <p className="card-title">{author.name}</p>
              
             </div>
            
           </div>
         ))}
-      </Slider> */}
+      </Slider>
     </div>
     );
 };

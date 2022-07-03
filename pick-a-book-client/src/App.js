@@ -22,40 +22,48 @@ import PlaceOrder from "./page/PlaceOrder";
 import MyAcount from "./component/MyAcount/MyAcount";
 import CommingSoon from "./component/CommingSoon/CommingSoon";
 import ScrollToTop from "react-scroll-to-top";
-import PdfViewer from "./component/PdfViewer/PdfViewer";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import AuthProvider from "./Contex/AuthProvider";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <ScrollToTop
-        color="#0699d5"
-        smooth
-      />
+      <ScrollToTop color="#0699d5" smooth />
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Signup" element={<Signup />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Catagory" element={<Catagory />} />
-          <Route path="/Cart" element={<Cart />} />
-          <Route path="/HomeAllBook/:catagory" element={<HomeAllBook />} />
-          <Route path="/AllAuthore" element={<AllAuthor />} />
-          <Route path="/ViewDetails/:id" element={<ViewDetailes />} />
-          <Route path="/PlaceOrder" element={<PlaceOrder />} />
-          <Route path="/MyAcount" element={<MyAcount />} />
-          <Route path="/CommingSoon" element={<CommingSoon />} />
-          {/* <Route path="/Pdf" element={<PdfViewer />} /> */}
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Signup" element={<Signup />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Catagory" element={<Catagory />} />
+            <Route
+              path="/Cart"
+              element={
+                <PrivateRoute>
+                  <Cart />
+                </PrivateRoute>
+              }
+            />
 
-          <Route path="/Dashbord" element={<Layout />}>
-            <Route index element={<AllBook />} />
-            <Route path="AllBook" element={<AllBook />} />
-            <Route path="addnewbook" element={<AddNewBook />} />
-            <Route path="editBook" element={<EditBooks />} />
-            <Route path="makeAdmin" element={<MakeAdmin />} />
-            <Route path="allOrder" element={<AllOeder />} />
-          </Route>
-        </Routes>
+            <Route path="/HomeAllBook/:catagory" element={<HomeAllBook />} />
+            <Route path="/AllAuthore" element={<AllAuthor />} />
+            <Route path="/ViewDetails/:id" element={<ViewDetailes />} />
+            <Route path="/PlaceOrder" element={<PlaceOrder />} />
+            <Route path="/MyAcount" element={<MyAcount />} />
+            <Route path="/CommingSoon" element={<CommingSoon />} />
+            {/* <Route path="/Pdf" element={<PdfViewer />} /> */}
+
+            <Route path="/Dashbord" element={<Layout />}>
+              <Route index element={<AllBook />} />
+              <Route path="AllBook" element={<AllBook />} />
+              <Route path="addnewbook" element={<AddNewBook />} />
+              <Route path="editBook" element={<EditBooks />} />
+              <Route path="makeAdmin" element={<MakeAdmin />} />
+              <Route path="allOrder" element={<AllOeder />} />
+            </Route>
+          </Routes>
+        </AuthProvider>
       </Router>
     </ThemeProvider>
   );

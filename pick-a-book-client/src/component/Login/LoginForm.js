@@ -5,14 +5,11 @@ import LockIcon from "@mui/icons-material/Lock";
 import MarkunreadIcon from "@mui/icons-material/Markunread";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-// import UseFirebase from "../../Hook/UseFirebase";
 
-const LoginForm = () => {
+const LoginForm = ({ setData, Data, handelLogin }) => {
   let navigate = useNavigate();
-  
 
   const handelSingup = () => {
-    console.log("first");
     navigate("/Signup");
   };
 
@@ -44,11 +41,18 @@ const LoginForm = () => {
       <div className="textfield">
         <Input
           style={{ width: "75%", marginTop: "30px" }}
-          placeholder="Email or Phone"
+          placeholder="Email"
           startAdornment={
             <InputAdornment>
               <MarkunreadIcon sx={{ marginRight: "10px" }} />
             </InputAdornment>
+          }
+          name="Email"
+          onChange={(e) =>
+            setData({
+              ...Data,
+              [e.target.name]: e.target.value,
+            })
           }
         />
         <Input
@@ -58,6 +62,13 @@ const LoginForm = () => {
             <InputAdornment>
               <LockIcon sx={{ marginRight: "10px" }} />
             </InputAdornment>
+          }
+          name="Password"
+          onChange={(e) =>
+            setData({
+              ...Data,
+              [e.target.name]: e.target.value,
+            })
           }
         />
       </div>
@@ -70,7 +81,9 @@ const LoginForm = () => {
         <p className="forgot-password">Forgot Password?</p>
       </div>
       <div className="signin-button-container">
-        <button className="signin-button">SIGN IN </button>
+        <button onClick={(e) => handelLogin(e)} className="signin-button">
+          SIGN IN{" "}
+        </button>
       </div>
       <p className="signup-text">
         Don’t have an account? <span onClick={handelSingup}>Sign Up Now!</span>

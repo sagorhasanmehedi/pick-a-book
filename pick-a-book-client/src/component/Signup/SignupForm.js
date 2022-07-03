@@ -5,13 +5,17 @@ import MarkunreadIcon from "@mui/icons-material/Markunread";
 import PersonIcon from "@mui/icons-material/Person";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import { Box } from "@mui/system";
-import { useNavigate } from "react-router-dom";
+import {  useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 const axios = require("axios").default;
 
 const SignupForm = () => {
   const [UserInfo, setUserInfo] = useState(null);
   let navigate = useNavigate();
+
+
+
+
 
   const handelSignin = () => {
     navigate("/Login");
@@ -20,18 +24,18 @@ const SignupForm = () => {
   // handel submit
   const handelSubmit = (e) => {
     e.preventDefault();
-    console.log(UserInfo);
+    
     
     if (
       UserInfo?.Full_Name &&
-      UserInfo?.Email_or_Phone &&
+      UserInfo?.Email &&
       UserInfo?.Mobile_No &&
       UserInfo?.Password
     ) {
       axios
         .post("http://localhost:7000/users", {
           Full_Name: UserInfo?.Full_Name,
-          Email_or_Phone: UserInfo?.Email_or_Phone,
+          Email: UserInfo?.Email,
           Mobile_No: UserInfo?.Mobile_No,
           Password: UserInfo?.Password,
         })
@@ -107,8 +111,8 @@ const SignupForm = () => {
           />
           <Input
             style={{ width: "75%", marginTop: "30px" }}
-            placeholder="Email or Phone"
-            name="Email_or_Phone"
+            placeholder="Email"
+            name="Email"
             startAdornment={
               <InputAdornment>
                 <MarkunreadIcon sx={{ marginRight: "10px" }} />

@@ -18,7 +18,7 @@ const AllOrderForm = () => {
     formData.append("pdf",Pdf)
 
 
-    fetch("http://localhost:7000/add_new_book", {
+    fetch("https://pick-a-book-v1.herokuapp.com/add_new_book", {
       method: "POST",
       body: formData,
     });

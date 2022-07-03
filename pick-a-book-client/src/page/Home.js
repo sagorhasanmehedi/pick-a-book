@@ -1,4 +1,11 @@
 import { Box } from "@mui/material";
+import author1 from "../assets/images/Authors_image/2222ed505a94_1.jpg";
+import author2 from "../assets/images/Authors_image/2b36785b9_80983.jpg";
+import author3 from "../assets/images/Authors_image/5effa3bfe174_3298.jpg";
+import author4 from "../assets/images/Authors_image/6dff69ae5_3182.jpg";
+import author5 from "../assets/images/Authors_image/8be72a51f_81400.jpg";
+import author6 from "../assets/images/Authors_image/98ec0cea7_4207.jpg";
+import author7 from "../assets/images/Authors_image/a721f57c3_79420.jpg";
 import React, { useEffect, useState } from "react";
 import Banner from "../component/Home/Banner/Banner";
 import BookSlider from "../component/Home/BookSlider/BookSlider";
@@ -19,6 +26,37 @@ const Home = () => {
   const [MotivationalMeditation, setMotivationalMeditation] = useState([]);
   const [PreOrderBook, setPreOrderBook] = useState([]);
 
+  // all authors
+  const Authors = [
+    {
+      name: "হুমায়ূন আহমেদ",
+      img: author1,
+    },
+    {
+      name: "জোবায়ের আল মাহমুদ",
+      img: author2,
+    },
+    {
+      name: "সৈয়দ মুজতবা আলী",
+      img: author3,
+    },
+    {
+      name: "জহির রায়হান",
+      img: author4,
+    },
+    {
+      name: "মিজানুর রহমান আজহারি",
+      img: author5,
+    },
+    {
+      name: "তামিম শাহরিয়ার সুবিন",
+      img: author6,
+    },
+    {
+      name: "মুনজেরিন শহীদ",
+      img: author7,
+    },
+  ];
 
   // first book button catagori
   const catagorys1 = [
@@ -97,7 +135,6 @@ const Home = () => {
       .then(function () {});
   }, []);
 
-
   // ছোট্ট বিজ্ঞানীদের বিজ্ঞানবাক্স
   useEffect(() => {
     axios
@@ -115,7 +152,7 @@ const Home = () => {
       .then(function () {});
   }, []);
 
- // Motivational and Meditation
+  // Motivational and Meditation
   useEffect(() => {
     axios
       .get("http://localhost:7000/catagory", {
@@ -132,26 +169,23 @@ const Home = () => {
       .then(function () {});
   }, []);
 
- // প্রি-অর্ডারে থাকা বই
- useEffect(() => {
-  axios
-    .get("http://localhost:7000/catagory", {
-      params: {
-        CATAGORY: "প্রি-অর্ডারে থাকা বই",
-      },
-    })
-    .then((response) => {
-      setPreOrderBook(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-    .then(function () {});
-}, []);
+  // প্রি-অর্ডারে থাকা বই
+  useEffect(() => {
+    axios
+      .get("http://localhost:7000/catagory", {
+        params: {
+          CATAGORY: "প্রি-অর্ডারে থাকা বই",
+        },
+      })
+      .then((response) => {
+        setPreOrderBook(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {});
+  }, []);
 
-
-
-  
   // Navbar.classList.add("sticky") : Navbar.classList.remove("sticky")
   return (
     <div style={{ backgroundColor: "#f1f2f4" }}>
@@ -163,17 +197,23 @@ const Home = () => {
 
           <CatagoryButton catagorys={catagorys1} />
           <BookSlider Books={IslamicUponash} catagory={"ইসলামি উপন্যাস"} />
-          <Banner banner={banner3} catagory={"অতিরিক্ত ছাড়"}/>
+          <Banner banner={banner3} catagory={"অতিরিক্ত ছাড়"} />
           <BookSlider Books={ScienceFiction} catagory={"সায়েন্স ফিকশন"} />
           <CatagoryIconBnner />
 
-          <BookSlider Books={ChotoderBigganBox} catagory={"ছোট্ট বিজ্ঞানীদের বিজ্ঞানবাক্স"} />
-          <BookSlider Books={MotivationalMeditation} catagory={"Motivational and Meditation"} />
+          <BookSlider
+            Books={ChotoderBigganBox}
+            catagory={"ছোট্ট বিজ্ঞানীদের বিজ্ঞানবাক্স"}
+          />
+          <BookSlider
+            Books={MotivationalMeditation}
+            catagory={"Motivational and Meditation"}
+          />
 
           <CatagoryButton catagorys={catagorys2} />
           <CatagoryButton />
           <BookSlider Books={PreOrderBook} catagory={"প্রি-অর্ডারে থাকা বই"} />
-          <AuthorSlider title={"Popular Authors"} />
+          <AuthorSlider Authors={Authors} />
         </Box>
       </Box>
       <Footer />

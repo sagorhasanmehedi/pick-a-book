@@ -11,29 +11,19 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Avatar } from "@mui/material";
+import UseAuth from "../../../Hook/UseAuth";
 
 const Navbar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   let navigate = useNavigate();
+  const { user, setUser } = UseAuth();
 
-  const settings = [
-    {
-      text: "My Account",
-      link: "/MyAcount",
-    },
-    {
-      text: "My Orders",
-      link: "/CommingSoon",
-    },
-    {
-      text: "My Wishlist",
-      link: "/CommingSoon",
-    },
-    {
-      text: "Sign Out",
-      link: "/CommingSoon",
-    },
-  ];
+  const HandelSingout = (link) => {
+    setUser(null);
+    localStorage.clear();
+    navigate(link);
+    setAnchorElUser(null);
+  };
 
   const handleCloseUserMenu = (link) => {
     navigate(link);
@@ -43,8 +33,6 @@ const Navbar = () => {
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-
-  const cond = 1;
 
   return (
     <>
@@ -106,9 +94,7 @@ const Navbar = () => {
           <Link to="/Dashbord">Dashbord</Link>
           <Link to="/">Home</Link>
 
-          {cond === 1 ? (
-            <Link to="/Login">Login</Link>
-          ) : (
+          {user?.Email ? (
             <Box
               sx={{
                 display: "inline",
@@ -124,7 +110,7 @@ const Navbar = () => {
                   onClick={handleOpenUserMenu}
                   sx={{ p: 0, cursor: "pointer" }}
                 >
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Semy Sharp" src="/" />
                 </IconButton>
 
                 <Menu
@@ -143,17 +129,23 @@ const Navbar = () => {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  {settings.map((setting, index) => (
-                    <MenuItem
-                      key={index}
-                      onClick={() => handleCloseUserMenu(setting.link)}
-                    >
-                      <Typography textAlign="center">{setting.text}</Typography>
-                    </MenuItem>
-                  ))}
+                  <MenuItem onClick={() => handleCloseUserMenu("/MyAcount")}>
+                    <Typography textAlign="center">My Account</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={() => handleCloseUserMenu("/CommingSoon")}>
+                    <Typography textAlign="center">My Orders</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={() => handleCloseUserMenu("/CommingSoon")}>
+                    <Typography textAlign="center">My Wishlist</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={() => HandelSingout("/")}>
+                    <Typography textAlign="center">Sign Out</Typography>
+                  </MenuItem>
                 </Menu>
               </Box>
             </Box>
+          ) : (
+            <Link to="/Login">Login</Link>
           )}
         </div>
       </div>
