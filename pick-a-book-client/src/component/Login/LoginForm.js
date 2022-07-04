@@ -13,8 +13,24 @@ const LoginForm = ({ setData, Data, handelLogin }) => {
     navigate("/Signup");
   };
 
+
+
+
+
+
+
+  // const stor = localStorage.getItem("Book")
+  // const stor2 = JSON.parse(stor)
+
+  // console.log(stor2.email);
+
+
+
+
+
+
   return (
-    <div className="login-form">
+    <Box component="form" onSubmit={(e) => handelLogin(e)} className="login-form">
       <div className="heading-container">
         <p className="signin-heading active">SIGN IN</p>
         <p onClick={handelSingup} className="signup-heading">
@@ -81,14 +97,14 @@ const LoginForm = ({ setData, Data, handelLogin }) => {
         <p className="forgot-password">Forgot Password?</p>
       </div>
       <div className="signin-button-container">
-        <button onClick={(e) => handelLogin(e)} className="signin-button">
-          SIGN IN{" "}
+        <button className="signin-button">
+          SIGN IN
         </button>
       </div>
       <p className="signup-text">
         Don’t have an account? <span onClick={handelSingup}>Sign Up Now!</span>
       </p>
-    </div>
+    </Box>
   );
 };
 

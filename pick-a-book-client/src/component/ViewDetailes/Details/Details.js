@@ -7,6 +7,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import PdfViewer from "../../PdfViewer/PdfViewer";
 import { useNavigate } from "react-router-dom";
+import {AddToDb} from "../../../Hook/AddToDb"
 
 const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
   let navigate = useNavigate();
@@ -16,7 +17,18 @@ const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
     navigate(`/HomeAllBook/${catagory}`);
   };
 
+
  
+
+const handelAddToCart=()=>{
+
+  AddToDb(Book)
+
+ 
+           
+}
+
+
 
   return (
     <>
@@ -109,8 +121,8 @@ const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
               <div className="buttomn-container">
                 <PdfViewer pdf={Book.pdf}/>
 
-                <button className="Add-to-Cart-button">
-                  <ShoppingCartIcon sx={{ marginRight: "5px" }} /> Add to Cart
+                <button onClick={handelAddToCart} className="Add-to-Cart-button">
+                  <ShoppingCartIcon  sx={{ marginRight: "5px" }} /> Add to Cart
                 </button>
               </div>
               <div className="buttomn-container">

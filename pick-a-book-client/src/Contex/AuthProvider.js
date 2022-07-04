@@ -5,6 +5,9 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
+
+
+
 useEffect(() => {
     setLoading(true);
     const data = JSON.parse(localStorage.getItem("User"));

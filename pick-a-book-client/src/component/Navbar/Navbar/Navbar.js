@@ -20,7 +20,7 @@ const Navbar = () => {
 
   const HandelSingout = (link) => {
     setUser(null);
-    localStorage.clear();
+    localStorage.removeItem("User");
     navigate(link);
     setAnchorElUser(null);
   };

@@ -56,8 +56,6 @@ const PdfViewer = ({ pdf }) => {
     window.addEventListener("resize", handleResize);
   });
 
-  // finally you can render components conditionally if isMobile is True or False
-  console.log(isMobile);
 
   return (
     <div>

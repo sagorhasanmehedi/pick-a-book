@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Footer from "../component/Footer/Footer";
 import LoginForm from "../component/Login/LoginForm";
@@ -11,10 +12,18 @@ const Login = () => {
   const [Data, setData] = useState();
   const { setUser } = UseAuth();
 
+  let navigate = useNavigate();
+  const location = useLocation();
+  const redirect_URL = location?.state?.from?.pathname || "/";
+
+
 
 
   // handel login
   const handelLogin = (e) => {
+   e.preventDefault();
+    console.log(Data.Email);
+
     axios
       .get(`http://localhost:7000/login/${Data.Email}`)
       .then((response) => {
@@ -25,6 +34,7 @@ const Login = () => {
             setUser(response.data);
 
             e.target.reset();
+            navigate(redirect_URL)
           } else {
             Swal.fire({
               icon: "error",

@@ -42,9 +42,6 @@ const storage = multer.diskStorage({
   },
 });
 
-
-
-
 const upload = multer({
   storage: storage,
 });
@@ -92,8 +89,6 @@ async function run() {
         res.send(result);
       }
     );
-  
-
 
     // get all books
     app.get("/get_all_book", async (req, res) => {
@@ -146,6 +141,13 @@ async function run() {
     // post user data
     app.post("/users", async (req, res) => {
       const result = await usersCollection.insertOne(req.body);
+      res.send(result);
+    });
+
+    // get user email
+    app.get("/login/:Email", async (req, res) => {
+      const quary = { Email: req.params.Email };
+      const result = await usersCollection.findOne(quary);
       res.send(result);
     });
   } finally {

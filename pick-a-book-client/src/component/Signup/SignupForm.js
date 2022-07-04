@@ -5,27 +5,31 @@ import MarkunreadIcon from "@mui/icons-material/Markunread";
 import PersonIcon from "@mui/icons-material/Person";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import { Box } from "@mui/system";
-import {  useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import UseAuth from "../../Hook/UseAuth";
 const axios = require("axios").default;
 
 const SignupForm = () => {
   const [UserInfo, setUserInfo] = useState(null);
+  const { setUser } = UseAuth();
   let navigate = useNavigate();
-
-
-
-
 
   const handelSignin = () => {
     navigate("/Login");
   };
 
+  let UserData = {
+    Full_Name: UserInfo?.Full_Name,
+    Email: UserInfo?.Email,
+    Mobile_No: UserInfo?.Mobile_No,
+    Password: UserInfo?.Password,
+    Rool: "User",
+  };
+
   // handel submit
   const handelSubmit = (e) => {
     e.preventDefault();
-    
-    
     if (
       UserInfo?.Full_Name &&
       UserInfo?.Email &&
@@ -33,15 +37,12 @@ const SignupForm = () => {
       UserInfo?.Password
     ) {
       axios
-        .post("http://localhost:7000/users", {
-          Full_Name: UserInfo?.Full_Name,
-          Email: UserInfo?.Email,
-          Mobile_No: UserInfo?.Mobile_No,
-          Password: UserInfo?.Password,
-        })
+        .post("http://localhost:7000/users", UserData)
         .then((response) => {
           if (response.data.acknowledged === true) {
-           
+            localStorage.setItem("User", JSON.stringify(UserData));
+            setUser(UserData);
+
             Swal.fire({
               icon: "success",
               title: "Signup Successful",
@@ -50,7 +51,7 @@ const SignupForm = () => {
             });
             e.target.reset();
             setUserInfo("");
-            
+            navigate("/");
           }
         })
         .catch((error) => {
@@ -63,7 +64,6 @@ const SignupForm = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      
     }
   };
 
