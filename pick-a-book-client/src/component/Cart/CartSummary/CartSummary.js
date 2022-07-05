@@ -1,7 +1,7 @@
 import React from "react";
 import "./CartSummary.css";
 
-const CartSummary = () => {
+const CartSummary = ({TotalDiscountPrice}) => {
   return (
     <>
       <div className="cartsummary">
@@ -11,7 +11,7 @@ const CartSummary = () => {
           <table className="curtsummary">
             <tr className="top-border">
               <td>Subtotal</td>
-              <td className="text-right">43,560 TK.</td>
+              <td className="text-right">{TotalDiscountPrice} TK.</td>
             </tr>
             <tr>
               <td>Shipping</td>
@@ -24,11 +24,11 @@ const CartSummary = () => {
             </tr>
             <tr>
               <td>Total</td>
-              <td className="text-right">43,610 TK.</td>
+              <td className="text-right">{TotalDiscountPrice?TotalDiscountPrice + 50 +20:0} TK.</td>
             </tr>
             <tr>
               <td>Payable Total</td>
-              <td className="text-right">43,610 TK.</td>
+              <td className="text-right">{TotalDiscountPrice?TotalDiscountPrice + 50 +20:0} TK.</td>
             </tr>
           </table>
         </div>

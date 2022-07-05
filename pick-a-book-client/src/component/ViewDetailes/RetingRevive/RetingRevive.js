@@ -4,23 +4,35 @@ import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
 import { useNavigate } from "react-router-dom";
-import { Input, Rating } from "@mui/material";
+import { Box, Input, Rating } from "@mui/material";
 import Swal from "sweetalert2";
+import UseAuth from "../../../Hook/UseAuth";
 const axios = require("axios").default;
 
-const RetingRevive = ({ Book, AllRatingReview, setisSubmit, isSubmit , ratingCount , reviewCount,calculateRating }) => {
+const RetingRevive = ({
+  Book,
+  AllRatingReview,
+  setisSubmit,
+  isSubmit,
+  ratingCount,
+  reviewCount,
+  calculateRating,
+}) => {
   const [RatingValue, setRatingValue] = useState(0);
   const [Review, setReview] = useState();
   const [isReview, setIsReview] = useState(false);
   let navigate = useNavigate();
+  const { user } = UseAuth();
+
+
+console.log(user?.Full_Name);
+console.log(AllRatingReview);
+
 
   // view all book
   const handelAllbook = () => {
     navigate(`/Login`);
   };
-
-
-
 
   // handel Raview submit
   const handelReviewSubmit = () => {
@@ -39,6 +51,8 @@ const RetingRevive = ({ Book, AllRatingReview, setisSubmit, isSubmit , ratingCou
       .post(`https://pick-a-book-v1.herokuapp.com/ratingReview/${Book._id}`, {
         RatingValue: RatingValue,
         Review: Review,
+        reviewer_name:user?.Full_Name,
+        date:new Date().toJSON().slice(0, 10),
       })
       .then((response) => {
         if (response.data.acknowledged === true) {
@@ -67,7 +81,6 @@ const RetingRevive = ({ Book, AllRatingReview, setisSubmit, isSubmit , ratingCou
     });
   };
 
-
   return (
     <div className="riveaw-container">
       <div className="reviews-heading">
@@ -75,9 +88,7 @@ const RetingRevive = ({ Book, AllRatingReview, setisSubmit, isSubmit , ratingCou
           <h2>Reviews and Ratings</h2>
           <div className="total-review">
             <div>
-              <h2>
-                { isNaN(calculateRating) ? 0 : calculateRating.toFixed(1)}
-              </h2>
+              <h2>{isNaN(calculateRating) ? 0 : calculateRating.toFixed(1)}</h2>
             </div>
             <div>
               <p>
@@ -88,18 +99,23 @@ const RetingRevive = ({ Book, AllRatingReview, setisSubmit, isSubmit , ratingCou
                 value={calculateRating}
                 precision={0.5}
                 readOnly
-                sx={{color:"#ff9900"}}
+                sx={{ color: "#ff9900" }}
               />
             </div>
           </div>
         </div>
 
         <div className="review-login">
-          {/* <p>Please login to write review</p>
-          <button onClick={handelAllbook}>Login</button> */}
-          <button onClick={() => setIsReview(true)} className="write-review">
-            Write a Review
-          </button>
+          {user?.Email ? (
+            <button onClick={() => setIsReview(true)} className="write-review">
+              Write a Review
+            </button>
+          ) : (
+            <>
+              <p>Please login to write review</p>
+              <button onClick={handelAllbook}>Login</button>
+            </>
+          )}
         </div>
       </div>
 
@@ -118,10 +134,9 @@ const RetingRevive = ({ Book, AllRatingReview, setisSubmit, isSubmit , ratingCou
                 precision={0.5}
                 name="half-rating"
                 value={RatingValue}
-                sx={{color:"#ff9900"}}
+                sx={{ color: "#ff9900" }}
                 onChange={(event, newValue) => {
-                  setRatingValue(newValue)
-                 
+                  setRatingValue(newValue);
                 }}
               />
             </div>
@@ -146,7 +161,7 @@ const RetingRevive = ({ Book, AllRatingReview, setisSubmit, isSubmit , ratingCou
             />
             <div className="review-by">
               <p>
-                <span>By</span> {ratingreview.reviewer_name}{" "}
+                <span>By</span> {ratingreview.reviewer_name}
                 <span> {ratingreview.date}</span>
               </p>
 
@@ -155,7 +170,7 @@ const RetingRevive = ({ Book, AllRatingReview, setisSubmit, isSubmit , ratingCou
                 value={ratingreview?.rating}
                 precision={0.5}
                 readOnly
-                sx={{color:"#ff9900"}}
+                sx={{ color: "#ff9900" }}
               />
               <div className="verified-container">
                 <div className="verified-icon">

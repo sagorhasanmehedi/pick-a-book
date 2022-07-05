@@ -21,11 +21,7 @@ const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
  
 
 const handelAddToCart=()=>{
-
-  AddToDb(Book)
-
- 
-           
+ AddToDb(Book)
 }
 
 

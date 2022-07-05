@@ -119,13 +119,14 @@ async function run() {
 
     // add review and rating
     app.post("/ratingReview/:id", async (req, res) => {
+      console.log(req.body);
       const doc = {
         book_id: req.params.id,
-        reviewer_name: "Mehedi Hasan",
+        reviewer_name: req.body.reviewer_name,
         reviewer_image: "demo img",
         rating: req.body.RatingValue,
         reaview: req.body.Review,
-        date: new Date().toJSON().slice(0, 10),
+        date: req.body.date
       };
       const result = await retingReviewCollection.insertOne(doc);
       res.send(result);

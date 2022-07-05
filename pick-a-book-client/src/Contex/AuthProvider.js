@@ -4,6 +4,7 @@ export const authContext = createContext();
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [IsBookRemove, setIsBookRemove] = useState(true);
 
 
 
@@ -20,7 +21,7 @@ useEffect(() => {
   }, []);
 
   return (
-    <authContext.Provider value={{ user, loading, setUser} }>
+    <authContext.Provider value={{ user, loading, setUser,IsBookRemove,setIsBookRemove} }>
       {children}
     </authContext.Provider>
   );
