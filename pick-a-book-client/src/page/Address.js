@@ -1,22 +1,15 @@
 import { Box } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CartSummary from '../component/Cart/CartSummary/CartSummary';
 import Footer from '../component/Footer/Footer';
 import Navbar from '../component/Navbar/Navbar/Navbar';
-import PaymentMethod from '../component/PlaceOrder/PaymentMethod/PaymentMethod';
-import ShippingAddress from '../component/PlaceOrder/ShippingAddress/ShippingAddress';
+import AddAddress from '../component/PlaceOrder/AddAddress/AddAddress';
 
-const PlaceOrder = () => {
-  const [Address, setAddress] = useState()
-
-  useEffect(() => {
-
-   
-    setAddress(JSON.parse(localStorage.getItem("Address")) );
-
+const Address = () => {
     
-  }, [])
-  
+
+
+
     return (
         <div style={{ backgroundColor: "#f1f2f4" }}>
           <Navbar />
@@ -24,8 +17,7 @@ const PlaceOrder = () => {
             <Box >
               <div className="cart-content">
                 <div>
-                  <ShippingAddress Address={Address}/>
-                  <PaymentMethod/>
+                 <AddAddress />
                 </div>
                 <div>
                   <CartSummary />
@@ -38,4 +30,4 @@ const PlaceOrder = () => {
       );
 };
 
-export default PlaceOrder;
+export default Address;

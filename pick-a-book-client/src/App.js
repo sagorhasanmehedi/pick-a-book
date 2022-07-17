@@ -24,6 +24,7 @@ import CommingSoon from "./component/CommingSoon/CommingSoon";
 import ScrollToTop from "react-scroll-to-top";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AuthProvider from "./Contex/AuthProvider";
+import Address from "./page/Address";
 
 function App() {
   return (
@@ -52,7 +53,8 @@ function App() {
             <Route path="/PlaceOrder" element={<PlaceOrder />} />
             <Route path="/MyAcount" element={<MyAcount />} />
             <Route path="/CommingSoon" element={<CommingSoon />} />
-            {/* <Route path="/Pdf" element={<PdfViewer />} /> */}
+            <Route path="/Address" element={<Address />} />
+           
 
             <Route path="/Dashbord" element={<Layout />}>
               <Route index element={<AllBook />} />

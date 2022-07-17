@@ -30,7 +30,7 @@ const CartItem = ({ Cart, setIsBookRemove, IsBookRemove }) => {
 
   // handle place order
   const handelBookDetails = () => {
-    navigate(`/PlaceOrder`);
+    navigate(`/Address`);
   };
 
   // handel book quantity plus

@@ -1,0 +1,77 @@
+.address-form {
+  width: 800px;
+  background-color: #fff;
+  padding: 20px 20px 50px 20px;
+}
+.address-form h3 {
+  font-size: 140%;
+  color: #333333;
+  line-height: 1.2;
+
+  font-weight: 400;
+  display: inline-block;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+.address-form label {
+  font-size: 16px;
+
+  overflow: hidden;
+  color: #424242;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.address-form input {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  height: 40px;
+  line-height: 38px \0;
+  padding: 0 35px 0 10px;
+  margin-bottom: 2px;
+  outline: none;
+}
+
+::placeholder {
+  color: #999;
+}
+.address-button {
+  text-align: right;
+  margin-top: 30px;
+}
+.address-button button {
+  border: none;
+  font-size: 16px;
+  width: 168px;
+  height: 45px;
+  line-height: 40px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.button-cancel {
+  color: #757575;
+  background-color: #eff0f5;
+}
+.button-cancel:focus {
+  color: #757575;
+}
+.button-save {
+  background-color: #1a9cb7;
+  color: white;
+  transition: 0.3s;
+}
+.button-save:hover {
+  background-color: #06b0d2;
+}
+
+@media screen and (max-width: 600px) {
+  .address-form {
+    width: 365px;
+    
+  }
+  .address-button button {
+   margin-bottom: 20px;
+  }
+}

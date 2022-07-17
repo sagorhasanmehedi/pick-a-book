@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -25,8 +24,8 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: {
     lg: 400,
-    sm:350,
-    xs:365
+    sm: 350,
+    xs: 365,
   },
   bgcolor: "background.paper",
   borderRadius: "4px",
@@ -34,10 +33,12 @@ const style = {
   boxShadow: "0 0 10px 0 rgb(0 0 0 / 50%)",
 };
 
-const AddressEidite = () => {
+const AddressEidite = ({ Address }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  console.log(Address);
 
   return (
     <div>
@@ -67,27 +68,27 @@ const AddressEidite = () => {
 
             <Grid container rowSpacing={4} columnSpacing={2}>
               <Grid item xs={12} md={6}>
-                <AddressTextField defaultValue={"Mehedi hasan"} />
+                <AddressTextField defaultValue={Address?.Full_Name} />
               </Grid>
               <Grid item xs={12} md={6}>
-                <AddressTextField defaultValue={"8801763553034"} />
+                <AddressTextField defaultValue={Address?.Phone_Number} />
               </Grid>
               <Grid item xs={12} md={6}>
-                <AddressTextField defaultValue={"+8801763553034"} />
+                <AddressTextField defaultValue={Address?.Region} />
               </Grid>
               <Grid item xs={12} md={6}>
-                <AddressTextField defaultValue={"ধানমন্ডি"} />
+                <AddressTextField defaultValue={Address?.City} />
               </Grid>
               <Grid item xs={12} md={6}>
-                <AddressTextField defaultValue={"ঢাকা"} />
+                <AddressTextField defaultValue={Address?.Area} />
               </Grid>
               <Grid item xs={12} md={6}>
-                <AddressTextField defaultValue={"বাংলাদেশ।"} />
+                <AddressTextField
+                  defaultValue={Address?.Building_House_No_Floor_Street}
+                />
               </Grid>
               <Grid item xs={12} md={12}>
-                <AddressTextAria
-                  defaultValue={"52/A Lake Circus Rd, Dhaka 1205 "}
-                />
+                <AddressTextAria defaultValue={Address?.Address} />
               </Grid>
             </Grid>
             <ModalButton>Save</ModalButton>
