@@ -1,17 +1,22 @@
 import { Box, Grid } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UseAuth from "../../../Hook/UseAuth";
 import "./AddAddress.css";
 
 const AddAddress = () => {
   let navigate = useNavigate();
   const [ShipingAddress, setShipingAddress] = useState();
+  const {setAddress} = UseAuth()
+
+
 
 
   // handelsubmit
   const handelSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem("Address", JSON.stringify(ShipingAddress));
+    setAddress(ShipingAddress)
     navigate(`/PlaceOrder`);
   };
   return (

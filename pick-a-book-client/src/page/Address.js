@@ -1,11 +1,32 @@
 import { Box } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CartSummary from '../component/Cart/CartSummary/CartSummary';
 import Footer from '../component/Footer/Footer';
 import Navbar from '../component/Navbar/Navbar/Navbar';
 import AddAddress from '../component/PlaceOrder/AddAddress/AddAddress';
 
 const Address = () => {
+  const [Cart, setCart] = useState();
+
+
+  
+  // calculet total after discount
+  const DiscountPrice = Cart?.map(
+    (book) =>
+      Math.round(book.price - (book.offer_percentage / 100) * book.price) *
+      book.quantity
+  );
+  let TotalDiscountPrice = DiscountPrice?.reduce((a, b) => {
+    return a + b;
+  }, 0);
+
+
+
+  useEffect(() => {
+    const exist = localStorage.getItem("Book");
+    const StorState = JSON.parse(exist);
+    setCart(StorState);
+  }, []);
     
 
 
@@ -20,7 +41,7 @@ const Address = () => {
                  <AddAddress />
                 </div>
                 <div>
-                  <CartSummary />
+                  <CartSummary TotalDiscountPrice={TotalDiscountPrice}/>
                 </div>
               </div>
             </Box>

@@ -79,6 +79,13 @@
   cursor: pointer;
   margin: 25px 30px 10px 0;
 }
+
+.payment-confirm-button button:hover{
+  
+  background-color: #704608;
+ 
+ 
+}
 .payment-worning {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   padding: 15px 0;

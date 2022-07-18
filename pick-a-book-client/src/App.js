@@ -25,6 +25,7 @@ import ScrollToTop from "react-scroll-to-top";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AuthProvider from "./Contex/AuthProvider";
 import Address from "./page/Address";
+import AddressPrivateRout from "./PrivateRoute/AddressPrivateRout";
 
 function App() {
   return (
@@ -50,11 +51,17 @@ function App() {
             <Route path="/HomeAllBook/:catagory" element={<HomeAllBook />} />
             <Route path="/AllAuthore" element={<AllAuthor />} />
             <Route path="/ViewDetails/:id" element={<ViewDetailes />} />
-            <Route path="/PlaceOrder" element={<PlaceOrder />} />
+            <Route
+              path="/PlaceOrder"
+              element={
+                <AddressPrivateRout>
+                  <PlaceOrder />
+                </AddressPrivateRout>
+              }
+            />
             <Route path="/MyAcount" element={<MyAcount />} />
             <Route path="/CommingSoon" element={<CommingSoon />} />
             <Route path="/Address" element={<Address />} />
-           
 
             <Route path="/Dashbord" element={<Layout />}>
               <Route index element={<AllBook />} />

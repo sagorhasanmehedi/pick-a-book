@@ -1,11 +1,26 @@
 import { Grid } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./ShippingAddress.css";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import AddressEidite from "../AddressEidite/AddressEidite";
 import Swal from "sweetalert2";
+import UseAuth from "../../../Hook/UseAuth";
+import { useNavigate } from "react-router-dom";
 
 const ShippingAddress = ({ Address }) => {
+  let navigate = useNavigate();
+  const { isAddressChange, setisAddressChange } = UseAuth();
+ 
+
+  // handel address delete
+  const handleaItemDeleteOrder = () => {
+    localStorage.removeItem("Address");
+    setisAddressChange(!isAddressChange)
+    navigate("/Address");
+    
+    
+    
+  };
 
   return (
     <div className="shiping-addres">
@@ -40,7 +55,7 @@ const ShippingAddress = ({ Address }) => {
             <div>
               <p className="highlight">{Address?.Full_Name}</p>
               <p className="highlight">{Address?.Phone_Number}</p>
-<p >{Address?.Area}</p>
+              <p>{Address?.Area}</p>
               <p>{Address?.Address}</p>
             </div>
           </Grid>
@@ -55,10 +70,10 @@ const ShippingAddress = ({ Address }) => {
             }}
           >
             <div className="addres-button">
-              <AddressEidite Address={Address}/>
-              {/* <button onClick={() => handleaItemDeleteOrder(ADD.id)}>
-                  <DeleteForeverOutlinedIcon /> Delet
-                </button> */}
+              <AddressEidite Address={Address} />
+              <button onClick={handleaItemDeleteOrder}>
+                <DeleteForeverOutlinedIcon /> Delet
+              </button>
             </div>
           </Grid>
         </Grid>

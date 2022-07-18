@@ -27,8 +27,6 @@ const Cart = () => {
     return a + b;
   }, 0);
 
-
-
   useEffect(() => {
     const exist = localStorage.getItem("Book");
     const StorState = JSON.parse(exist);
@@ -42,7 +40,11 @@ const Cart = () => {
         <Box>
           <div className="cart-content">
             <div>
-              <CartHeader sum={sum} TotalDiscountPrice={TotalDiscountPrice} Cart={Cart} />
+              <CartHeader
+                sum={sum}
+                TotalDiscountPrice={TotalDiscountPrice}
+                Cart={Cart}
+              />
               <CartItem
                 Cart={Cart}
                 setIsBookRemove={setIsBookRemove}
@@ -50,7 +52,7 @@ const Cart = () => {
               />
             </div>
             <div>
-              <CartSummary TotalDiscountPrice={TotalDiscountPrice}/>
+              <CartSummary TotalDiscountPrice={TotalDiscountPrice} />
             </div>
           </div>
         </Box>
