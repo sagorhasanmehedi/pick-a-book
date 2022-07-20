@@ -25,8 +25,6 @@ const RetingRevive = ({
   const { user } = UseAuth();
 
 
-console.log(user?.Full_Name);
-console.log(AllRatingReview);
 
 
   // view all book

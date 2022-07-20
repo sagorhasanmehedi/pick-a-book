@@ -55,6 +55,8 @@ async function run() {
     const bookCollection = database.collection("books");
     const retingReviewCollection = database.collection("retingReview");
     const usersCollection = database.collection("users");
+    const orderCollection = database.collection("order");
+
     await client.connect();
 
     // post new book
@@ -119,14 +121,13 @@ async function run() {
 
     // add review and rating
     app.post("/ratingReview/:id", async (req, res) => {
-      console.log(req.body);
       const doc = {
         book_id: req.params.id,
         reviewer_name: req.body.reviewer_name,
         reviewer_image: "demo img",
         rating: req.body.RatingValue,
         reaview: req.body.Review,
-        date: req.body.date
+        date: req.body.date,
       };
       const result = await retingReviewCollection.insertOne(doc);
       res.send(result);
@@ -149,6 +150,12 @@ async function run() {
     app.get("/login/:Email", async (req, res) => {
       const quary = { Email: req.params.Email };
       const result = await usersCollection.findOne(quary);
+      res.send(result);
+    });
+
+    // post order details
+    app.post("/order", async (req, res) => {
+      const result = await orderCollection.insertOne(req.body.details);
       res.send(result);
     });
   } finally {

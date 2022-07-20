@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -12,9 +12,14 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Avatar } from "@mui/material";
 import UseAuth from "../../../Hook/UseAuth";
+const axios = require("axios").default;
 
 const Navbar = () => {
+ 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [Book, setBook] = useState([]);
+  const [searchBook, setsearchBook] = useState([]);
+
   let navigate = useNavigate();
   const { user, setUser } = UseAuth();
 
@@ -34,6 +39,43 @@ const Navbar = () => {
     setAnchorElUser(event.currentTarget);
   };
 
+  // all book for searching
+  useEffect(() => {
+    // Make a request for a user with a given ID
+    axios
+      .get("http://localhost:7000/get_all_book")
+      .then((response) => {
+        // handle success
+        setBook(response.data);
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      });
+  }, []);
+
+  const handleSearchFilter = (e) => {
+    const searchword = e.target.value;
+
+    if (searchword === "") {
+      setsearchBook([]);
+      return;
+    }
+
+    const newFilter = Book?.filter((value) =>
+      value.book_name.toLowerCase().includes(searchword.toLowerCase())
+    );
+    setsearchBook(newFilter);
+  };
+
+  // view book details
+  const handelBookDetails = (id) => {
+    navigate(`/ViewDetails/${id}`);
+    document.getElementById('searchInput').value='';
+
+    setsearchBook([]);
+    };
+  
   return (
     <>
       <div className="nav">
@@ -48,36 +90,53 @@ const Navbar = () => {
           >
             Pick A Book
           </div>
+          <div>
+            <Paper
+              component="form"
+              sx={{
+                p: "2px 4px",
+                display: "flex",
+                alignItems: "center",
+                width: {
+                  lg: 455,
 
-          <Paper
-            component="form"
-            sx={{
-              p: "2px 4px",
-              display: "flex",
-              alignItems: "center",
-              width: {
-                lg: 455,
+                  xs: 349,
+                },
+              }}
+            >
+              <IconButton sx={{ p: "10px" }} aria-label="menu"></IconButton>
+              <InputBase
+                sx={{ ml: 1, flex: 1 }}
+                placeholder="Search Book By Name"
+                inputProps={{ "aria-label": "search google maps" }}
+                onChange={(e) => handleSearchFilter(e)}
+                id="searchInput"
+              />
 
-                xs: 349,
-              },
-            }}
-          >
-            <IconButton sx={{ p: "10px" }} aria-label="menu"></IconButton>
-            <InputBase
-              sx={{ ml: 1, flex: 1 }}
-              placeholder="Search Book By Name"
-              inputProps={{ "aria-label": "search google maps" }}
-            />
-            <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
-              <SearchIcon />
-            </IconButton>
+              <IconButton sx={{ p: "10px" }} aria-label="search">
+                <SearchIcon />
+              </IconButton>
 
-            <IconButton
-              color="primary"
-              sx={{ p: "10px" }}
-              aria-label="directions"
-            ></IconButton>
-          </Paper>
+              <IconButton
+                color="primary"
+                sx={{ p: "10px" }}
+                aria-label="directions"
+              ></IconButton>
+            </Paper>
+            <div className="searchBook">
+              {searchBook.map((B) => (
+                <div className="each-book">
+                  <img src={B.image} alt="" srcset="" />
+
+                  <div onClick={()=>handelBookDetails(B._id)}>
+                    
+                    <p className="title">{B.book_name}</p>
+                    <p className="author">{B.author_name}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="nav-btn">

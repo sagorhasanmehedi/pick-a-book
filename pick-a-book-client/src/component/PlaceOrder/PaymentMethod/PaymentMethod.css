@@ -79,12 +79,15 @@
   cursor: pointer;
   margin: 25px 30px 10px 0;
 }
+.payment-Placed-button {
+  cursor: none !important;
+}
 
-.payment-confirm-button button:hover{
-  
+.payment-Placed-button:hover {
+  background-color: #ff9900 !important;
+}
+.payment-confirm-button button:hover {
   background-color: #704608;
- 
- 
 }
 .payment-worning {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
@@ -93,7 +96,7 @@
 .payment-worning p {
   font-size: 100%;
   color: #495057;
-  
+
   line-height: 1.6;
 }
 

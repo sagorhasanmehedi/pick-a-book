@@ -11,6 +11,9 @@ const PlaceOrder = () => {
   const { Address } = UseAuth();
   const [Cart, setCart] = useState();
 
+
+
+
   // calculet total after discount
   const DiscountPrice = Cart?.map(
     (book) =>
@@ -35,7 +38,7 @@ const PlaceOrder = () => {
           <div className="cart-content">
             <div>
               <ShippingAddress Address={Address} />
-              <PaymentMethod />
+              <PaymentMethod Address={Address} Cart={Cart} TotalDiscountPrice={TotalDiscountPrice} setCart={setCart} />
             </div>
             <div>
               <CartSummary TotalDiscountPrice={TotalDiscountPrice} />

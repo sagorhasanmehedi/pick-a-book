@@ -5,7 +5,6 @@ import {
   Button,
   MenuItem,
   Radio,
- 
   TextField,
   Typography,
 } from "@mui/material";
@@ -168,10 +167,9 @@ export const UplodeButton = styled(Button)(({ theme }) => ({
   border: "none",
   cursor: "pointer",
   overflow: "hidden",
- 
+
   [theme.breakpoints.down("sm")]: {
-  marginTop:"15px",
-  
+    marginTop: "15px",
   },
 
   "&:hover": {
@@ -284,12 +282,10 @@ export const MyAcountInfo = styled(Typography)({
   fontSize: "16px",
   paddingBottom: "0.25rem",
 
-  
   marginBottom: "5px",
- marginTop:"19px",
+  marginTop: "19px",
   color: "#333333",
-  textAlign: "left"
-  
+  textAlign: "left",
 });
 export const MyAcountInput = styled(TextField)({
   width: "100%",
@@ -305,7 +301,6 @@ export const MyAcountInput = styled(TextField)({
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
       border: "1px solid #ced4da",
-     
     },
 
     "&:hover fieldset": {
@@ -320,9 +315,20 @@ export const MyAcountInput = styled(TextField)({
     color: "#495057",
     backgroundColor: "#f9f9f9",
   },
- 
-  
 });
 
+// modal style
+export const CashOnFormModalButton = styled(Button)({
+  width: "48%",
+  height: "40px",
+
+  fontSize: "14px",
+  color: "#fff",
+  
+ 
 
 
+ 
+  
+ 
+});

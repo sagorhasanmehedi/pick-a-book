@@ -98,6 +98,13 @@
   cursor: pointer;
  
 }
+.cartEmptyButton{
+  cursor: none !important;
+}
+.cartEmptyButton:hover{
+  background-color: #ff9900 !important;
+}
+
 .confirm-button button:hover{
   
   background-color: #704608;

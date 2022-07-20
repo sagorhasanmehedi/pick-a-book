@@ -7,7 +7,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import PdfViewer from "../../PdfViewer/PdfViewer";
 import { useNavigate } from "react-router-dom";
-import {AddToDb} from "../../../Hook/AddToDb"
+import { AddToDb } from "../../../Hook/AddToDb";
 
 const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
   let navigate = useNavigate();
@@ -17,14 +17,9 @@ const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
     navigate(`/HomeAllBook/${catagory}`);
   };
 
-
- 
-
-const handelAddToCart=()=>{
- AddToDb(Book)
-}
-
-
+  const handelAddToCart = () => {
+    AddToDb(Book);
+  };
 
   return (
     <>
@@ -67,7 +62,10 @@ const handelAddToCart=()=>{
               <p className="details-author-name">
                 by<span>{Book.author_name}</span>
               </p>
-              <p onClick={()=>handelAllbook(Book.catagory)} className="details-catagory-name">
+              <p
+                onClick={() => handelAllbook(Book.catagory)}
+                className="details-catagory-name"
+              >
                 Category:<span>{Book.catagory}</span>
               </p>
 
@@ -115,11 +113,20 @@ const handelAddToCart=()=>{
               <p className="stock-alart">* স্টক আউট হওয়ার আগেই অর্ডার করুন</p>
 
               <div className="buttomn-container">
-                <PdfViewer pdf={Book.pdf}/>
+                <PdfViewer pdf={Book.pdf} />
 
-                <button onClick={handelAddToCart} className="Add-to-Cart-button">
-                  <ShoppingCartIcon  sx={{ marginRight: "5px" }} /> Add to Cart
-                </button>
+                {Book.price === undefined ? (
+                  <button className="Add-to-Cart-button">
+                    <ShoppingCartIcon sx={{ marginRight: "5px" }} /> Wait please
+                  </button>
+                ) : (
+                  <button
+                    onClick={handelAddToCart}
+                    className="Add-to-Cart-button"
+                  >
+                    <ShoppingCartIcon sx={{ marginRight: "5px" }} /> Add to Cart
+                  </button>
+                )}
               </div>
               <div className="buttomn-container">
                 <button className="Booklist-buttomn">
