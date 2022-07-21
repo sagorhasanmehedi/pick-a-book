@@ -69,7 +69,7 @@ const CartItem = ({ Cart, setIsBookRemove, IsBookRemove }) => {
     setIsBookRemove(!IsBookRemove);
   };
 
-  console.log(Cart);
+
 
   return (
     <div className="">

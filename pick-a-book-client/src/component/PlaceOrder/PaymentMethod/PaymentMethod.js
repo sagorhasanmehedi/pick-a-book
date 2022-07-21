@@ -21,7 +21,6 @@ const PaymentMethod = ({ Address, Cart, TotalDiscountPrice, setCart }) => {
   // stripe pament modal
   const [openStripeForm, setopenStripeForm] = useState(false);
 
-
   // handel get method value
   const getMethod = (e) => {
     setMethod(e.target.value);
@@ -37,8 +36,8 @@ const PaymentMethod = ({ Address, Cart, TotalDiscountPrice, setCart }) => {
     if (Method === "CashOn") {
       setOpenopenCashOnForm(true);
     } else if (Method === "Stripe") {
-      setopenStripeForm(true)
-      console.log("Stripe");
+      setopenStripeForm(true);
+     
     } else {
       Swal.fire({
         icon: "error",
@@ -182,7 +181,15 @@ const PaymentMethod = ({ Address, Cart, TotalDiscountPrice, setCart }) => {
         Method={Method}
       />
 
-      <StripePaymentForm openStripeForm={openStripeForm} setopenStripeForm={setopenStripeForm}/>
+      <StripePaymentForm
+        openStripeForm={openStripeForm}
+        setopenStripeForm={setopenStripeForm}
+        Address={Address}
+        Cart={Cart}
+        setCart={setCart}
+        TotalDiscountPrice={TotalDiscountPrice}
+        Method={Method}
+      />
     </>
   );
 };
