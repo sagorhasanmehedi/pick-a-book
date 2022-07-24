@@ -15,8 +15,7 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: {
     lg: 430,
-    xs:350
-   
+    xs: 350,
   },
   bgcolor: "background.paper",
 
@@ -31,44 +30,42 @@ export default function CashonForm({
   Cart,
   setCart,
   TotalDiscountPrice,
-  Method
+  Method,
+  user
 }) {
-  
+  // confirm order
+  const handelOderConmfirm = () => {
+    // collect all order information
+    const orderDetails = {
+      email:user?.Email,
+      pamyentMethod: Method,
+      totalAmount: TotalDiscountPrice + 50 + 20,
+      status: "Pending",
+      PlacedDate: new Date().toLocaleString(),
+      Address,
+      Cart,
+    };
 
-
-// confirm order
-const handelOderConmfirm=()=>{
- // collect all order information
- const orderDetails = {
-    pamyentMethod: Method,
-    totalAmount: TotalDiscountPrice + 50 + 20,
-    Address,
-    Cart,
+    axios
+      .post("http://localhost:7000/order", {
+        details: orderDetails,
+      })
+      .then((response) => {
+        if (response.data.acknowledged === true) {
+          Swal.fire(
+            "Your Order Is Confirmed",
+            "we,ll send a shipping confirmation email as soon as your order ships",
+            "success"
+          );
+          setOpenopenCashOnForm(false);
+          setCart([]);
+          localStorage.removeItem("Book");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-
-
-     axios
-        .post("http://localhost:7000/order", {
-          details: orderDetails,
-        })
-        .then((response) => {
-          if (response.data.acknowledged === true) {
-            Swal.fire(
-              "Your Order Is Confirmed",
-              "we,ll send a shipping confirmation email as soon as your order ships",
-              "success"
-            );
-            setOpenopenCashOnForm(false)
-            setCart([]);
-            localStorage.removeItem("Book");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-}
-
-
 
   return (
     <div>
@@ -135,7 +132,7 @@ const handelOderConmfirm=()=>{
                   },
                   float: "right",
                 }}
-                onClick={ handelOderConmfirm}
+                onClick={handelOderConmfirm}
               >
                 Confirm
               </CashOnFormModalButton>

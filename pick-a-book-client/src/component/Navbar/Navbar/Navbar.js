@@ -191,7 +191,7 @@ const Navbar = () => {
                   <MenuItem onClick={() => handleCloseUserMenu("/MyAcount")}>
                     <Typography textAlign="center">My Account</Typography>
                   </MenuItem>
-                  <MenuItem onClick={() => handleCloseUserMenu("/CommingSoon")}>
+                  <MenuItem onClick={() => handleCloseUserMenu("/MyOrder")}>
                     <Typography textAlign="center">My Orders</Typography>
                   </MenuItem>
                   <MenuItem onClick={() => handleCloseUserMenu("/CommingSoon")}>

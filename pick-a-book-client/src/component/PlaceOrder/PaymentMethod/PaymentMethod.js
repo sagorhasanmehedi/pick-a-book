@@ -12,7 +12,13 @@ import Swal from "sweetalert2";
 import CashonForm from "../CashonForm/CashonForm";
 import StripePaymentForm from "../StripePaymentForm/StripePaymentForm";
 
-const PaymentMethod = ({ Address, Cart, TotalDiscountPrice, setCart }) => {
+const PaymentMethod = ({
+  Address,
+  Cart,
+  TotalDiscountPrice,
+  setCart,
+  user,
+}) => {
   const [Method, setMethod] = useState(null);
 
   // cashon form modal
@@ -37,7 +43,6 @@ const PaymentMethod = ({ Address, Cart, TotalDiscountPrice, setCart }) => {
       setOpenopenCashOnForm(true);
     } else if (Method === "Stripe") {
       setopenStripeForm(true);
-     
     } else {
       Swal.fire({
         icon: "error",
@@ -179,6 +184,7 @@ const PaymentMethod = ({ Address, Cart, TotalDiscountPrice, setCart }) => {
         setCart={setCart}
         TotalDiscountPrice={TotalDiscountPrice}
         Method={Method}
+        user={user}
       />
 
       <StripePaymentForm
@@ -189,6 +195,7 @@ const PaymentMethod = ({ Address, Cart, TotalDiscountPrice, setCart }) => {
         setCart={setCart}
         TotalDiscountPrice={TotalDiscountPrice}
         Method={Method}
+      
       />
     </>
   );

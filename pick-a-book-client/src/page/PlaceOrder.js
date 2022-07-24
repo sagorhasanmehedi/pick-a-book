@@ -8,11 +8,8 @@ import ShippingAddress from "../component/PlaceOrder/ShippingAddress/ShippingAdd
 import UseAuth from "../Hook/UseAuth";
 
 const PlaceOrder = () => {
-  const { Address } = UseAuth();
+  const { Address, user } = UseAuth();
   const [Cart, setCart] = useState();
-
-
-
 
   // calculet total after discount
   const DiscountPrice = Cart?.map(
@@ -38,7 +35,13 @@ const PlaceOrder = () => {
           <div className="cart-content">
             <div>
               <ShippingAddress Address={Address} />
-              <PaymentMethod Address={Address} Cart={Cart} TotalDiscountPrice={TotalDiscountPrice} setCart={setCart} />
+              <PaymentMethod
+                Address={Address}
+                Cart={Cart}
+                TotalDiscountPrice={TotalDiscountPrice}
+                setCart={setCart}
+                user={user}
+              />
             </div>
             <div>
               <CartSummary TotalDiscountPrice={TotalDiscountPrice} />

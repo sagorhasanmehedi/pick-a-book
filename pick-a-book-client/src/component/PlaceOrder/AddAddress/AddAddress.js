@@ -7,23 +7,18 @@ import "./AddAddress.css";
 const AddAddress = () => {
   let navigate = useNavigate();
   const [ShipingAddress, setShipingAddress] = useState();
-  const {setAddress} = UseAuth()
-
-
-
+  const { setAddress, user } = UseAuth();
 
   // handelsubmit
   const handelSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem("Address", JSON.stringify(ShipingAddress));
-    setAddress(ShipingAddress)
+    setAddress(ShipingAddress);
     navigate(`/PlaceOrder`);
   };
   return (
     <Box className="address-form">
       <h3>Add shipping Address</h3>
-
-
 
       <Box component="form" onSubmit={(e) => handelSubmit(e)}>
         <Grid container rowSpacing={4} columnSpacing={3}>
@@ -72,6 +67,7 @@ const AddAddress = () => {
               }
             />
           </Grid>
+
           <Grid item xs={12} md={6}>
             <label htmlFor="">City</label>
             <input
@@ -87,6 +83,7 @@ const AddAddress = () => {
               }
             />
           </Grid>
+
           <Grid item xs={12} md={6}>
             <label htmlFor="">Building / House No / Floor / Street</label>
             <input
@@ -118,6 +115,9 @@ const AddAddress = () => {
               }
             />
           </Grid>
+
+          
+
           <Grid item xs={12} md={6}>
             <label htmlFor="">Colony / Suburb / Locality / Landmark</label>
             <input

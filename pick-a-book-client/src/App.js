@@ -26,6 +26,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AuthProvider from "./Contex/AuthProvider";
 import Address from "./page/Address";
 import AddressPrivateRout from "./PrivateRoute/AddressPrivateRout";
+import MyOrder from "./page/MyOrder";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
             <Route path="/MyAcount" element={<MyAcount />} />
             <Route path="/CommingSoon" element={<CommingSoon />} />
             <Route path="/Address" element={<Address />} />
+            <Route path="/MyOrder" element={<MyOrder />} />
 
             <Route path="/Dashbord" element={<Layout />}>
               <Route index element={<AllBook />} />
