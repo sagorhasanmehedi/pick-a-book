@@ -8,14 +8,15 @@ import UseAuth from "../Hook/UseAuth";
 
 const MyOrder = () => {
   const [Orders, setOrders] = useState([]);
+
   const { user } = UseAuth();
 
   useEffect(() => {
     axios
-      .get(`http://localhost:7000/allOrder?Email=${user?.email}`)
+      .get(`http://localhost:7000/allOrder/${user?.Email}`)
       .then((response) => {
         // handle success
-        console.log(response);
+        setOrders(response.data);
       })
       .catch((error) => {
         // handle error
@@ -24,7 +25,9 @@ const MyOrder = () => {
       .then(function () {
         // always executed
       });
-  }, []);
+  }, [user]);
+
+
 
   return (
     <div style={{ backgroundColor: "#eff0f5" }}>
@@ -32,11 +35,11 @@ const MyOrder = () => {
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box
           sx={{
-            width: { xs: "90%", sm: "70%" },
+            width: { xs: "90%", lg: "65%" },
             mt: "20px",
           }}
         >
-          <MyAllOrder Orders={Orders} />
+          <MyAllOrder Orders={Orders} user={user} />
         </Box>
       </Box>
       <Footer />

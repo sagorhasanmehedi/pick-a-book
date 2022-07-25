@@ -31,10 +31,14 @@ export default function CashonForm({
   setCart,
   TotalDiscountPrice,
   Method,
-  user
+  user,
 }) {
+ 
+
   // confirm order
   const handelOderConmfirm = () => {
+   
+
     // collect all order information
     const orderDetails = {
       email:user?.Email,

@@ -21,6 +21,7 @@ const PaymentMethod = ({
 }) => {
   const [Method, setMethod] = useState(null);
 
+
   // cashon form modal
   const [openCashOnForm, setOpenopenCashOnForm] = useState(false);
 

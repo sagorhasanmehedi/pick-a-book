@@ -4,7 +4,12 @@ import { Box } from '@mui/system';
 import Footer from '../component/Footer/Footer';
 import BookCatagory from '../component/Catagory/BookCatagory';
 
+
 const Catagory = () => {
+
+
+
+ 
     return (
 
 

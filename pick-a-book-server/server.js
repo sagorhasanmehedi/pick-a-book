@@ -46,8 +46,12 @@ const upload = multer({
   storage: storage,
 });
 
+// mongo db uri
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.sovrn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri);
+
+// stripe test secret API key
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 async function run() {
   try {
@@ -156,6 +160,36 @@ async function run() {
     // post order details
     app.post("/order", async (req, res) => {
       const result = await orderCollection.insertOne(req.body.details);
+      res.send(result);
+    });
+
+    // stripe payment info
+    app.post("/create-payment-intent", async (req, res) => {
+      const amount = req.body.price * 100;
+
+      // Create a PaymentIntent with the order amount and currency
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: amount,
+        currency: "usd",
+        payment_method_types: ["card"],
+      });
+
+      res.send({
+        clientSecret: paymentIntent.client_secret,
+      });
+    });
+
+    // get order
+    app.get("/allOrder/:email", async (req, res) => {
+      const result = await orderCollection
+        .find({ email: req.params.email })
+        .toArray();
+      res.send(result);
+    });
+
+    // get all order
+    app.get("/adminAllOrder", async (req, res) => {
+      const result = await orderCollection.find({}).toArray();
       res.send(result);
     });
   } finally {

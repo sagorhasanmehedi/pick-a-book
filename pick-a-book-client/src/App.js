@@ -63,7 +63,14 @@ function App() {
             <Route path="/MyAcount" element={<MyAcount />} />
             <Route path="/CommingSoon" element={<CommingSoon />} />
             <Route path="/Address" element={<Address />} />
-            <Route path="/MyOrder" element={<MyOrder />} />
+            <Route
+              path="/MyOrder"
+              element={
+                <PrivateRoute>
+                  <MyOrder />
+                </PrivateRoute>
+              }
+            />
 
             <Route path="/Dashbord" element={<Layout />}>
               <Route index element={<AllBook />} />

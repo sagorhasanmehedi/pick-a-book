@@ -5,6 +5,7 @@ import {
   Button,
   MenuItem,
   Radio,
+  TableRow,
   TextField,
   Typography,
 } from "@mui/material";
@@ -324,11 +325,16 @@ export const CashOnFormModalButton = styled(Button)({
 
   fontSize: "14px",
   color: "#fff",
-  
- 
+  });
 
 
- 
-  
- 
-});
+  export const TableBox = styled(Box)(({ theme }) => ({
+    backgroundColor: "#fff",
+    border: '1px solid #eaeaea',
+    borderRadius: '5px',
+}));
+
+export const TableHeading = styled(TableRow)(({ theme }) => ({
+  backgroundColor: "#f8f9fa",
+  borderRadius: 'none'
+}));

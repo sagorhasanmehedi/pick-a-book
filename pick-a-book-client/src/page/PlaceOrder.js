@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CartSummary from "../component/Cart/CartSummary/CartSummary";
 import Footer from "../component/Footer/Footer";
@@ -26,6 +27,16 @@ const PlaceOrder = () => {
     const StorState = JSON.parse(exist);
     setCart(StorState);
   }, []);
+
+
+
+ 
+
+
+
+
+
+  
 
   return (
     <div style={{ backgroundColor: "#f1f2f4" }}>

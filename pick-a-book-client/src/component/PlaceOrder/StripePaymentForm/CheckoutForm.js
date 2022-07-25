@@ -46,18 +46,18 @@ const CheckoutForm = ({
   setCart,
   TotalDiscountPrice,
   Method,
- 
 }) => {
   const [isProcessing, setProcessingTo] = useState(false);
 
   const { user } = UseAuth();
 
+
+  
+
   //   console.log(Address);
   const stripe = useStripe();
   const elements = useElements();
   const options = useOptions();
-
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -153,13 +153,12 @@ const CheckoutForm = ({
                 title: "Payment Successfull",
                 text: "your order is confirmed",
               });
+              setProcessingTo(false);
             }
           })
           .catch((error) => {
             console.log(error);
           });
-
-        setProcessingTo(false);
       } catch (err) {
         setopenStripeForm(false);
         Swal.fire({
