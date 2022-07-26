@@ -53,7 +53,9 @@ export const LayoutRoot = styled(Box)(({ theme }) => ({
 }));
 
 export const LayoutContiner = styled(Box)(({ theme }) => ({
-  margin: "45px",
+  [theme.breakpoints.up("lg")]: {
+    margin: "45px",
+  },
   padding: "0px 30px 30px",
   borderRadius: "15px",
   backgroundColor: theme.background.primary,
@@ -325,16 +327,15 @@ export const CashOnFormModalButton = styled(Button)({
 
   fontSize: "14px",
   color: "#fff",
-  });
+});
 
-
-  export const TableBox = styled(Box)(({ theme }) => ({
-    backgroundColor: "#fff",
-    border: '1px solid #eaeaea',
-    borderRadius: '5px',
+export const TableBox = styled(Box)(({ theme }) => ({
+  backgroundColor: "#fff",
+  border: "1px solid #eaeaea",
+  borderRadius: "5px",
 }));
 
 export const TableHeading = styled(TableRow)(({ theme }) => ({
   backgroundColor: "#f8f9fa",
-  borderRadius: 'none'
+  borderRadius: "none",
 }));
