@@ -116,7 +116,7 @@ const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
                 <PdfViewer pdf={Book.pdf} />
 
                 {Book.price === undefined ? (
-                  <button className="Add-to-Cart-button">
+                  <button className="Add-to-Cart-button book_price_undefined">
                     <ShoppingCartIcon sx={{ marginRight: "5px" }} /> Wait please
                   </button>
                 ) : (
@@ -143,12 +143,7 @@ const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
         </Grid>
       </div>
 
-      {/* <PdfViewer
-        open={open}
-        setOpen={setOpen}
-        handleOpen={handleOpen}
-        handleClose={handleClose}
-      /> */}
+      
     </>
   );
 };

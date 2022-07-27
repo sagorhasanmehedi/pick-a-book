@@ -129,6 +129,11 @@
 
   background-color: #af751d;
 }
+
+.book_price_undefined {
+  cursor: not-allowed !important;
+}
+
 .Booklist-buttomn {
   margin-right: 20px;
   cursor: not-allowed;
@@ -207,4 +212,3 @@
     margin: 0 0 20px 0;
   }
 }
-

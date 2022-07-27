@@ -125,9 +125,11 @@ const MyAllOrder = ({ Orders }) => {
                 },
               }}
             >
-              <Typography variant="body1">
+              {order.status === "Pending" ? (
                 <Chip variant="outlined" color="error" label={order.status} />
-              </Typography>
+              ) : (
+                <Chip label="success" color="success" variant="outlined" />
+              )}
             </Grid>
             <Grid
               item
@@ -139,7 +141,7 @@ const MyAllOrder = ({ Orders }) => {
                 alignItems: "center",
               }}
             >
-              <Typography variant="body1">Delivered on 20 Jul 2022</Typography>
+              <Typography variant="body1">Delivery on 20 July 2022</Typography>
             </Grid>
           </Grid>
         </Box>
@@ -149,3 +151,6 @@ const MyAllOrder = ({ Orders }) => {
 };
 
 export default MyAllOrder;
+
+// Confirmed
+// Pending

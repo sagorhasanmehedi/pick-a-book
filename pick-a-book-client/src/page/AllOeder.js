@@ -12,9 +12,11 @@ import OrderCard from "../component/AllOrder.js/OrderCard";
 import SubNav from "../component/SubNav/SubNav";
 import { LayoutContiner } from "../style/MetariulUiStyle";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AllOeder = () => {
   const [Orders, setOrders] = useState([]);
+  const [condition, setcondition] = useState(true);
 
   useEffect(() => {
     axios
@@ -30,7 +32,61 @@ const AllOeder = () => {
       .then(function () {
         // always executed
       });
-  }, []);
+  }, [condition]);
+
+  // delete order
+  const handelOrderDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this! ",
+
+      showCancelButton: true,
+      confirmButtonColor: "Crimson",
+      cancelButtonColor: " LightSeaGreen",
+      confirmButtonText: "Delete",
+    }).then((result) => {
+      if (result.value) {
+        axios
+          .delete(`http://localhost:7000/deleteOrder/${id}`)
+          .then(function (response) {
+            if (response.data.deletedCount) {
+              setcondition(!condition);
+              Swal.fire({
+                icon: "success",
+                title: "Deleted!",
+                text: "Order has been deleted.",
+                timer: 1500,
+                showCancelButton: false,
+                showConfirmButton: false,
+              });
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    });
+  };
+
+  // confirm order
+  const handelConfirm = (id) => {
+    axios
+      .put(`http://localhost:7000/confirmOrder/${id}`)
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          setcondition(!condition);
+          Swal.fire({
+            icon: "success",
+            title: "Confirmed!",
+            text: "Order has been Confirmed.",
+            timer: 1500,
+            showCancelButton: false,
+            showConfirmButton: false,
+          });
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <LayoutContiner>
@@ -78,14 +134,17 @@ const AllOeder = () => {
               <Typography
                 sx={{
                   marginTop: {
-                    lg:0,
+                    lg: 0,
                     xs: 2,
                   },
-                  
                 }}
                 variant="body1"
               >
-                <Chip variant="outlined" color="error" label={order.status} />
+                {order.status === "Pending" ? (
+                  <Chip variant="outlined" color="error" label={order.status} />
+                ) : (
+                  <Chip label="success" color="success" variant="outlined" />
+                )}
               </Typography>
             </Box>
             <Box>
@@ -96,12 +155,12 @@ const AllOeder = () => {
                 <Typography
                   sx={{
                     marginTop: {
-                      lg:0,
+                      lg: 0,
                       xs: -4,
                     },
-                    textAlign:{
-                      xs:"center"
-                    }
+                    textAlign: {
+                      xs: "center",
+                    },
                   }}
                   variant="body1"
                   color={"#1a9cb7"}
@@ -111,9 +170,11 @@ const AllOeder = () => {
               </Tooltip>
             </Box>
           </Box>
-          <Divider sx={{  borderColor: "#d2d4da" }}/>
+          <Divider sx={{ borderColor: "#d2d4da" }} />
 
-          <OrderCard order={order} />
+          {order.Cart.map((cart, index) => (
+            <OrderCard cart={cart} key={index} />
+          ))}
 
           <Box
             sx={{
@@ -135,10 +196,16 @@ const AllOeder = () => {
                 alignItems: "center",
               }}
             >
-              <Button size="small" variant="contained" color="error">
+              <Button
+                onClick={() => handelOrderDelete(order._id)}
+                size="small"
+                variant="contained"
+                color="error"
+              >
                 Cancel
               </Button>
               <Button
+                onClick={() => handelConfirm(order._id)}
                 sx={{
                   backgroundColor: "#4d98ca",
                   ":hover": {

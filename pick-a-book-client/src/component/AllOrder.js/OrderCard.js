@@ -1,10 +1,10 @@
 import { Box, Button, Chip, Divider, Grid, Typography } from "@mui/material";
 import React from "react";
 
-const OrderCard = ({ order }) => {
-  return order.Cart.map((cart, index) => (
+const OrderCard = ({ cart }) => {
+  return  (
     <Box
-      key={index}
+     
       sx={{
         paddingTop: 3,
         paddingBottom: 2,
@@ -81,13 +81,28 @@ const OrderCard = ({ order }) => {
           Quantity: {cart.quantity}
           </Typography>
         </Grid>
+        <Grid
+          item
+          xs={12}
+          lg={2}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          
+          }}
+        >
+          <Typography variant="body1">
+          Delivery on 20 July 2022
+          </Typography>
+        </Grid>
 
        
       </Grid>
 
       
     </Box>
-  ));
+  );
 };
 
 export default OrderCard;
