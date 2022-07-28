@@ -47,7 +47,7 @@ const AddNewBook = () => {
     formData.append("Image", Data.Image);
     formData.append("Pdf", Data.Pdf);
 
-    fetch("http://localhost:7000/add_new_book", {
+    fetch("http://pickabook.rpi.gov.bd/add_new_book", {
       method: "POST",
       body: formData,
     })

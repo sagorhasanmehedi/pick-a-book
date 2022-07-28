@@ -15,13 +15,13 @@ import UseAuth from "../../../Hook/UseAuth";
 const axios = require("axios").default;
 
 const Navbar = () => {
- 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [Book, setBook] = useState([]);
   const [searchBook, setsearchBook] = useState([]);
-
   let navigate = useNavigate();
   const { user, setUser } = UseAuth();
+
+  console.log(user);
 
   const HandelSingout = (link) => {
     setUser(null);
@@ -43,7 +43,7 @@ const Navbar = () => {
   useEffect(() => {
     // Make a request for a user with a given ID
     axios
-      .get("http://localhost:7000/get_all_book")
+      .get("http://pickabook.rpi.gov.bd/get_all_book")
       .then((response) => {
         // handle success
         setBook(response.data);
@@ -71,11 +71,11 @@ const Navbar = () => {
   // view book details
   const handelBookDetails = (id) => {
     navigate(`/ViewDetails/${id}`);
-    document.getElementById('searchInput').value='';
+    document.getElementById("searchInput").value = "";
 
     setsearchBook([]);
-    };
-  
+  };
+
   return (
     <>
       <div className="nav">
@@ -128,8 +128,7 @@ const Navbar = () => {
                 <div className="each-book">
                   <img src={B.image} alt="" srcset="" />
 
-                  <div onClick={()=>handelBookDetails(B._id)}>
-                    
+                  <div onClick={() => handelBookDetails(B._id)}>
                     <p className="title">{B.book_name}</p>
                     <p className="author">{B.author_name}</p>
                   </div>
@@ -150,7 +149,7 @@ const Navbar = () => {
         <div className="nav-links">
           <Link to="/catagory">Catagory</Link>
           <Link to="/Cart">Cart</Link>
-          <Link to="/Dashbord">Dashbord</Link>
+          {user?.Rool === "Admin" && <Link to="/Dashbord">Dashbord</Link>}
           <Link to="/">Home</Link>
 
           {user?.Email ? (

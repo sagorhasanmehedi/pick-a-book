@@ -2,7 +2,7 @@
   background: #ffffff;
   width: 35%;
   padding: 35px 20px;
- 
+
   border-radius: 6px;
   box-shadow: 0 0 10px 0 rgb(0 0 0 / 5%);
   margin-top: 30px;
@@ -146,7 +146,7 @@
 @media (max-width: 520px) {
   .login-form {
     background: #ffffff;
-    width: 85%;
+    width: 90%;
   }
   .facebook-button {
     width: 170px;
@@ -158,10 +158,23 @@
     height: 50px;
     margin-left: 0;
   }
-  .remember-password {
-    flex-wrap: wrap;
-  }
+
   .remember-password p {
     margin: 0;
+  }
+  .signin-button {
+    width: 100%;
+  }
+  .remember-password {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+  .signup-text {
+    font-size: 100%;
+   
   }
 }

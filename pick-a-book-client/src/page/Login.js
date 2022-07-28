@@ -16,25 +16,20 @@ const Login = () => {
   const location = useLocation();
   const redirect_URL = location?.state?.from?.pathname || "/";
 
-
-
-
   // handel login
   const handelLogin = (e) => {
-   e.preventDefault();
-    console.log(Data.Email);
+    e.preventDefault();
 
     axios
-      .get(`http://localhost:7000/login/${Data.Email}`)
+      .get(`http://pickabook.rpi.gov.bd/login/${Data.Email}`)
       .then((response) => {
-        console.log(response);
         if (response.data.Email) {
           if (response.data.Password === Data.Password) {
             localStorage.setItem("User", JSON.stringify(response.data));
             setUser(response.data);
 
             e.target.reset();
-            navigate(redirect_URL)
+            navigate(redirect_URL);
           } else {
             Swal.fire({
               icon: "error",

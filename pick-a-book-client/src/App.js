@@ -27,6 +27,7 @@ import AuthProvider from "./Contex/AuthProvider";
 import Address from "./page/Address";
 import AddressPrivateRout from "./PrivateRoute/AddressPrivateRout";
 import MyOrder from "./page/MyOrder";
+import AdminRoute from "./PrivateRoute/AdminRoute";
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Signup" element={<Signup />} />
-            <Route path="/Login" element={<Login />} />
+
             <Route path="/Catagory" element={<Catagory />} />
             <Route
               path="/Cart"
@@ -72,7 +73,14 @@ function App() {
               }
             />
 
-            <Route path="/Dashbord" element={<Layout />}>
+            <Route
+              path="/Dashbord"
+              element={
+                <AdminRoute>
+                  <Layout />
+                </AdminRoute>
+              }
+            >
               <Route index element={<AllBook />} />
               <Route path="AllBook" element={<AllBook />} />
               <Route path="addnewbook" element={<AddNewBook />} />

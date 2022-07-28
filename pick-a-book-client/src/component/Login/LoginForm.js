@@ -13,24 +13,12 @@ const LoginForm = ({ setData, Data, handelLogin }) => {
     navigate("/Signup");
   };
 
-
-
-
-
-
-
-  // const stor = localStorage.getItem("Book")
-  // const stor2 = JSON.parse(stor)
-
-  // console.log(stor2.email);
-
-
-
-
-
-
   return (
-    <Box component="form" onSubmit={(e) => handelLogin(e)} className="login-form">
+    <Box
+      component="form"
+      onSubmit={(e) => handelLogin(e)}
+      className="login-form"
+    >
       <div className="heading-container">
         <p className="signin-heading active">SIGN IN</p>
         <p onClick={handelSingup} className="signup-heading">
@@ -53,10 +41,16 @@ const LoginForm = ({ setData, Data, handelLogin }) => {
       </div>
       <p className="social-login-or">OR</p> */}
 
-      <p className="login-text">Login with your email or phone number</p>
+      <p className="login-text">Login with email or phone number</p>
       <div className="textfield">
         <Input
-          style={{ width: "75%", marginTop: "30px" }}
+          sx={{
+            width: {
+              lg: "75%",
+              xs: "100%",
+            },
+            marginTop: "30px",
+          }}
           placeholder="Email"
           startAdornment={
             <InputAdornment>
@@ -72,7 +66,13 @@ const LoginForm = ({ setData, Data, handelLogin }) => {
           }
         />
         <Input
-          style={{ width: "75%", marginTop: "30px" }}
+          sx={{
+            width: {
+              lg: "75%",
+              xs: "100%",
+            },
+            marginTop: "30px",
+          }}
           placeholder="Password"
           startAdornment={
             <InputAdornment>
@@ -97,9 +97,7 @@ const LoginForm = ({ setData, Data, handelLogin }) => {
         <p className="forgot-password">Forgot Password?</p>
       </div>
       <div className="signin-button-container">
-        <button className="signin-button">
-          SIGN IN
-        </button>
+        <button className="signin-button">SIGN IN</button>
       </div>
       <p className="signup-text">
         Don’t have an account? <span onClick={handelSingup}>Sign Up Now!</span>

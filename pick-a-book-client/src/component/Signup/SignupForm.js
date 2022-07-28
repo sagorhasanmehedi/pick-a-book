@@ -37,7 +37,7 @@ const SignupForm = () => {
       UserInfo?.Password
     ) {
       axios
-        .post("http://localhost:7000/users", UserData)
+        .post("http://pickabook.rpi.gov.bd/users", UserData)
         .then((response) => {
           if (response.data.acknowledged === true) {
             localStorage.setItem("User", JSON.stringify(UserData));
@@ -94,7 +94,13 @@ const SignupForm = () => {
       <Box component="form" onSubmit={(e) => handelSubmit(e)}>
         <div className="textfield">
           <Input
-            style={{ width: "75%", marginTop: "30px" }}
+            sx={{
+              width: {
+                lg: "75%",
+                xs: "100%",
+              },
+              marginTop: "30px",
+            }}
             placeholder="Full Name"
             name="Full_Name"
             startAdornment={
@@ -110,7 +116,13 @@ const SignupForm = () => {
             }
           />
           <Input
-            style={{ width: "75%", marginTop: "30px" }}
+            sx={{
+              width: {
+                lg: "75%",
+                xs: "100%",
+              },
+              marginTop: "30px",
+            }}
             placeholder="Email"
             name="Email"
             startAdornment={
@@ -126,7 +138,13 @@ const SignupForm = () => {
             }
           />
           <Input
-            style={{ width: "75%", marginTop: "30px" }}
+            sx={{
+              width: {
+                lg: "75%",
+                xs: "100%",
+              },
+              marginTop: "30px",
+            }}
             placeholder="Mobile No."
             name="Mobile_No"
             startAdornment={
@@ -142,7 +160,13 @@ const SignupForm = () => {
             }
           />
           <Input
-            style={{ width: "75%", marginTop: "30px" }}
+            sx={{
+              width: {
+                lg: "75%",
+                xs: "100%",
+              },
+              marginTop: "30px",
+            }}
             placeholder="Password"
             name="Password"
             startAdornment={

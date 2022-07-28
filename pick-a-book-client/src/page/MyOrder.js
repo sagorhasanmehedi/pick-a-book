@@ -13,7 +13,7 @@ const MyOrder = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:7000/allOrder/${user?.Email}`)
+      .get(`http://pickabook.rpi.gov.bd/allOrder/${user?.Email}`)
       .then((response) => {
         // handle success
         setOrders(response.data);

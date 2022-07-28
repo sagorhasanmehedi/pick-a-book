@@ -51,7 +51,7 @@ export default function CashonForm({
     };
 
     axios
-      .post("http://localhost:7000/order", {
+      .post("http://pickabook.rpi.gov.bd/order", {
         details: orderDetails,
       })
       .then((response) => {

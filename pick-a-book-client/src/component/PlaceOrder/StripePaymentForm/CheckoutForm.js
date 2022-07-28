@@ -73,7 +73,7 @@ const CheckoutForm = ({
 
     setProcessingTo(true);
     const data = await axios
-      .post(`http://localhost:7000/create-payment-intent`, { price })
+      .post(`http://pickabook.rpi.gov.bd/create-payment-intent`, { price })
       .then((response) => response.data)
       .catch((error) => console.log({ error }));
 
@@ -139,7 +139,7 @@ const CheckoutForm = ({
         };
 
         axios
-          .post("http://localhost:7000/order", {
+          .post("http://pickabook.rpi.gov.bd/order", {
             details: orderDetails,
           })
           .then((response) => {
