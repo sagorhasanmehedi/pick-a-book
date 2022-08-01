@@ -66,3 +66,11 @@
 .StripeElement.PaymentRequestButton {
   height: 40px;
 }
+
+.form-lable{
+ 
+  color: #0b0b0b;
+  
+ 
+  font-size: 18px;
+}

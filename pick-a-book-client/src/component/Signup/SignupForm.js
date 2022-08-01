@@ -36,27 +36,54 @@ const SignupForm = () => {
       UserInfo?.Mobile_No &&
       UserInfo?.Password
     ) {
-      axios
-        .post("http://pickabook.rpi.gov.bd/users", UserData)
-        .then((response) => {
-          if (response.data.acknowledged === true) {
-            localStorage.setItem("User", JSON.stringify(UserData));
-            setUser(UserData);
+      if (/^(?=.*?[0-9])[A-Za-z0-9]{6,}$/.test(UserInfo?.Password)) {
+        axios
+          .get(`https://pickabook.rpi.gov.bd/login/${UserInfo?.Email}`)
+          .then((response) => {
+            if (response.data.Email) {
+              Swal.fire({
+                icon: "error",
+                title: "Email Address Already in Use !!!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              return;
+            } else {
+              axios
+                .post("https://pickabook.rpi.gov.bd/users", UserData)
+                .then((response) => {
+                  if (response.data.acknowledged === true) {
+                    localStorage.setItem("User", JSON.stringify(UserData));
+                    setUser(UserData);
 
-            Swal.fire({
-              icon: "success",
-              title: "Signup Successful",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            e.target.reset();
-            setUserInfo("");
-            navigate("/");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
+                    Swal.fire({
+                      icon: "success",
+                      title: "Signup Successful",
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
+                    e.target.reset();
+                    setUserInfo("");
+                    navigate("/");
+                  }
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            }
+          })
+
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: '"Password Must Be At Least Six Characters Long And Contains A Number",!',
         });
+        return;
+      }
     } else {
       Swal.fire({
         icon: "error",

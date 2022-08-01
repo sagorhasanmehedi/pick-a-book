@@ -21,7 +21,6 @@ const PaymentMethod = ({
 }) => {
   const [Method, setMethod] = useState(null);
 
-
   // cashon form modal
   const [openCashOnForm, setOpenopenCashOnForm] = useState(false);
 
@@ -40,6 +39,7 @@ const PaymentMethod = ({
 
   // confirm order
   const handelOderConfirm = () => {
+    
     if (Method === "CashOn") {
       setOpenopenCashOnForm(true);
     } else if (Method === "Stripe") {
@@ -58,10 +58,9 @@ const PaymentMethod = ({
       <div className="payment">
         <RadioGroup>
           <div className="payment-method-heading">
-            <p>
-              Payment Method{" "}
-              <span>(Please select only one! payment method)</span>
-            </p>
+            <p>Payment Method </p>
+
+            <span>(Please select only one! payment method)</span>
           </div>
 
           <div className="payment-items">
@@ -196,7 +195,6 @@ const PaymentMethod = ({
         setCart={setCart}
         TotalDiscountPrice={TotalDiscountPrice}
         Method={Method}
-      
       />
     </>
   );

@@ -46,7 +46,7 @@ const RetingRevive = ({
     }
 
     axios
-      .post(`https://pick-a-book-v1.herokuapp.com/ratingReview/${Book._id}`, {
+      .post(`https://pickabook.rpi.gov.bd/ratingReview/${Book._id}`, {
         RatingValue: RatingValue,
         Review: Review,
         reviewer_name:user?.Full_Name,

@@ -192,6 +192,39 @@ async function run() {
       const result = await orderCollection.find({}).toArray();
       res.send(result);
     });
+
+    // delete order
+    app.delete("/deleteOrder/:id", async (req, res) => {
+      const query = { _id: ObjectId(req.params.id) };
+      const result = await orderCollection.deleteOne(query);
+      res.send(result);
+    });
+
+    // update order status
+    app.put("/confirmOrder/:id", async (req, res) => {
+      const filter = { _id: ObjectId(req.params.id) };
+
+      const options = { upsert: true };
+
+      const updateDoc = {
+        $set: {
+          status: `Confirmed`,
+        },
+      };
+      const result = await orderCollection.updateOne(
+        filter,
+        updateDoc,
+        options
+      );
+      res.send(result);
+    });
+
+    // get all admin
+    app.get("/admin", async (req, res) => {
+      const result = await usersCollection.find({ Rool: "Admin" }).toArray();
+      res.send(result);
+      
+    });
   } finally {
     // await client.close();
   }

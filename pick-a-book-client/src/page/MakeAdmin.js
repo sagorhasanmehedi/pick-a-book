@@ -12,7 +12,7 @@ const MakeAdmin = () => {
 
   React.useEffect(() => {
     axios
-      .get("http://pickabook.rpi.gov.bd/admin")
+      .get("https://pickabook.rpi.gov.bd/admin")
       .then((response) => {
         setAdmin(response.data);
       })

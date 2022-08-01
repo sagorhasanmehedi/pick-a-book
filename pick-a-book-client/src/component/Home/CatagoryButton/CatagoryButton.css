@@ -33,3 +33,12 @@ button:focus {
  
   --hover: #0397d3;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .Catagory-slice button {
+    width: 100%;
+  }
+    
+   
+}

@@ -20,37 +20,47 @@ const Login = () => {
   const handelLogin = (e) => {
     e.preventDefault();
 
-    axios
-      .get(`http://pickabook.rpi.gov.bd/login/${Data.Email}`)
-      .then((response) => {
-        if (response.data.Email) {
-          if (response.data.Password === Data.Password) {
-            localStorage.setItem("User", JSON.stringify(response.data));
-            setUser(response.data);
+    if (Data?.Email && Data?.Password) {
+      axios
+        .get(`https://pickabook.rpi.gov.bd/login/${Data.Email}`)
+        .then((response) => {
+          console.log(response);
+          if (response.data.Email) {
+            if (response.data.Password === Data.Password) {
+              localStorage.setItem("User", JSON.stringify(response.data));
+              setUser(response.data);
 
-            e.target.reset();
-            navigate(redirect_URL);
+              e.target.reset();
+              navigate(redirect_URL);
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: "Password Not Match !!!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
           } else {
             Swal.fire({
               icon: "error",
-              title: "Password Not Match !!!",
+              title: "User Doesn't Exist !!!",
               showConfirmButton: false,
               timer: 1500,
             });
           }
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "User Doesn't Exist !!!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      })
+        })
 
-      .catch((error) => {
-        console.log(error);
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Please provide value in each input field !!!",
+        showConfirmButton: false,
+        timer: 1500,
       });
+    }
   };
 
   return (

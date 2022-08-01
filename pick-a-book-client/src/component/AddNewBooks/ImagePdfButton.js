@@ -2,15 +2,11 @@ import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { UplodeButton } from "../../style/MetariulUiStyle";
 
-const ImagePdfButton = ({ Data, setData }) => {
-  const [image, setImage] = useState();
+const ImagePdfButton = ({ Data, setData, image, setImage, Pdf, setPdf }) => {
   const [preview, setPreview] = useState();
-  const [Pdf, setPdf] = useState();
 
   const imageref = useRef();
   const Pdfef = useRef();
-
-  // console.log(preview);
 
   // image preview
   useEffect(() => {
@@ -61,8 +57,8 @@ const ImagePdfButton = ({ Data, setData }) => {
   return (
     <Stack
       direction={{ xs: "column", sm: "row" }}
-      spacing={{ xs: 1, sm: 2, md: 4 }}
-      alignItems={{ xs: "center", md: "flex-end" }}
+      spacing={{ xs: 1, sm: 2, lg: 4 }}
+      alignItems={{ lg: "flex-end" }}
     >
       <Box
         sx={{
@@ -85,42 +81,34 @@ const ImagePdfButton = ({ Data, setData }) => {
         />
       </Box>
 
-      {preview ? (
-        <Box
-          sx={{
-            textAlign: "center",
-          }}
-        >
-          <UplodeButton onClick={() => setPreview(null)}>CANCEL</UplodeButton>
-        </Box>
-      ) : (
-        <Box
-          sx={{
-            textAlign: "center",
-          }}
-        >
-          <UplodeButton onClick={handelPreviewButton}>COVER IMAGE</UplodeButton>
-        </Box>
-      )}
-
-      <input
-        style={{ display: "none" }}
-        name="Image"
-        type="file"
-        accept="image/*"
-        ref={imageref}
-        onChange={handelInputImage}
-      />
-
       <Box
         sx={{
-          textAlign: "center",
+          display: "flex",
+          justifyContent: "space-between",
+          width: {
+            lg: "22%",
+          },
         }}
       >
+        {preview ? (
+          <UplodeButton onClick={() => setPreview(null)}>CANCEL</UplodeButton>
+        ) : (
+          <UplodeButton onClick={handelPreviewButton}>COVER IMAGE</UplodeButton>
+        )}
+
+        <input
+          style={{ display: "none" }}
+          name="Image"
+          type="file"
+          accept="image/*"
+          ref={imageref}
+          onChange={handelInputImage}
+        />
+
         <UplodeButton onClick={handelPdfPreviewButton}>ADD PDF</UplodeButton>
       </Box>
 
-      <Typography variant="h6" color="secondary">
+      <Typography textAlign={"center"} variant="h6" color="secondary">
         {Pdf?.name}
       </Typography>
       <input

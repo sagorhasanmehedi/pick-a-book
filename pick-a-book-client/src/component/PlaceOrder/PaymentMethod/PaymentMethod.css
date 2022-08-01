@@ -3,9 +3,9 @@
 }
 .payment-method-heading {
   margin-top: 35px;
-  height: 56px;
+ 
   background-color: #fafafa;
-  padding: 30px;
+  padding: 27px;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .payment-method-heading p {
@@ -13,11 +13,12 @@
   color: #333333;
   margin: 0;
   line-height: 0;
+  display: inline-block;
 }
 .payment-method-heading span {
-  font-size: 74%;
   color: #666666;
   margin: 3px 0 0 5px;
+  font-size: 105%;
 }
 
 .payment-items {
@@ -104,5 +105,9 @@
   .payment {
     width: 365px;
     text-align: center;
+  }
+  .payment-method-heading p {
+    margin-bottom: 20px;
+    display: block;
   }
 }

@@ -21,7 +21,7 @@ const Navbar = () => {
   let navigate = useNavigate();
   const { user, setUser } = UseAuth();
 
-  console.log(user);
+
 
   const HandelSingout = (link) => {
     setUser(null);
@@ -41,9 +41,8 @@ const Navbar = () => {
 
   // all book for searching
   useEffect(() => {
-    // Make a request for a user with a given ID
     axios
-      .get("http://pickabook.rpi.gov.bd/get_all_book")
+      .get("https://pickabook.rpi.gov.bd/get_all_book")
       .then((response) => {
         // handle success
         setBook(response.data);
@@ -90,7 +89,7 @@ const Navbar = () => {
           >
             Pick A Book
           </div>
-          <div>
+          <div >
             <Paper
               component="form"
               sx={{
@@ -98,13 +97,13 @@ const Navbar = () => {
                 display: "flex",
                 alignItems: "center",
                 width: {
-                  lg: 455,
+                  lg: "200%",
 
-                  xs: 349,
+                  xs: "121%",
                 },
               }}
             >
-              <IconButton sx={{ p: "10px" }} aria-label="menu"></IconButton>
+            
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Search Book By Name"

@@ -1,7 +1,5 @@
 import React from "react";
-import {
-  Box,Grid,
-} from "@mui/material";
+import { Box, Grid, Stack } from "@mui/material";
 import {
   CancleButton,
   SendButton,
@@ -9,7 +7,16 @@ import {
 } from "../../style/MetariulUiStyle.js";
 import ImagePdfButton from "./ImagePdfButton";
 
-const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
+const AddNewBookForm = ({
+  Data,
+  setData,
+  handelFormSubmit,
+  image,
+  setImage,
+ 
+  Pdf,
+  setPdf,
+}) => {
   const Catagory = [
     {
       value: "উপন্যাসের বই",
@@ -51,17 +58,23 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
     },
   ];
 
-
-
   return (
     <Box component="form" onSubmit={(e) => handelFormSubmit(e)}>
       <Grid container spacing={3}>
         <Grid item xs={12} md={12}>
-          <ImagePdfButton Data={Data} setData={setData} />
+          <ImagePdfButton
+            Data={Data}
+            setData={setData}
+            image={image}
+            setImage={setImage}
+           
+            Pdf={Pdf}
+            setPdf={setPdf}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
-          required
+            required
             fullWidth
             variant="outlined"
             name="Book_Name"
@@ -90,7 +103,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
-         required
+            required
             fullWidth
             variant="outlined"
             name="Author_Name"
@@ -106,7 +119,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
 
         <Grid item xs={12} md={6}>
           <TextFieldMake
-           required
+            required
             fullWidth
             variant="outlined"
             label="Price"
@@ -122,14 +135,13 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
-           required
+            required
             fullWidth
             variant="outlined"
             label="Catagory"
             name="Catagory"
             select
             focused
-            
             SelectProps={{ native: "true" }}
             onClick={(event) =>
               setData({
@@ -138,7 +150,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
               })
             }
           >
-             <option>Select A Catagory</option>
+            <option>Select A Catagory</option>
             {Catagory.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -148,14 +160,13 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
-           required
+            required
             fullWidth
             variant="outlined"
             label="Cover Type"
             name="Cover_Type"
             select
             focused
-            
             SelectProps={{ native: "true" }}
             onClick={(event) =>
               setData({
@@ -172,8 +183,6 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             ))}
           </TextFieldMake>
         </Grid>
-
-     
 
         <Grid item xs={12} md={6}>
           <TextFieldMake
@@ -206,7 +215,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
-           required
+            required
             fullWidth
             variant="outlined"
             label="Stock"
@@ -222,7 +231,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
-           required
+            required
             fullWidth
             variant="outlined"
             type="text"
@@ -238,7 +247,7 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <TextFieldMake
-           required
+            required
             fullWidth
             variant="outlined"
             type="email"
@@ -269,22 +278,26 @@ const AddNewBookForm = ({ Data, setData, handelFormSubmit }) => {
             }
           />
         </Grid>
-
-        <Grid container>
-          <div style={{ margin: "30px 0 10px 30px" }}>
-            <SendButton size="medium" type="submit">
-              Send
-            </SendButton>
-            <CancleButton
-              onClick={() => setData(" ")}
-              size="medium"
-              type="reset"
-            >
-              Cancel
-            </CancleButton>
-          </div>
-        </Grid>
       </Grid>
+      <Box
+        sx={{
+          marginTop: {
+            lg: "3%",
+            xs: "6%",
+          },
+          textAlign: {
+            lg: "end",
+            xs: "center",
+          },
+        }}
+      >
+        <SendButton size="medium" type="submit">
+          Send
+        </SendButton>
+        <CancleButton onClick={() => setData(" ")} size="medium" type="reset">
+          Cancel
+        </CancleButton>
+      </Box>
     </Box>
   );
 };

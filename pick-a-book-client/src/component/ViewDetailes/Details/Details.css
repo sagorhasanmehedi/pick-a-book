@@ -93,7 +93,7 @@
 .pore-dekhun-buttomn {
   margin-right: 20px;
   cursor: pointer;
-  padding: 15px 34px;
+  padding: 13px 35px;
   font-size: 100%;
   color: #33c24d !important;
   border: 1px solid #33c24d;
@@ -102,7 +102,7 @@
   border-radius: 2px 2px 2px 2px !important;
   box-shadow: 0px 3px 6px -4px #a2a2a2;
   background-color: #ffffff;
-  margin-bottom: 20px;
+  margin-bottom: 13px;
 }
 .pore-dekhun-buttomn:hover {
   color: #ffffff !important;
@@ -122,6 +122,7 @@
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .Add-to-Cart-button:hover {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
@@ -210,5 +211,8 @@
   }
   .stock-alart {
     margin: 0 0 20px 0;
+  }
+  .pore-dekhun-buttomn {
+    width: 100%;
   }
 }

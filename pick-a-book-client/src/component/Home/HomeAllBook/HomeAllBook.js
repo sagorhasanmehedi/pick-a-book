@@ -18,7 +18,7 @@ const HomeAllBook = () => {
   // all same catagory books
   useEffect(() => {
     axios
-      .get("https://pick-a-book-v1.herokuapp.com/catagory", {
+      .get("https://pickabook.rpi.gov.bd/catagory", {
         params: {
           CATAGORY: params.catagory,
         },

@@ -16,7 +16,7 @@ const ViewDetailes = () => {
 
   useEffect(() => {
     axios
-      .get(`http://pickabook.rpi.gov.bd/single/${params.id}`)
+      .get(`https://pickabook.rpi.gov.bd/single/${params.id}`)
       .then((respons) => {
         setBook(respons.data);
       })
@@ -28,7 +28,7 @@ const ViewDetailes = () => {
   // get all reting and Review
   useEffect(() => {
     axios
-      .get(`http://pickabook.rpi.gov.bd/ratingReview/${Book._id}`)
+      .get(`https://pickabook.rpi.gov.bd/ratingReview/${Book._id}`)
       .then((respnse) => {
         setAllRatingReview(respnse.data);
       })

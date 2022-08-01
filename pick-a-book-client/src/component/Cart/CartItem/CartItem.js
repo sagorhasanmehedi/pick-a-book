@@ -148,13 +148,7 @@ const CartItem = ({ Cart, setIsBookRemove, IsBookRemove }) => {
       ))}
       <div className="confirm-button">
         <p>একসাথে যত খুশি পণ্য অর্ডার করুন, শিপিং চার্জ মাত্র 50 টাকা</p>
-        {/* {!Cart? (
-          <button className="cartEmptyButton">Your Cart is Empty!</button>
-        ) : Cart.length === 0 ? (
-          <button className="cartEmptyButton">Your Cart is Empty!</button>
-        ) : (
-          <button onClick={handelBookDetails}>Place Order</button>
-        )} */}
+       
 
         {Cart === undefined || Cart === null || Cart?.length === 0 ? (
           <button className="cartEmptyButton">Your Cart is Empty!</button>

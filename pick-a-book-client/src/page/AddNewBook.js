@@ -6,6 +6,9 @@ import Swal from "sweetalert2";
 
 const AddNewBook = () => {
   const [Data, setData] = useState();
+  const [image, setImage] = useState();
+
+  const [Pdf, setPdf] = useState();
 
   const handelFormSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +24,6 @@ const AddNewBook = () => {
     }
     if (!Data.Pdf) {
       Swal.fire({
-        
         title: "Please add at least 1 pdf...!",
         showConfirmButton: false,
         timer: 1500,
@@ -29,8 +31,6 @@ const AddNewBook = () => {
       return;
     }
 
-
-    
     formData.append("Book_Name", Data.Book_Name);
     formData.append("Sub_Title", Data.Sub_Titel);
     formData.append("Author_Name", Data.Author_Name);
@@ -47,15 +47,17 @@ const AddNewBook = () => {
     formData.append("Image", Data.Image);
     formData.append("Pdf", Data.Pdf);
 
-    fetch("http://pickabook.rpi.gov.bd/add_new_book", {
+    fetch("https://pickabook.rpi.gov.bd/add_new_book", {
       method: "POST",
       body: formData,
     })
       .then((res) => res.json())
       .then((data) => {
-       
         if (data.insertedId) {
-         
+          setImage(null)
+          setPdf(null)
+          e.target.reset();
+
           Swal.fire({
             icon: "success",
             title: "details have been saved successfully.!",
@@ -76,6 +78,11 @@ const AddNewBook = () => {
         setData={setData}
         Data={Data}
         handelFormSubmit={handelFormSubmit}
+        image={image}
+        setImage={setImage}
+       
+        Pdf={Pdf}
+        setPdf={setPdf}
       />
     </LayoutContiner>
   );

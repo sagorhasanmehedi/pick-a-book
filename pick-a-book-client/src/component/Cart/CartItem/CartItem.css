@@ -16,7 +16,7 @@
 .cart-book-name p {
   text-align: left;
 }
-.cart-book-author-name{
+.cart-book-author-name {
   font-size: 120% !important;
   color: #666666 !important;
   margin-top: 0 !important;
@@ -71,62 +71,60 @@
 .cart-price {
   font-weight: 500 !important;
 }
-.confirm-button{
-  background-color: #FFFFFF;
-  padding: 25px 30px ;
+.confirm-button {
+  background-color: #ffffff;
+  padding: 25px 30px;
   box-shadow: 0px 4px 6px -3px #9c9c9c;
   border-radius: 0 0 3px 3px;
-  
+
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
-.confirm-button p{
+.confirm-button p {
   color: #6c757d !important;
   font-size: 107%;
 }
-.confirm-button button{
+.confirm-button button {
   height: 50px;
   width: 200px;
   font-size: 135%;
-  color: #FFFFFF !important;
+  color: #ffffff !important;
   border-radius: 3px;
   background-color: #ff9900;
   box-shadow: 0px 3px 6px -4px #a2a2a2;
   border: none;
   transition: background 0.8s;
   cursor: pointer;
- 
 }
-.cartEmptyButton{
+.cartEmptyButton {
   cursor: none !important;
 }
-.cartEmptyButton:hover{
+.cartEmptyButton:hover {
   background-color: #ff9900 !important;
 }
 
-.confirm-button button:hover{
-  
+.confirm-button button:hover {
   background-color: #704608;
- 
- 
 }
 
 @media screen and (max-width: 600px) {
   .cart-item {
-    width: 365px;
+    width: 350px;
   }
   .cart-book-name,
   .cart-book-name p {
     text-align: center !important;
   }
   .cart-item img {
-   text-align: center;
+    text-align: center;
   }
   .confirm-button {
-    width: 365px;
-   
-   
-   
+    width: 350px;
+    padding: 13px;
+  }
+  .confirm-button button {
+    font-size: 100%;
+    height: 44px;
+    margin-top: 21px;
   }
 }

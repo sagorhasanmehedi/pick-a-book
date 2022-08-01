@@ -1,6 +1,6 @@
 .cart-content {
   display: flex;
-  gap: 35px;
+  gap: 30px;
   margin-top: 20px;
   justify-content: center;
 }
@@ -66,6 +66,12 @@
 @media screen and (max-width: 600px) {
   .cart-content {
     flex-wrap: wrap;
+  }
+  .cartsummary {
+    width: 350px;
+  
+    
+   
   }
 
  

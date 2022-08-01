@@ -51,9 +51,6 @@ const CheckoutForm = ({
 
   const { user } = UseAuth();
 
-
-  
-
   //   console.log(Address);
   const stripe = useStripe();
   const elements = useElements();
@@ -73,7 +70,7 @@ const CheckoutForm = ({
 
     setProcessingTo(true);
     const data = await axios
-      .post(`http://pickabook.rpi.gov.bd/create-payment-intent`, { price })
+      .post(`https://pickabook.rpi.gov.bd/create-payment-intent`, { price })
       .then((response) => response.data)
       .catch((error) => console.log({ error }));
 
@@ -139,7 +136,7 @@ const CheckoutForm = ({
         };
 
         axios
-          .post("http://pickabook.rpi.gov.bd/order", {
+          .post("https://pickabook.rpi.gov.bd/order", {
             details: orderDetails,
           })
           .then((response) => {
@@ -171,32 +168,24 @@ const CheckoutForm = ({
     }
   };
 
+
+
+
   return (
     <Box component="form" onSubmit={handleSubmit}>
       <label>
-        <span>Card number</span>
-        <CardNumberElement
-          options={options}
-          //   onChange={handleCardDetailsChange}
-        />
+        <span className="form-lable">Card number</span>
+        <CardNumberElement options={options} />
       </label>
       <label>
-        <span>Expiration date</span>
+        <span className="form-lable">Expiration date</span>
 
-        <CardExpiryElement
-          options={options}
-          //   onChange={handleCardDetailsChange}
-        />
+        <CardExpiryElement options={options} />
       </label>
       <label>
-        <span>CVC</span>
-        <CardCvcElement
-          options={options}
-          // onChange={handleCardDetailsChange}
-        />
+        <span className="form-lable">CVC</span>
+        <CardCvcElement options={options} />
       </label>
-
-      {/* {!checkoutError && <CheckoutError>{checkoutError}</CheckoutError>} */}
 
       <Box sx={{ mt: 6 }}>
         <CashOnFormModalButton
@@ -224,9 +213,7 @@ const CheckoutForm = ({
           Checkout
         </CashOnFormModalButton>
       </Box>
-      {/* <button type="submit" disabled={isProcessing || !stripe}>
-        Checkout
-      </button> */}
+     
     </Box>
   );
 };

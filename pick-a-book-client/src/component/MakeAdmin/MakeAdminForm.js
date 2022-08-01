@@ -29,7 +29,7 @@ const MakeAdminForm = ({ setisAdmin, isAdmin }) => {
       UserInfo?.Password
     ) {
       axios
-        .post("http://pickabook.rpi.gov.bd/users", UserData)
+        .post("https://pickabook.rpi.gov.bd/users", UserData)
         .then((response) => {
           if (response.data.acknowledged === true) {
             setisAdmin(!isAdmin);

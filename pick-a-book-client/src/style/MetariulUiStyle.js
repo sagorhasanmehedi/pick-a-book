@@ -126,8 +126,8 @@ export const TextFieldMake = styled(TextField)(({ theme }) => ({
 }));
 
 export const SendButton = styled(Button)(({ theme }) => ({
-  width: "130px",
-  height: "48px",
+  width: "10%",
+
   padding: "10px",
   color: "white",
   backgroundColor: "#3fa142",
@@ -135,17 +135,25 @@ export const SendButton = styled(Button)(({ theme }) => ({
     background: "#026806",
     color: "white",
   },
+
+  [theme.breakpoints.down("sm")]: {
+    width: "47%",
+  },
 }));
 export const CancleButton = styled(Button)(({ theme }) => ({
-  width: "130px",
-  height: "48px",
+  width: "10%",
+  marginLeft:"2%",
   padding: "10px",
-  marginLeft: "30px",
   backgroundColor: "#fa9718",
+
   color: "white",
   "&:hover": {
     background: "#804903",
     color: "white",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "47%",
+    marginLeft:"6%"
   },
 }));
 export const CelectButtonStyle = styled(Button)({
@@ -173,6 +181,7 @@ export const UplodeButton = styled(Button)(({ theme }) => ({
 
   [theme.breakpoints.down("sm")]: {
     marginTop: "15px",
+    width: "47%",
   },
 
   "&:hover": {
