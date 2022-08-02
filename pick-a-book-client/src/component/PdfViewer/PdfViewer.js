@@ -12,11 +12,11 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: {
     lg: 700,
-    xs: 340,
+    xs: 300,
   },
   overflowX: "hidden",
   overflowY: "scroll",
-  height: "95%",
+  height: "70%",
   display: "block",
   bgcolor: "background.paper",
   border: "1px solid #000",

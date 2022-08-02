@@ -3,7 +3,7 @@
 }
 .payment-method-heading {
   margin-top: 35px;
- 
+
   background-color: #fafafa;
   padding: 27px;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -103,11 +103,17 @@
 
 @media screen and (max-width: 600px) {
   .payment {
-    width: 365px;
+    width: 325px;
     text-align: center;
   }
   .payment-method-heading p {
     margin-bottom: 20px;
     display: block;
+  }
+  .payment-item span {
+    font-size: 100%;
+  }
+  .ssl img {
+    width: 85%;
   }
 }

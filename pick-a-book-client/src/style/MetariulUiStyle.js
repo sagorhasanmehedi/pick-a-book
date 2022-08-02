@@ -214,10 +214,9 @@ export const ModalHeadingName = styled(Typography)({
   fontWeight: "550",
   color: "#333333",
 });
-export const ModalHeadingCancel = styled(Typography)({
+export const ModalHeadingCancel = styled(Button)({
   color: "#0397d3",
-  borderBottom: "1px solid #0397d3",
-  cursor: "pointer",
+ 
 });
 export const AddressTextField = styled(TextField)(({ theme }) => ({
   height: "45px",

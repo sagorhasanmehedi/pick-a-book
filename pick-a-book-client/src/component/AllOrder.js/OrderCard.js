@@ -1,10 +1,9 @@
-import { Box, Button, Chip, Divider, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 
-const OrderCard = ({ cart }) => {
-  return  (
+const OrderCard = ({ cart, EstimatedDelivery }) => {
+  return (
     <Box
-     
       sx={{
         paddingTop: 3,
         paddingBottom: 2,
@@ -27,6 +26,7 @@ const OrderCard = ({ cart }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            
           }}
         >
           <Box
@@ -41,8 +41,8 @@ const OrderCard = ({ cart }) => {
                 xs: "100%",
               },
             }}
-            alt="The house from the offer."
-            src="https://static-01.daraz.com.bd/p/b2bbb9b22368f3eb674ff02508a9487d.jpg"
+            alt="Image not found."
+            src={cart.image}
           />
         </Grid>
         <Grid
@@ -50,7 +50,7 @@ const OrderCard = ({ cart }) => {
           xs={12}
           lg={3}
           sx={{
-            textAlign:"center",
+            textAlign: "center",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -62,9 +62,7 @@ const OrderCard = ({ cart }) => {
             },
           }}
         >
-          <Typography variant="body1">
-            {cart.book_name} 
-          </Typography>
+          <Typography variant="body1">{cart.book_name}</Typography>
         </Grid>
         <Grid
           item
@@ -74,33 +72,25 @@ const OrderCard = ({ cart }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-          
           }}
         >
-          <Typography variant="body1">
-          Quantity: {cart.quantity}
-          </Typography>
+          <Typography variant="body1">Quantity: {cart.quantity}</Typography>
         </Grid>
         <Grid
           item
           xs={12}
-          lg={2}
+          lg={3}
           sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-          
           }}
         >
           <Typography variant="body1">
-          Delivery on 20 July 2022
+            Estimated Delivery In {EstimatedDelivery}
           </Typography>
         </Grid>
-
-       
       </Grid>
-
-      
     </Box>
   );
 };

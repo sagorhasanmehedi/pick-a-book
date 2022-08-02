@@ -7,6 +7,9 @@ const MyAllOrder = ({ Orders }) => {
       sx={{
         backgroundColor: "white",
         marginBottom: 4,
+        paddingRight: {
+          lg: 2,
+        },
       }}
       key={index}
     >
@@ -78,8 +81,8 @@ const MyAllOrder = ({ Orders }) => {
                     xs: "100%",
                   },
                 }}
-                alt="The house from the offer."
-                src="https://static-01.daraz.com.bd/p/b2bbb9b22368f3eb674ff02508a9487d.jpg"
+                alt="Image not found."
+                src={cart.image}
               />
             </Grid>
             <Grid
@@ -139,9 +142,14 @@ const MyAllOrder = ({ Orders }) => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                marginBottom: {
+                  xs: 2,
+                },
               }}
             >
-              <Typography variant="body1">Delivery on 20 July 2022</Typography>
+              <Typography variant="body1">
+                Estimated Delivery In {order.EstimatedDelivery}
+              </Typography>
             </Grid>
           </Grid>
         </Box>

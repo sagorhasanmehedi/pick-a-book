@@ -84,7 +84,8 @@ const ImagePdfButton = ({ Data, setData, image, setImage, Pdf, setPdf }) => {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "space-between",
+          // justifyContent: "space-between",
+          gap:3,
           width: {
             lg: "22%",
           },

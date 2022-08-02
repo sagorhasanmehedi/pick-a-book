@@ -11,7 +11,6 @@
   border: 1px solid #ddd;
   box-shadow: none;
   background: #ffffff;
- 
 }
 .cartsummary-header {
   font-size: 140%;
@@ -55,12 +54,15 @@
   font-weight: 600;
 }
 .promo-code {
- cursor:not-allowed;
+  cursor: not-allowed;
   padding: 16px;
   background-color: #f7f7f7;
-  border-bottom:1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
+}
+.cartsummary-header-name {
+  text-align: center;
 }
 
 @media screen and (max-width: 600px) {
@@ -68,11 +70,15 @@
     flex-wrap: wrap;
   }
   .cartsummary {
-    width: 350px;
-  
-    
-   
+    width: 325px;
   }
-
- 
+  .cartsummary-header {
+    font-size: 116%;
+  }
+  .curtsummary td {
+    font-size: 16px;
+  }
+  .promo-code {
+    padding: 15px;
+  }
 }

@@ -18,7 +18,6 @@
   margin-top: 20px;
 }
 
-
 .Catagory-slice button:hover,
 button:focus {
   border-color: var(--hover);
@@ -30,15 +29,12 @@ button:focus {
 }
 
 .slide {
- 
   --hover: #0397d3;
 }
-
 
 @media only screen and (max-width: 600px) {
   .Catagory-slice button {
     width: 100%;
+    font-size: 100%;
   }
-    
-   
 }

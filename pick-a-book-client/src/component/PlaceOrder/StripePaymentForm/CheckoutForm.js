@@ -123,12 +123,16 @@ const CheckoutForm = ({
           return;
         }
 
+        const Estimatedate = new Date();
+        Estimatedate.setDate(Estimatedate.getDate() + 3);
+
         // collect all order information
         const orderDetails = {
           email: user?.Email,
           pamyentMethod: Method,
           stripePaymenId: confirmedCardPayment.paymentIntent.id,
           PlacedDate: new Date().toLocaleString(),
+          EstimatedDelivery: Estimatedate.toLocaleDateString(),
           totalAmount: TotalDiscountPrice + 50 + 20,
           status: "Pending",
           Address,
@@ -167,9 +171,6 @@ const CheckoutForm = ({
       console.log("Error: Server could not initiate the payment process.");
     }
   };
-
-
-
 
   return (
     <Box component="form" onSubmit={handleSubmit}>
@@ -213,7 +214,6 @@ const CheckoutForm = ({
           Checkout
         </CashOnFormModalButton>
       </Box>
-     
     </Box>
   );
 };

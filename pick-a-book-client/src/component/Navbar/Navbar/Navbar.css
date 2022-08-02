@@ -75,7 +75,7 @@ body {
 }
 
 .searchBook {
-  width: 27%;
+  width: 33%;
   background-color: white;
   overflow-y: scroll;
   overflow-x: scroll;
@@ -107,7 +107,6 @@ body {
 .title,
 .author {
   margin: 0 0 0 50px;
- 
 }
 .title {
   white-space: nowrap;
@@ -201,6 +200,13 @@ body {
   .searchBook {
     width: 89%;
   }
+  .search-bar-small {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+  }
+  .search-bar {
+    display: none;
+  }
 }
-
-

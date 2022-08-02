@@ -80,7 +80,7 @@ const SignupForm = () => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: '"Password Must Be At Least Six Characters Long And Contains A Number",!',
+          text: "Password Must Be At Least Six Characters Long And Contains A Number",
         });
         return;
       }

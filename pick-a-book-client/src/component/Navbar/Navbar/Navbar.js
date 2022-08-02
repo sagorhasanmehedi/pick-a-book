@@ -21,8 +21,6 @@ const Navbar = () => {
   let navigate = useNavigate();
   const { user, setUser } = UseAuth();
 
-
-
   const HandelSingout = (link) => {
     setUser(null);
     localStorage.removeItem("User");
@@ -89,7 +87,8 @@ const Navbar = () => {
           >
             Pick A Book
           </div>
-          <div >
+
+          <div className="search-bar">
             <Paper
               component="form"
               sx={{
@@ -97,13 +96,12 @@ const Navbar = () => {
                 display: "flex",
                 alignItems: "center",
                 width: {
-                  lg: "200%",
+                  lg: "211%",
 
                   xs: "121%",
                 },
               }}
             >
-            
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Search Book By Name"

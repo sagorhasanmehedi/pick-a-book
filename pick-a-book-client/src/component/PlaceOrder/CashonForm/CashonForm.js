@@ -33,19 +33,19 @@ export default function CashonForm({
   Method,
   user,
 }) {
- 
-
   // confirm order
   const handelOderConmfirm = () => {
-   
+    const Estimatedate = new Date();
+    Estimatedate.setDate(Estimatedate.getDate() + 3);
 
     // collect all order information
     const orderDetails = {
-      email:user?.Email,
+      email: user?.Email,
       pamyentMethod: Method,
       totalAmount: TotalDiscountPrice + 50 + 20,
       status: "Pending",
       PlacedDate: new Date().toLocaleString(),
+      EstimatedDelivery: Estimatedate.toLocaleDateString(),
       Address,
       Cart,
     };

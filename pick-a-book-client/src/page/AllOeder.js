@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Chip,
-  Divider,
-  Grid,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Chip, Divider, Tooltip, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import OrderCard from "../component/AllOrder.js/OrderCard";
 import SubNav from "../component/SubNav/SubNav";
@@ -143,7 +135,11 @@ const AllOeder = () => {
                 {order.status === "Pending" ? (
                   <Chip variant="outlined" color="error" label={order.status} />
                 ) : (
-                  <Chip label="success" color="success" variant="outlined" />
+                  <Chip
+                    label={order.status}
+                    color="success"
+                    variant="outlined"
+                  />
                 )}
               </Typography>
             </Box>
@@ -173,7 +169,11 @@ const AllOeder = () => {
           <Divider sx={{ borderColor: "#d2d4da" }} />
 
           {order.Cart.map((cart, index) => (
-            <OrderCard cart={cart} key={index} />
+            <OrderCard
+              cart={cart}
+              key={index}
+              EstimatedDelivery={order.EstimatedDelivery}
+            />
           ))}
 
           <Box
@@ -183,41 +183,45 @@ const AllOeder = () => {
               borderRadius: 2,
             }}
           >
-            <Divider />
-            <Box
-              sx={{
-                padding: 2,
-                display: "flex",
-                justifyContent: {
-                  lg: "end",
-                  xs: "center",
-                },
-                gap: 4,
-                alignItems: "center",
-              }}
-            >
-              <Button
-                onClick={() => handelOrderDelete(order._id)}
-                size="small"
-                variant="contained"
-                color="error"
-              >
-                Cancel
-              </Button>
-              <Button
-                onClick={() => handelConfirm(order._id)}
-                sx={{
-                  backgroundColor: "#4d98ca",
-                  ":hover": {
-                    backgroundColor: "#25638d",
-                  },
-                }}
-                size="small"
-                variant="contained"
-              >
-                Confirm
-              </Button>
-            </Box>
+            {order.status === "Pending" && (
+              <>
+                <Divider />
+                <Box
+                  sx={{
+                    padding: 2,
+                    display: "flex",
+                    justifyContent: {
+                      lg: "end",
+                      xs: "center",
+                    },
+                    gap: 4,
+                    alignItems: "center",
+                  }}
+                >
+                  <Button
+                    onClick={() => handelOrderDelete(order._id)}
+                    size="small"
+                    variant="contained"
+                    color="error"
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    onClick={() => handelConfirm(order._id)}
+                    sx={{
+                      backgroundColor: "#4d98ca",
+                      ":hover": {
+                        backgroundColor: "#25638d",
+                      },
+                    }}
+                    size="small"
+                    variant="contained"
+                  >
+                    Confirm
+                  </Button>
+                </Box>
+              </>
+            )}
           </Box>
         </Box>
       ))}

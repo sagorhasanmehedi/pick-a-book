@@ -33,13 +33,19 @@
 
 @media screen and (max-width: 600px) {
   .cart-header {
-    width: 350px;
+    width: 325px;
     margin-bottom: 14px;
   }
   .main-price {
-   font-size: 80%;
+    font-size: 80%;
   }
   .offer-price {
     font-size: 80%;
+  }
+  .header-amount {
+    font-size: 13px;
+  }
+  .header-price {
+    font-size: 96%;
   }
 }

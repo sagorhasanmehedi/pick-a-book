@@ -32,7 +32,11 @@ import AdminRoute from "./PrivateRoute/AdminRoute";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <ScrollToTop color="#0699d5" smooth />
+      <ScrollToTop
+        color="#0699d5"
+        smooth
+        style={{ right: "3px", bottom: " 55px" }}
+      />
       <Router>
         <AuthProvider>
           <Routes>

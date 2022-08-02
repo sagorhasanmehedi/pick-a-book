@@ -47,7 +47,6 @@ const AddressEidite = ({ Address }) => {
       handleClose();
       return;
     }
-   
 
     if (
       UpdatedAddress.Full_Name === "" ||
@@ -62,7 +61,7 @@ const AddressEidite = ({ Address }) => {
       Swal.fire({
         icon: "error",
         title: "Input Field Cannot Be Empty",
-        text: 'Please Enter All The Value',
+        text: "Please Enter All The Value",
         showConfirmButton: false,
         timer: 2000,
       });
@@ -149,7 +148,17 @@ const AddressEidite = ({ Address }) => {
                   }
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid
+                item
+                xs={12}
+                md={6}
+                sx={{
+                  display: {
+                    xs: "none",
+                    lg: "block",
+                  },
+                }}
+              >
                 <AddressTextField
                   defaultValue={Address?.Area}
                   name="Area"
@@ -161,7 +170,17 @@ const AddressEidite = ({ Address }) => {
                   }
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid
+                item
+                xs={12}
+                md={6}
+                sx={{
+                  display: {
+                    xs: "none",
+                    lg: "block",
+                  },
+                }}
+              >
                 <AddressTextField
                   defaultValue={Address?.Building_House_No_Floor_Street}
                   name="Building_House_No_Floor_Street"
