@@ -142,7 +142,7 @@ export const SendButton = styled(Button)(({ theme }) => ({
 }));
 export const CancleButton = styled(Button)(({ theme }) => ({
   width: "10%",
-  marginLeft:"2%",
+  marginLeft: "2%",
   padding: "10px",
   backgroundColor: "#fa9718",
 
@@ -153,7 +153,7 @@ export const CancleButton = styled(Button)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     width: "47%",
-    marginLeft:"6%"
+    marginLeft: "6%",
   },
 }));
 export const CelectButtonStyle = styled(Button)({
@@ -171,6 +171,7 @@ export const CelectButtonStyle = styled(Button)({
 });
 export const UplodeButton = styled(Button)(({ theme }) => ({
   width: "130px",
+
   backgroundColor: "#3F51B5",
   color: "white",
   borderRadius: "4px",
@@ -216,7 +217,6 @@ export const ModalHeadingName = styled(Typography)({
 });
 export const ModalHeadingCancel = styled(Button)({
   color: "#0397d3",
- 
 });
 export const AddressTextField = styled(TextField)(({ theme }) => ({
   height: "45px",

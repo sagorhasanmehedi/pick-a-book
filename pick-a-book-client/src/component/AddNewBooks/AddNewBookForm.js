@@ -13,7 +13,7 @@ const AddNewBookForm = ({
   handelFormSubmit,
   image,
   setImage,
- 
+
   Pdf,
   setPdf,
 }) => {
@@ -39,10 +39,51 @@ const AddNewBookForm = ({
       label: "Motivational and Meditation",
     },
     {
-      value: "প্রি-অর্ডারে থাকা বই",
-      label: "প্রি-অর্ডারে থাকা বই",
+      value: "অতিরিক্ত ছাড়",
+      label: "অতিরিক্ত ছাড়",
+    },
+    {
+      value: "গল্প",
+      label: "গল্প",
+    },
+    {
+      value: "বইমেলা ২০২২",
+      label: "বইমেলা ২০২২",
+    },
+    {
+      value: "দর্শন",
+      label: "দর্শন",
+    },
+    {
+      value: "মুক্তিযুদ্ধ",
+      label: "মুক্তিযুদ্ধ",
+    },
+    {
+      value: "ইসলামি বই",
+      label: "ইসলামি বই",
+    },
+    {
+      value: "বেস্টসেলার বই",
+      label: "বেস্টসেলার বই",
+    },
+    {
+      value: "উপন্যাস",
+      label: "উপন্যাস",
+    },
+    {
+      value: "বিজ্ঞানবাক্স",
+      label: "বিজ্ঞানবাক্স",
+    },
+    {
+      value: "ফ্রিল্যান্সিং/প্রোগ্রামিং",
+      label: "ফ্রিল্যান্সিং/প্রোগ্রামিং",
+    },
+    {
+      value: "পশ্চিমবঙ্গের বই",
+      label: "পশ্চিমবঙ্গের বই",
     },
   ];
+
   const CoverType = [
     {
       value: "None",
@@ -67,7 +108,6 @@ const AddNewBookForm = ({
             setData={setData}
             image={image}
             setImage={setImage}
-           
             Pdf={Pdf}
             setPdf={setPdf}
           />

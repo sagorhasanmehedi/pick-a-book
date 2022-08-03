@@ -12,8 +12,6 @@ const HomeAllBook = () => {
 
   let params = useParams();
 
-  console.log(Books);
-  console.log(params.catagory);
 
   // all same catagory books
   useEffect(() => {

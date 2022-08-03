@@ -12,11 +12,14 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: {
     lg: 700,
-    xs: 300,
+    xs: 333,
   },
   overflowX: "hidden",
   overflowY: "scroll",
-  height: "70%",
+  height: {
+    lg: "95%",
+    xs: "70%",
+  },
   display: "block",
   bgcolor: "background.paper",
   border: "1px solid #000",
@@ -35,10 +38,6 @@ const PdfViewer = ({ pdf }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  
-
- 
-
   //choose the screen size for react pdf page responcivenes
   const handleResize = () => {
     if (window.innerWidth > 768) {
@@ -52,10 +51,9 @@ const PdfViewer = ({ pdf }) => {
 
   // create an event listener
   useEffect(() => {
-    handleResize()
+    handleResize();
     window.addEventListener("resize", handleResize);
   });
-
 
   return (
     <div>

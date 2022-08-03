@@ -1,14 +1,14 @@
 .banner {
   padding-top: 25px;
 }
-.banner img{
- width: 100%;
- cursor: pointer;
+.banner img {
+  width: 100%;
+  cursor: pointer;
 }
 
 @media (max-width: 600px) {
   .banner img {
-    width: 100% ;
+    width: 100%;
    
   }
 }

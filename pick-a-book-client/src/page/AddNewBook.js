@@ -51,6 +51,8 @@ const AddNewBook = () => {
       method: "POST",
       body: formData,
     })
+
+    
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
@@ -60,7 +62,7 @@ const AddNewBook = () => {
 
           Swal.fire({
             icon: "success",
-            title: "details have been saved successfully.!",
+            title: "Details have been saved successfully.!",
             showConfirmButton: false,
             timer: 1500,
           });

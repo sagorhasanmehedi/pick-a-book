@@ -85,10 +85,7 @@ const ImagePdfButton = ({ Data, setData, image, setImage, Pdf, setPdf }) => {
         sx={{
           display: "flex",
           // justifyContent: "space-between",
-          gap:3,
-          width: {
-            lg: "22%",
-          },
+          gap: 3,
         }}
       >
         {preview ? (
