@@ -65,24 +65,28 @@ const Home = () => {
     { name: "ফেলুদা সমগ্র", catagory: "ফেলুদা সমগ্র" },
     { name: "মিসির আলি", catagory: "মিসির আলি" },
     { name: "সত্যজিৎ রায়", catagory: "সত্যজিৎ রায়" },
-    { name: "সত্যজিৎ রায়", catagory: "সত্যজিৎ রায়" },
+    { name: "জহির রায়হান", catagory: "জহির রায়হান" },
   ];
 
   // secend book button catagori
   const catagorys2 = [
-    { name: "শেষের কবিতা", catagory: "শেষের কবিতা" },
-    { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "রবীন্দ্রনাথ ঠাকুর" },
-    { name: "ফেলুদা সমগ্র", catagory: "ফেলুদা সমগ্র" },
-    { name: "মিসির আলি", catagory: "মিসির আলি" },
-    { name: "সত্যজিৎ রায়", catagory: "সত্যজিৎ রায়" },
-    { name: "সত্যজিৎ রায়", catagory: "সত্যজিৎ রায়" },
-    { name: "শেষের কবিতা", catagory: "শেষের কবিতা" },
-    { name: "রবীন্দ্রনাথ ঠাকুর", catagory: "রবীন্দ্রনাথ ঠাকুর" },
-    { name: "ফেলুদা সমগ্র", catagory: "ফেলুদা সমগ্র" },
-    { name: "মিসির আলি", catagory: "মিসির আলি" },
-    { name: "সত্যজিৎ রায়", catagory: "সত্যজিৎ রায়" },
-    { name: "সত্যজিৎ রায়", catagory: "সত্যজিৎ রায়" },
+    { name: "অনুবাদ", catagory: "অনুবাদ" },
+    { name: "গণিত", catagory: "গণিত" },
+    { name: "থ্রিলার ও অ্যাডভেঞ্চার", catagory: "থ্রিলার ও অ্যাডভেঞ্চার" },
+    { name: "রাজনীতি", catagory: "রাজনীতি" },
+    { name: "ইতিহাস ও ঐতিহ্য", catagory: "ইতিহাস ও ঐতিহ্য" },
+    { name: "ব্যবসা", catagory: "ব্যবসা" },
+    { name: "অর্থনীতি", catagory: "অর্থনীতি" },
+    { name: "ভ্রমণ", catagory: "ভ্রমণ" },
+    { name: "প্রবাস", catagory: "প্রবাস" },
+    { name: "প্রযুক্তি", catagory: "প্রযুক্তি" },
+    { name: "কমিকস", catagory: "কমিকস" },
+    { name: "কৃষি ও কৃষক", catagory: "কৃষি ও কৃষক" },
   ];
+
+
+
+
 
   // উপন্যাসের বই
   useEffect(() => {
@@ -192,7 +196,7 @@ const Home = () => {
       <Navbar />
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box sx={{ width: "83%" }}>
-          <Banner banner={banner1} />
+          <Banner banner={banner1} catagory={"Motivational and Meditation"}/>
           <BookSlider Books={Uponashas} catagory={"উপন্যাসের বই"} />
 
           <CatagoryButton catagorys={catagorys1} />

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../Navbar/Navbar/Navbar";
 import { useNavigate, useParams } from "react-router-dom";
+import ReactLoading from "react-loading";
 import "./HomeAllBook.css";
 import axios from "axios";
 
@@ -11,7 +12,6 @@ const HomeAllBook = () => {
   const [Books, setBooks] = useState();
 
   let params = useParams();
-
 
   // all same catagory books
   useEffect(() => {
@@ -48,29 +48,35 @@ const HomeAllBook = () => {
               alignItems: "center",
             }}
           >
-            <Box>
+            <Box
+              sx={{
+                paddingRight: {
+                  lg: "28%",
+                  xs: "10%",
+                },
+              }}
+            >
               <p className="catagory-name">{params.catagory}</p>
               <p className="catagory-amount">(Showing {Books?.length} Books)</p>
             </Box>
             {Books === undefined && (
-              <Typography
-                sx={{
-                  fontSize: {
-                    lg: "25px",
-                  },
-                  marginLeft: "23%",
-                }}
-              >
-                No books found
-              </Typography>
+              <ReactLoading
+                type={"spokes"}
+                color={"#33c24d"}
+                height={75}
+                width={75}
+              />
             )}
             {Books?.length === 0 && (
               <Typography
                 sx={{
                   fontSize: {
                     lg: "25px",
+                   
                   },
-                  marginLeft: "23%",
+                  marginLeft: {
+                    lg: "-5%",
+                  },
                 }}
               >
                 No books found in this category

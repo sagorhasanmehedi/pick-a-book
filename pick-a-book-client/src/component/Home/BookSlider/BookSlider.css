@@ -37,14 +37,14 @@
 }
 .card-title {
   font-weight: 400;
-
+margin-bottom: 14px;
   font-size: 120%;
   color: #111;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 .book-author {
   color: #666666;
-  margin-bottom: 7px;
+  margin-bottom: -5px;
   margin-top: 0;
   font-size: 105%;
 }

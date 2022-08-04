@@ -96,7 +96,7 @@ const Navbar = () => {
                 display: "flex",
                 alignItems: "center",
                 width: {
-                  lg: "211%",
+                  lg: "192%",
 
                   xs: "121%",
                 },

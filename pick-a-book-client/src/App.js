@@ -35,7 +35,7 @@ function App() {
       <ScrollToTop
         color="#0699d5"
         smooth
-        style={{ right: "3px", bottom: " 55px" }}
+        style={{ left: "32px", bottom: " 0px" }}
       />
       <Router>
         <AuthProvider>

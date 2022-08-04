@@ -68,7 +68,9 @@ const CatagoryIconBnner = () => {
                 backgroundColor: `${catagory.background}`,
                 height: "180px",
                 borderRadius: "8px 8px 0 0",
+                cursor:"pointer"
               }}
+              onClick={() => handelAllbook(catagory.catagory)}
             >
               <Box
                 sx={{

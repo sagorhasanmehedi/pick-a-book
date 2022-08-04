@@ -47,7 +47,7 @@ const Book = ({ book, handelDeleteState }) => {
 
 
   return (
-    <Box sx={{ textAlign: "center" }}>
+    <Box sx={{ textAlign: "center",padding:2 }}>
       <img className="book_image" src={book.image} alt="" />
       <Box>
         <p className="book_name">{book.book_name}</p>

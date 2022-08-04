@@ -58,29 +58,123 @@ const AddNewBookForm = ({
       value: "মুক্তিযুদ্ধ",
       label: "মুক্তিযুদ্ধ",
     },
-    {
-      value: "ইসলামি বই",
-      label: "ইসলামি বই",
-    },
+
     {
       value: "বেস্টসেলার বই",
       label: "বেস্টসেলার বই",
     },
+
     {
-      value: "উপন্যাস",
-      label: "উপন্যাস",
-    },
-    {
-      value: "বিজ্ঞানবাক্স",
-      label: "বিজ্ঞানবাক্স",
-    },
-    {
-      value: "ফ্রিল্যান্সিং/প্রোগ্রামিং",
-      label: "ফ্রিল্যান্সিং/প্রোগ্রামিং",
+      value: "ফ্রিল্যান্সিং প্রোগ্রামিং",
+      label: "ফ্রিল্যান্সিং প্রোগ্রামিং",
     },
     {
       value: "পশ্চিমবঙ্গের বই",
       label: "পশ্চিমবঙ্গের বই",
+    },
+    {
+      value: "রবীন্দ্রনাথ ঠাকুর",
+      label: "রবীন্দ্রনাথ ঠাকুর",
+    },
+    {
+      value: "শেষের কবিতা",
+      label: "শেষের কবিতা",
+    },
+    {
+      value: "সত্যজিৎ রায়",
+      label: "সত্যজিৎ রায়",
+    },
+    {
+      value: "মিসির আলি",
+      label: "মিসির আলি",
+    },
+    {
+      value: "ফেলুদা সমগ্র",
+      label: "ফেলুদা সমগ্র",
+    },
+    {
+      value: "জহির রায়হান",
+      label: "জহির রায়হান",
+    },
+    {
+      value: "অনুবাদ",
+      label: "অনুবাদ",
+    },
+    {
+      value: "গণিত",
+      label: "গণিত",
+    },
+    {
+      value: "থ্রিলার ও অ্যাডভেঞ্চার",
+      label: "থ্রিলার ও অ্যাডভেঞ্চার",
+    },
+    {
+      value: "রাজনীতি",
+      label: "রাজনীতি",
+    },
+    {
+      value: "ইতিহাস ও ঐতিহ্য",
+      label: "ইতিহাস ও ঐতিহ্য",
+    },
+    {
+      value: "ব্যবসা",
+      label: "ব্যবসা",
+    },
+    {
+      value: "অর্থনীতি",
+      label: "অর্থনীতি",
+    },
+    {
+      value: "ভ্রমণ",
+      label: "ভ্রমণ",
+    },
+    {
+      value: "প্রবাস",
+      label: "প্রবাস",
+    },
+    {
+      value: "প্রযুক্তি",
+      label: "প্রযুক্তি",
+    },
+    {
+      value: "কমিকস",
+      label: "কমিকস",
+    },
+    {
+      value: "কৃষি ও কৃষক",
+      label: "কৃষি ও কৃষক",
+    },
+    {
+      value: "ইংরেজি ভাষার বই",
+      label: "ইংরেজি ভাষার বই",
+    },
+    {
+      value: "আইন ও বিচার",
+      label: "আইন ও বিচার",
+    },
+    {
+      value: "College",
+      label: "College",
+    },
+    {
+      value: "Engg",
+      label: "Engg",
+    },
+    {
+      value: "Medicel",
+      label: "Medicel",
+    },
+    {
+      value: "Nursing",
+      label: "Nursing",
+    },
+    {
+      value: "School",
+      label: "School",
+    },
+    {
+      value: "University",
+      label: "University",
     },
   ];
 
@@ -241,6 +335,7 @@ const AddNewBookForm = ({
         <Grid item xs={12} md={6}>
           <TextFieldMake
             fullWidth
+            required
             variant="outlined"
             label="Offer Percentage"
             type="number"

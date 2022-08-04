@@ -5,8 +5,11 @@ import ReplayIcon from "@mui/icons-material/Replay";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import ForumIcon from "@mui/icons-material/Forum";
+import { Tooltip } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const SideDetails = () => {
+  let navigate = useNavigate();
   return (
     <>
       <div className="side-details">
@@ -41,7 +44,12 @@ const SideDetails = () => {
                 height: "13px",
               }}
             />
-            <p>CHAT</p>
+            <Tooltip
+              title="This option is currently unavailable"
+              placement="top"
+            >
+              <p>CHAT</p>
+            </Tooltip>
           </div>
         </div>
         <div className="saller-table">
@@ -58,7 +66,12 @@ const SideDetails = () => {
             <p className="saller-parsentage">100%</p>
           </div>
         </div>
-        <div className="saller-visit">
+        <div
+          onClick={() => {
+            navigate("/");
+          }}
+          className="saller-visit"
+        >
           <p className="saller-visit-link">Visit Store</p>
         </div>
       </div>
