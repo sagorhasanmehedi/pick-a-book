@@ -22,7 +22,7 @@ const Login = () => {
 
     if (Data?.Email && Data?.Password) {
       axios
-        .get(`https://pickabook.rpi.gov.bd/login/${Data.Email}`)
+        .get(`https://pick-a-book-server.wiztecbd.online/login/${Data.Email}`)
         .then((response) => {
           console.log(response);
           if (response.data.Email) {

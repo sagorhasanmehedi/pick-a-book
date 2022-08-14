@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ReactLoading from "react-loading";
 import "./HomeAllBook.css";
 import axios from "axios";
+import { Url } from "../../../apiurl/api";
 
 const HomeAllBook = () => {
   let navigate = useNavigate();
@@ -16,7 +17,7 @@ const HomeAllBook = () => {
   // all same catagory books
   useEffect(() => {
     axios
-      .get("https://pickabook.rpi.gov.bd/catagory", {
+      .get("https://pick-a-book-server.wiztecbd.online/catagory", {
         params: {
           CATAGORY: params.catagory,
         },
@@ -35,6 +36,7 @@ const HomeAllBook = () => {
     navigate(`/ViewDetails/${id}`);
   };
 
+  console.log(Books);
   return (
     <div style={{ backgroundColor: "#f1f2f4" }}>
       <Navbar />
@@ -72,7 +74,6 @@ const HomeAllBook = () => {
                 sx={{
                   fontSize: {
                     lg: "25px",
-                   
                   },
                   marginLeft: {
                     lg: "-5%",
@@ -84,8 +85,8 @@ const HomeAllBook = () => {
             )}
           </Box>
           <div className="all-book-cards">
-            {Books?.map((book) => (
-              <div>
+            {Books?.map((book, index) => (
+              <div key={index}>
                 <div className="all-book-card">
                   <div className="allbook-inner-card">
                     {book.image === undefined ? (
@@ -94,7 +95,7 @@ const HomeAllBook = () => {
                         alt=""
                       />
                     ) : (
-                      <img src={book.image} alt="" />
+                      <img src={Url+`${book?.image}`}  alt="" />
                     )}
 
                     <p className="card-title">{book?.book_name}</p>

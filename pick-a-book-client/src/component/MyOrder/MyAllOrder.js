@@ -1,5 +1,6 @@
 import { Box, Chip, Divider, Grid, Tooltip, Typography } from "@mui/material";
 import React from "react";
+import { Url } from "../../apiurl/api";
 
 const MyAllOrder = ({ Orders }) => {
   return Orders?.map((order, index) => (
@@ -35,7 +36,7 @@ const MyAllOrder = ({ Orders }) => {
         <Box>
           <Tooltip title="This option is currently unavailable" placement="top">
             <Typography variant="body1" color={"#1a9cb7"}>
-              Manage
+              Details
             </Typography>
           </Tooltip>
         </Box>
@@ -73,16 +74,16 @@ const MyAllOrder = ({ Orders }) => {
                 component="img"
                 sx={{
                   height: {
-                    lg: "80px",
+                    lg: "85px",
                     xs: "100%",
                   },
                   width: {
-                    lg: "80px",
+                    lg: "70px",
                     xs: "100%",
                   },
                 }}
                 alt="Image not found."
-                src={cart.image}
+                src={Url + `${cart?.image}`}
               />
             </Grid>
             <Grid
@@ -159,6 +160,3 @@ const MyAllOrder = ({ Orders }) => {
 };
 
 export default MyAllOrder;
-
-// Confirmed
-// Pending

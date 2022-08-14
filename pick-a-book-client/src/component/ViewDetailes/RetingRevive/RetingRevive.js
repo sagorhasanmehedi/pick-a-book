@@ -24,9 +24,6 @@ const RetingRevive = ({
   let navigate = useNavigate();
   const { user } = UseAuth();
 
-
-
-
   // view all book
   const handelAllbook = () => {
     navigate(`/Login`);
@@ -46,11 +43,11 @@ const RetingRevive = ({
     }
 
     axios
-      .post(`https://pickabook.rpi.gov.bd/ratingReview/${Book._id}`, {
+      .post(`https://pick-a-book-server.wiztecbd.online/ratingReview/${Book._id}`, {
         RatingValue: RatingValue,
         Review: Review,
-        reviewer_name:user?.Full_Name,
-        date:new Date().toJSON().slice(0, 10),
+        reviewer_name: user?.Full_Name,
+        date: new Date().toJSON().slice(0, 10),
       })
       .then((response) => {
         if (response.data.acknowledged === true) {
@@ -150,8 +147,8 @@ const RetingRevive = ({
         <div></div>
       )}
 
-      {AllRatingReview?.map((ratingreview) => (
-        <div className="review">
+      {AllRatingReview?.map((ratingreview, index) => (
+        <div key={index} className="review">
           <div className="user-img">
             <img
               src="https://lh3.googleusercontent.com/a-/AOh14Gh1B0TDIqZAUml-QKusgpWPuKYoyA7VXhyiGXFJUQ=s96-c"

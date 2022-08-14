@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 
 import Modal from "@mui/material/Modal";
 import { Document, Page, pdfjs } from "react-pdf";
+import { Url } from "../../apiurl/api";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const style = {
@@ -70,11 +71,12 @@ const PdfViewer = ({ pdf }) => {
           <center>
             <Document
               className={"PDFDocument"}
-              file={pdf}
+              file={Url + pdf}
               onLoadSuccess={onDocumentLoadSuccess}
             >
-              {[1, 2, 3, 4, 5, 6].map((page) => (
+              {[1, 2, 3, 4, 5, 6].map((page, index) => (
                 <Page
+                  key={index}
                   width={isMobile}
                   className={"PDFPage PDFPageOne"}
                   pageNumber={page}

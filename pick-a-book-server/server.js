@@ -71,8 +71,8 @@ async function run() {
         { name: "Pdf", maxCount: 1 },
       ]),
       async (req, res) => {
-        const image = `https://pickabook.rpi.gov.bd/Image/${req.files.Image[0].filename}`;
-        const pdf = `https://pickabook.rpi.gov.bd/Pdf/${req.files.Pdf[0].filename}`;
+        const image = `Image/${req.files.Image[0].filename}`;
+        const pdf = `Pdf/${req.files.Pdf[0].filename}`;
 
         const doc = {
           book_name: req.body.Book_Name,

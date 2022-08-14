@@ -1,5 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
+import { Url } from "../../apiurl/api";
 
 const OrderCard = ({ cart, EstimatedDelivery }) => {
   return (
@@ -26,23 +27,22 @@ const OrderCard = ({ cart, EstimatedDelivery }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            
           }}
         >
           <Box
             component="img"
             sx={{
               height: {
-                lg: "80px",
+                lg: "85px",
                 xs: "100%",
               },
               width: {
-                lg: "80px",
+                lg: "70px",
                 xs: "100%",
               },
             }}
             alt="Image not found."
-            src={cart.image}
+            src={Url + `${cart?.image}`}
           />
         </Grid>
         <Grid

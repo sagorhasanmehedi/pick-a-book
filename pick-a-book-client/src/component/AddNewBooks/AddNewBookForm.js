@@ -427,7 +427,7 @@ const AddNewBookForm = ({
         }}
       >
         <SendButton size="medium" type="submit">
-          Send
+          Submit
         </SendButton>
         <CancleButton onClick={() => setData(" ")} size="medium" type="reset">
           Cancel

@@ -123,9 +123,7 @@ const PaymentMethod = ({
                   <StyledButton
                     value="disabled"
                     disabled
-                    // value="Bikash"
-                    // control={<Radio />}
-                    // onChange={getMethod}
+                   
                     sx={{
                       "& .MuiSvgIcon-root": {
                         fontSize: 28,
@@ -141,9 +139,7 @@ const PaymentMethod = ({
                   <StyledButton
                     value="disabled"
                     disabled
-                    // value="Roket"
-                    // control={<Radio />}
-                    // onChange={getMethod}
+                    
                     sx={{
                       "& .MuiSvgIcon-root": {
                         fontSize: 28,

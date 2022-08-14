@@ -70,7 +70,7 @@ const CheckoutForm = ({
 
     setProcessingTo(true);
     const data = await axios
-      .post(`https://pickabook.rpi.gov.bd/create-payment-intent`, { price })
+      .post(`https://pick-a-book-server.wiztecbd.online/create-payment-intent`, { price })
       .then((response) => response.data)
       .catch((error) => console.log({ error }));
 
@@ -140,7 +140,7 @@ const CheckoutForm = ({
         };
 
         axios
-          .post("https://pickabook.rpi.gov.bd/order", {
+          .post("https://pick-a-book-server.wiztecbd.online/order", {
             details: orderDetails,
           })
           .then((response) => {

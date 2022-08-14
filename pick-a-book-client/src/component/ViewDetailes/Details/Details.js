@@ -8,6 +8,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import PdfViewer from "../../PdfViewer/PdfViewer";
 import { useNavigate } from "react-router-dom";
 import { AddToDb } from "../../../Hook/AddToDb";
+import { Url } from "../../../apiurl/api";
 
 const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
   let navigate = useNavigate();
@@ -42,7 +43,7 @@ const Details = ({ Book, ratingCount, reviewCount, calculateRating }) => {
                   alt=""
                 />
               ) : (
-                <img src={Book.image} alt="" />
+                <img src={Url+`${Book?.image}`}  alt="" />
               )}
             </div>
           </Grid>

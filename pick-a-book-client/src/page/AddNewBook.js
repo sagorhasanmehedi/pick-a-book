@@ -47,7 +47,7 @@ const AddNewBook = () => {
     formData.append("Image", Data.Image);
     formData.append("Pdf", Data.Pdf);
 
-    fetch("https://pickabook.rpi.gov.bd/add_new_book", {
+    fetch("https://pick-a-book-server.wiztecbd.online/add_new_book", {
       method: "POST",
       body: formData,
     })

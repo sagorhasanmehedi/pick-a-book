@@ -3,10 +3,9 @@ import { Box } from "@mui/system";
 import "./Book.css";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Url } from "../../apiurl/api";
 
 const Book = ({ book, handelDeleteState }) => {
- 
-
   // delete book
   const haldel_book_delete = (id) => {
     Swal.fire({
@@ -19,9 +18,10 @@ const Book = ({ book, handelDeleteState }) => {
       confirmButtonText: "Delete",
     }).then((result) => {
       if (result.value) {
-       
         axios
-          .delete(`https://pickabook.rpi.gov.bd/delete_book/${id}`) 
+          .delete(
+            `https://pick-a-book-server.wiztecbd.online/delete_book/${id}`
+          )
           .then(function (response) {
             if (response.data.deletedCount) {
               handelDeleteState(id);
@@ -42,26 +42,27 @@ const Book = ({ book, handelDeleteState }) => {
     });
   };
 
-
- 
-
-
   return (
-    <Box sx={{ textAlign: "center",padding:2 }}>
-      <img className="book_image" src={book.image} alt="" />
+    <Box sx={{ textAlign: "center", padding: 2 }}>
+      <img className="book_image" src={Url + `${book?.image}`} alt="" />
       <Box>
         <p className="book_name">{book.book_name}</p>
         <p className="stock-amount">Stock ({book.stock}) </p>
         <p className="book_authorname">{book.author_name}</p>
 
         <Box>
-          {book.offer_percentage === "undefined"  ? (
+          {book.offer_percentage === "undefined" ? (
             <p className="offer_price">৳ {book.price}</p>
           ) : (
-            <p className="offer_price">৳ {Math.round(book.price - (book.offer_percentage / 100) * book.price)}</p>
+            <p className="offer_price">
+              ৳{" "}
+              {Math.round(
+                book.price - (book.offer_percentage / 100) * book.price
+              )}
+            </p>
           )}
 
-          {book.offer_percentage === "undefined"  ? (
+          {book.offer_percentage === "undefined" ? (
             <div></div>
           ) : (
             <p className="calculet_price">

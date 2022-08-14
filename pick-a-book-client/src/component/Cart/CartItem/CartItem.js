@@ -5,6 +5,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { Grid } from "@mui/material";
 import Swal from "sweetalert2";
 import { RemoveBook, GetDb } from "../../../Hook/AddToDb";
+import { Url } from "../../../apiurl/api";
 
 const CartItem = ({ Cart, setIsBookRemove, IsBookRemove }) => {
   let navigate = useNavigate();
@@ -69,8 +70,6 @@ const CartItem = ({ Cart, setIsBookRemove, IsBookRemove }) => {
     setIsBookRemove(!IsBookRemove);
   };
 
-
-
   return (
     <div className="">
       {Cart?.map((book) => (
@@ -84,7 +83,7 @@ const CartItem = ({ Cart, setIsBookRemove, IsBookRemove }) => {
                   alignItems: " center",
                 }}
               >
-                <img alt="" src={book.image} />
+                <img alt="" src={Url + `${book?.image}`} />
               </div>
             </Grid>
             <Grid
@@ -148,14 +147,12 @@ const CartItem = ({ Cart, setIsBookRemove, IsBookRemove }) => {
       ))}
       <div className="confirm-button">
         <p>একসাথে যত খুশি পণ্য অর্ডার করুন, শিপিং চার্জ মাত্র 50 টাকা</p>
-       
 
         {Cart === undefined || Cart === null || Cart?.length === 0 ? (
           <button className="cartEmptyButton">Your Cart is Empty!</button>
         ) : (
           <button onClick={handelBookDetails}>Place Order</button>
         )}
-        
       </div>
     </div>
   );

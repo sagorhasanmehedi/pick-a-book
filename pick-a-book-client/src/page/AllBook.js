@@ -11,7 +11,7 @@ const AllBook = () => {
   const [books, setBooks] = useState([]);
   useEffect(() => {
     axios
-      .get("https://pickabook.rpi.gov.bd/get_all_book")
+      .get("https://pick-a-book-server.wiztecbd.online/get_all_book")
       .then(function (response) {
         setBooks(response.data);
       })

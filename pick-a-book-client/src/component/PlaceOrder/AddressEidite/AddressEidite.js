@@ -24,11 +24,11 @@ const style = {
   width: {
     lg: 400,
     sm: 350,
-    xs: 365,
+    xs: 325,
   },
   bgcolor: "background.paper",
   borderRadius: "4px",
-  p: 4,
+  p: 3,
   boxShadow: "0 0 10px 0 rgb(0 0 0 / 50%)",
 };
 

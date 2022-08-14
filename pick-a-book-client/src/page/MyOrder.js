@@ -13,7 +13,7 @@ const MyOrder = () => {
 
   useEffect(() => {
     axios
-      .get(`https://pickabook.rpi.gov.bd/allOrder/${user?.Email}`)
+      .get(`https://pick-a-book-server.wiztecbd.online/allOrder/${user?.Email}`)
       .then((response) => {
         // handle success
         setOrders(response.data);

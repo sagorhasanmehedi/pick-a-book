@@ -15,7 +15,7 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: {
     lg: 430,
-    xs: 350,
+    xs: 325,
   },
   bgcolor: "background.paper",
 
@@ -51,7 +51,7 @@ export default function CashonForm({
     };
 
     axios
-      .post("https://pickabook.rpi.gov.bd/order", {
+      .post("https://pick-a-book-server.wiztecbd.online/order", {
         details: orderDetails,
       })
       .then((response) => {

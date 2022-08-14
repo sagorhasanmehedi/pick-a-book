@@ -81,7 +81,7 @@
   margin: 25px 30px 10px 0;
 }
 .payment-Placed-button {
-  cursor: none !important;
+  cursor: not-allowed !important;
 }
 
 .payment-Placed-button:hover {

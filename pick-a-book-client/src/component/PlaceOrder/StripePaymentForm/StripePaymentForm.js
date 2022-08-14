@@ -3,8 +3,6 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
-import Typography from "@mui/material/Typography";
-import { CashOnFormModalButton } from "../../../style/MetariulUiStyle";
 import CheckoutForm from "./CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
@@ -16,7 +14,7 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: {
     lg: 430,
-    xs: 350,
+    xs: 325,
   },
   bgcolor: "background.paper",
 

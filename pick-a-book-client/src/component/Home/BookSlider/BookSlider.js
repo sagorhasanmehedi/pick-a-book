@@ -4,11 +4,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
+import { Url } from "../../../apiurl/api";
 
 const BookSlider = ({ Books, catagory }) => {
-
-
- 
   let navigate = useNavigate();
 
   const sliderSettings = {
@@ -44,7 +42,7 @@ const BookSlider = ({ Books, catagory }) => {
 
   // view book details
   const handelBookDetails = (id) => {
-  navigate(`/ViewDetails/${id}`);
+    navigate(`/ViewDetails/${id}`);
   };
 
   return (
@@ -66,7 +64,7 @@ const BookSlider = ({ Books, catagory }) => {
                   alt=""
                 />
               ) : (
-                <img src={book?.image} alt="" />
+                <img src={Url+`${book?.image}`} alt="" />
               )}
 
               <p className="card-title">{book?.book_name}</p>
@@ -81,7 +79,7 @@ const BookSlider = ({ Books, catagory }) => {
                 </span>
               </p>
             </div>
-            <button onClick={()=>handelBookDetails(book._id)} className="btn">
+            <button onClick={() => handelBookDetails(book._id)} className="btn">
               View Details
             </button>
           </div>
