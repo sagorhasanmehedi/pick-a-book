@@ -13,6 +13,7 @@
 - MongoDB
 - Heroku 
 - Multer
+- Stripe
 - hosted on Namecheap.
 
 ## Features
