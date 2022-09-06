@@ -1,6 +1,6 @@
-# pick-a-book
+# The Book Town
 
-## [Demo 💥](http://pick-a-book.wiztecbd.online/)
+## [Demo 💥](https://thebooktown.wiztecbd.online/)
 
 ## Technology: 
 
