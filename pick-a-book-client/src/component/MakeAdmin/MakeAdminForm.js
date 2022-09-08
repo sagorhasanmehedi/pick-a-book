@@ -29,7 +29,7 @@ const MakeAdminForm = ({ setisAdmin, isAdmin }) => {
       UserInfo?.Password
     ) {
       axios
-        .post("https://pick-a-book-server.wiztecbd.online/users", UserData)
+        .post("https://bookwebsite.wiztecbd.online/users", UserData)
         .then((response) => {
           if (response.data.acknowledged === true) {
             setisAdmin(!isAdmin);

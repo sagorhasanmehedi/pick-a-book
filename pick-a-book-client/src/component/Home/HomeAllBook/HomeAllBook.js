@@ -17,7 +17,7 @@ const HomeAllBook = () => {
   // all same catagory books
   useEffect(() => {
     axios
-      .get("https://pick-a-book-server.wiztecbd.online/catagory", {
+      .get("https://bookwebsite.wiztecbd.online/catagory", {
         params: {
           CATAGORY: params.catagory,
         },

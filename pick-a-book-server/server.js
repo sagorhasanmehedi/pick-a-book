@@ -223,7 +223,6 @@ async function run() {
     app.get("/admin", async (req, res) => {
       const result = await usersCollection.find({ Rool: "Admin" }).toArray();
       res.send(result);
-      
     });
   } finally {
     // await client.close();

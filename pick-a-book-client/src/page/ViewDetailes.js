@@ -16,7 +16,7 @@ const ViewDetailes = () => {
 
   useEffect(() => {
     axios
-      .get(`https://pick-a-book-server.wiztecbd.online/single/${params.id}`)
+      .get(`https://bookwebsite.wiztecbd.online/single/${params.id}`)
       .then((respons) => {
         setBook(respons.data);
       })
@@ -28,7 +28,7 @@ const ViewDetailes = () => {
   // get all reting and Review
   useEffect(() => {
     axios
-      .get(`https://pick-a-book-server.wiztecbd.online/ratingReview/${Book._id}`)
+      .get(`https://bookwebsite.wiztecbd.online/ratingReview/${Book._id}`)
       .then((respnse) => {
         setAllRatingReview(respnse.data);
       })

@@ -39,6 +39,10 @@ const AddNewBookForm = ({
       label: "Motivational and Meditation",
     },
     {
+      value: "প্রি-অর্ডারে থাকা বই",
+      label: "প্রি-অর্ডারে থাকা বই",
+    },
+    {
       value: "অতিরিক্ত ছাড়",
       label: "অতিরিক্ত ছাড়",
     },

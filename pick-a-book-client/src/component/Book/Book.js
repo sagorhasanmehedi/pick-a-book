@@ -20,7 +20,7 @@ const Book = ({ book, handelDeleteState }) => {
       if (result.value) {
         axios
           .delete(
-            `https://pick-a-book-server.wiztecbd.online/delete_book/${id}`
+            `https://bookwebsite.wiztecbd.online/delete_book/${id}`
           )
           .then(function (response) {
             if (response.data.deletedCount) {

@@ -47,7 +47,7 @@ const AddNewBook = () => {
     formData.append("Image", Data.Image);
     formData.append("Pdf", Data.Pdf);
 
-    fetch("https://pick-a-book-server.wiztecbd.online/add_new_book", {
+    fetch("https://bookwebsite.wiztecbd.online/add_new_book", {
       method: "POST",
       body: formData,
     })

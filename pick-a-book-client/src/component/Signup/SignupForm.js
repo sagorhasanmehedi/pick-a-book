@@ -38,7 +38,7 @@ const SignupForm = () => {
     ) {
       if (/^(?=.*?[0-9])[A-Za-z0-9]{6,}$/.test(UserInfo?.Password)) {
         axios
-          .get(`https://pick-a-book-server.wiztecbd.online/login/${UserInfo?.Email}`)
+          .get(`https://bookwebsite.wiztecbd.online/login/${UserInfo?.Email}`)
           .then((response) => {
             if (response.data.Email) {
               Swal.fire({
@@ -50,7 +50,7 @@ const SignupForm = () => {
               return;
             } else {
               axios
-                .post("https://pick-a-book-server.wiztecbd.online/users", UserData)
+                .post("https://bookwebsite.wiztecbd.online/users", UserData)
                 .then((response) => {
                   if (response.data.acknowledged === true) {
                     localStorage.setItem("User", JSON.stringify(UserData));

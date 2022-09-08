@@ -51,7 +51,7 @@ export default function CashonForm({
     };
 
     axios
-      .post("https://pick-a-book-server.wiztecbd.online/order", {
+      .post("https://bookwebsite.wiztecbd.online/order", {
         details: orderDetails,
       })
       .then((response) => {

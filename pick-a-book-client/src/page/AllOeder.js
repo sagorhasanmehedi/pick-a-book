@@ -12,7 +12,7 @@ const AllOeder = () => {
 
   useEffect(() => {
     axios
-      .get(`https://pick-a-book-server.wiztecbd.online/adminAllOrder`)
+      .get(`https://bookwebsite.wiztecbd.online/adminAllOrder`)
       .then((response) => {
         // handle success
         setOrders(response.data);
@@ -39,7 +39,7 @@ const AllOeder = () => {
     }).then((result) => {
       if (result.value) {
         axios
-          .delete(`https://pick-a-book-server.wiztecbd.online/deleteOrder/${id}`)
+          .delete(`https://bookwebsite.wiztecbd.online/deleteOrder/${id}`)
           .then(function (response) {
             if (response.data.deletedCount) {
               setcondition(!condition);
@@ -63,7 +63,7 @@ const AllOeder = () => {
   // confirm order
   const handelConfirm = (id) => {
     axios
-      .put(`https://pick-a-book-server.wiztecbd.online/confirmOrder/${id}`)
+      .put(`https://bookwebsite.wiztecbd.online/confirmOrder/${id}`)
       .then((res) => {
         if (res.data.modifiedCount) {
           setcondition(!condition);

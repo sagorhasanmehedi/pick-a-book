@@ -40,7 +40,7 @@ const Navbar = () => {
   // all book for searching
   useEffect(() => {
     axios
-      .get("https://pick-a-book-server.wiztecbd.online/get_all_book")
+      .get("https://bookwebsite.wiztecbd.online/get_all_book")
       .then((response) => {
         // handle success
         setBook(response.data);
@@ -85,7 +85,7 @@ const Navbar = () => {
             }}
             className="nav-title"
           >
-            Pick A Book
+            The Book Town
           </div>
 
           <div className="search-bar">

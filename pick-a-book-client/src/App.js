@@ -21,7 +21,6 @@ import ViewDetailes from "./page/ViewDetailes";
 import PlaceOrder from "./page/PlaceOrder";
 import MyAcount from "./component/MyAcount/MyAcount";
 import CommingSoon from "./component/CommingSoon/CommingSoon";
-import ScrollToTop from "react-scroll-to-top";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AuthProvider from "./Contex/AuthProvider";
 import Address from "./page/Address";
@@ -32,11 +31,6 @@ import AdminRoute from "./PrivateRoute/AdminRoute";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <ScrollToTop
-        color="#0699d5"
-        smooth
-        style={{ left: "32px", bottom: " 0px" }}
-      />
       <Router>
         <AuthProvider>
           <Routes>

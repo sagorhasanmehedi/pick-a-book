@@ -43,7 +43,7 @@ const RetingRevive = ({
     }
 
     axios
-      .post(`https://pick-a-book-server.wiztecbd.online/ratingReview/${Book._id}`, {
+      .post(`https://bookwebsite.wiztecbd.online/ratingReview/${Book._id}`, {
         RatingValue: RatingValue,
         Review: Review,
         reviewer_name: user?.Full_Name,
